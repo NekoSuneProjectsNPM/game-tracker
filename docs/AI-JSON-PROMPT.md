@@ -2,9 +2,9 @@
 
 Copy the prompt below when asking GPT to add, fix or expand the JSON files for a particular game.
 
-> Update the **[GAME]** JSON data under **[REPOSITORY]/data/[GAME]**. Inspect the existing JSON schema and related files first. Add only **[SPECIFIC ITEMS, CHARACTERS OR REDEMPTION CODES]** using reliable evidence that I supply or that you can verify. Preserve existing keys and compatible field types; do not invent names, active codes, expiration dates, statistics, URLs or descriptions. Do not overwrite unrelated entries. If the source lacks evidence for a field, omit it or mark it explicitly unknown according to the schema. Return valid JSON, explain exactly which files changed, and include source links where appropriate. Never modify package.json, npm versions or GitHub Actions when updating data only. Do not push or publish until explicitly instructed.
+> Update the **[GAME]** JSON data under **NekoSuneProjectsNPM/game-tracker → branch JsonData → games/[GAME]/**. Inspect the existing JSON schema and related files first. Add only **[SPECIFIC ITEMS, CHARACTERS OR REDEMPTION CODES]** using reliable evidence that I supply or that you can verify. Preserve existing keys and compatible field types; do not invent names, active codes, expiration dates, statistics, URLs or descriptions. Do not overwrite unrelated entries. If the source lacks evidence for a field, omit it or mark it explicitly unknown according to the schema. Return valid JSON, explain exactly which files changed, and include source links where appropriate. Never modify package.json, npm versions or GitHub Actions when updating data only. Do not push or publish until explicitly instructed.
 
-After reviewing and committing those JSON files to the source repository, an installed game tracker can call:
+After reviewing and committing those JSON files to the game-tracker JsonData branch, an installed game tracker can call:
 
 ```js
 const Warframe = require('@nekosuneprojects/warframe-api');
@@ -13,7 +13,7 @@ const syncResult = await warframeTracker.data.sync();
 console.log(syncResult);
 ```
 
-This code illustrates a future tracker branch. The GitHub source directory needs to be configured by the tracker developer in `src/data-source.js`. No npm release or API key is required for a public JSON-only synchronization.
+This code illustrates a future tracker branch. Set the tracker's `gameId` in `src/data-source.js` to the matching JsonData game folder. GitHub remains fixed to `NekoSuneProjectsNPM/game-tracker`, branch `JsonData`. No npm release or API key is required for a public JSON-only synchronization.
 
 ## Suggested JSON sections
 
