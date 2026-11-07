@@ -1,0 +1,17 @@
+{
+  "name": "Lighter",
+  "slug": "lighter",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Fire",
+  "specialty": "Stun",
+  "faction": "Sons of Calydon",
+  "version": "1.3",
+  "releaseDate": "2024-11-27",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

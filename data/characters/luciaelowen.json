@@ -1,0 +1,17 @@
+{
+  "name": "Lucia Elowen",
+  "slug": "luciaelowen",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Ether",
+  "specialty": "Support",
+  "faction": "Spook Shack",
+  "version": "2.3",
+  "releaseDate": "2025-10-15",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

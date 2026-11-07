@@ -1,0 +1,41 @@
+{
+  "name": "@nekosuneprojects/zenlesszonezero-api",
+  "version": "1.0.0",
+  "description": "Offline-first Zenless Zone Zero game, playable Agent and archived redemption-code JSON with opt-in GitHub sync.",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node scripts/validate-package.js",
+    "test": "node --test",
+    "prepack": "npm run check && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git"
+  },
+  "author": "NekoSuneVR",
+  "license": "MIT",
+  "keywords": [
+    "zenless-zone-zero",
+    "zzz",
+    "zenlesszonezero",
+    "agents",
+    "characters",
+    "redeem-codes",
+    "offline-json"
+  ],
+  "files": [
+    "index.js",
+    "src/",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

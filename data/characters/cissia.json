@@ -1,0 +1,17 @@
+{
+  "name": "Cissia",
+  "slug": "cissia",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Electric",
+  "specialty": "Attack",
+  "faction": "Metropolitan Order Division",
+  "version": "2.7",
+  "releaseDate": "2026-04-15",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}
