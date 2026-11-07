@@ -105,7 +105,7 @@ jobs:
   npmjs:
     if: inputs.registry == 'both' || inputs.registry == 'npmjs'
     needs: validate
-    runs-on: [self-hosted, Linux, docker, buildx]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout exact validated tracker commit
         uses: actions/checkout@v4
@@ -135,7 +135,7 @@ jobs:
   github-packages:
     if: inputs.registry == 'both' || inputs.registry == 'github'
     needs: validate
-    runs-on: [self-hosted, Linux, docker, buildx]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout exact validated tracker commit
         uses: actions/checkout@v4

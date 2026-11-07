@@ -156,13 +156,13 @@ Normal commits and pushes **never** publish or increment package versions. Set `
 
 Open [Actions: Manually publish tracker version](https://github.com/NekoSuneProjectsNPM/game-tracker/actions/workflows/publish.yml), choose **Run workflow** using the `main` workflow ref, and enter `tracker_branch` (such as `fortnite-api`). The input is text rather than a dynamic branch dropdown. `main` and `TEMPLATE` are blocked. The workflow reads the **exact version in the selected branch's package.json**, verifies the lockfile and tests, then creates tag `<branch>-v<version>`. No version files are edited or committed.
 
-Only that manually created published GitHub Release triggers the npmjs.org and GitHub Packages release workflows. `RELEASE_TOKEN` with Contents write is needed so that release-created workflows are triggered. The registries also require valid publishing credentials and self-hosted runner availability.
+Only that manually created published GitHub Release triggers the npmjs.org and GitHub Packages release workflows. `RELEASE_TOKEN` with Contents write is needed so that release-created workflows are triggered. The registries also require valid publishing credentials and GitHub-hosted runner availability.
 
 ### Manual publishing: no RELEASE_TOKEN required
 
 The **Manually publish tracker version** action runs only when started with **Run workflow**. Select a tracker branch (never `main`, `TEMPLATE`, or `JsonData`) and choose `both`, `npmjs`, or `github`. All jobs use that branch's **exact committed `package.json` version**, with no automatic version bump.
 
-The publishing jobs now run **directly inside the manual workflow**. It uses the built-in `GITHUB_TOKEN` to publish GitHub Packages and create the GitHub Release, so no `RELEASE_TOKEN` secret is required. npmjs publishing still requires repository secret `NPM_TOKEN` with correct permissions and any npm 2FA/trusted publishing configuration. Self-hosted runner labels `[self-hosted, Linux, docker, buildx]` must be available. The GitHub package namespace must have suitable rights for the package scope.
+The publishing jobs now run **directly inside the manual workflow**. It uses the built-in `GITHUB_TOKEN` to publish GitHub Packages and create the GitHub Release, so no `RELEASE_TOKEN` secret is required. npmjs publishing still requires repository secret `NPM_TOKEN` with correct permissions and any npm 2FA/trusted publishing configuration. GitHub-hosted `ubuntu-latest` runners are used; no self-hosted runner is needed. The GitHub package namespace must have suitable rights for the package scope.
 
 The separate older `release: published` workflows remain available for releases explicitly created outside this manual workflow. Releases created here with `GITHUB_TOKEN` will **not retrigger them**, preventing duplicate uploads.
 
