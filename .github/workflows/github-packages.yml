@@ -15,7 +15,7 @@ concurrency:
 jobs:
   publish-gpr:
     if: github.event.release.prerelease == false && github.event.release.draft == false
-    runs-on: [self-hosted, Linux, docker, buildx]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout released tracker tag (never default branch)
         uses: actions/checkout@v4
