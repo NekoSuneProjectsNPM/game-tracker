@@ -1,0 +1,62 @@
+{
+  "snapshotDate": "2026-11-07",
+  "notes": "Community reports, not redeemed by this SDK; sources conflict.",
+  "codes": [
+    {
+      "code": "NTENIGHT1021",
+      "status": "reported-active-unverified",
+      "expiresAt": "2026-11-11T23:59:59Z",
+      "sourceUrls": [
+        "https://gachafeed.moe/nte/codes/"
+      ]
+    },
+    {
+      "code": "BLACKBIRDHERE",
+      "status": "reported-active-unverified",
+      "expiresAt": null,
+      "sourceUrls": [
+        "https://gachafeed.moe/nte/codes/"
+      ]
+    },
+    {
+      "code": "COMEBACK",
+      "status": "reported-active-unverified",
+      "expiresAt": null,
+      "sourceUrls": [
+        "https://gachafeed.moe/nte/codes/"
+      ]
+    },
+    {
+      "code": "NTEGIFT",
+      "status": "disputed-unverified",
+      "expiresAt": null,
+      "sourceUrls": [
+        "https://www.prydwen.gg/neverness-to-everness/codes"
+      ]
+    },
+    {
+      "code": "EXENORESPONSE",
+      "status": "reported-expired",
+      "expiresAt": "2026-11-02T00:00:00Z",
+      "sourceUrls": [
+        "https://senseos.gg/guides/neverness-to-everness/redeem-codes/"
+      ]
+    },
+    {
+      "code": "INVALIDNUMBER",
+      "status": "reported-expired",
+      "expiresAt": "2026-11-02T00:00:00Z",
+      "sourceUrls": [
+        "https://senseos.gg/guides/neverness-to-everness/redeem-codes/"
+      ]
+    },
+    {
+      "code": "HIOLDFRIEND",
+      "status": "reported-expired",
+      "expiresAt": "2026-11-02T00:00:00Z",
+      "sourceUrls": [
+        "https://senseos.gg/guides/neverness-to-everness/redeem-codes/"
+      ]
+    }
+  ]
+}
