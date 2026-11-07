@@ -1,12 +1,13 @@
 {
-  "Active": [
+  "Active": [],
+  "Expired": [
     {
-      "id": 102,
+      "id": 103,
       "game": "genshin-impact",
-      "code": "2BJ64QRZ7RT8",
+      "code": "LEGEDILJKSGM",
       "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
+      "status": "expired",
+      "verificationStatus": "historical-expiry",
       "items": [
         {
           "name": "Primogems",
@@ -23,11 +24,11 @@
       "expiry": {
         "type": "unknown",
         "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
+        "expiresAt": "2026-09-02T23:59:59.000Z",
+        "sourceTimezone": "UTC",
         "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
+        "local": "02/09/2026, 23:59:59 UTC",
+        "expired": true
       },
       "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
       "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
@@ -38,75 +39,27 @@
         "https://game8.co/games/Genshin-Impact/archives/304759"
       ],
       "sourceKey": null,
-      "notes": null,
+      "notes": "Reclassified 2026-11-07: recorded expiry already passed or November 2026 external code trackers report expired.",
       "firstSeenAt": "2026-08-24T09:20:34.000Z",
       "lastSeenAt": "2026-08-24T11:01:57.000Z",
       "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
     },
     {
-      "id": 99,
+      "id": 100,
       "game": "genshin-impact",
-      "code": "BALLETCOLLAB",
+      "code": "MySnezhnayaCareer",
       "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
+      "status": "expired",
+      "verificationStatus": "historical-expiry",
       "items": [
         {
           "name": "Primogems",
-          "quantity": 30,
+          "quantity": 160,
           "image": null
         },
         {
           "name": "Mora",
-          "quantity": 10000,
-          "image": null
-        },
-        {
-          "name": "Hero's Wit",
-          "quantity": 3,
-          "image": null
-        },
-        {
-          "name": "Mystic Enhancement Ore",
-          "quantity": 3,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pcgamesn.com/genshin-impact/codes-redeem-promo",
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:34.000Z",
-      "lastSeenAt": "2026-08-24T11:01:57.000Z",
-      "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
-    },
-    {
-      "id": 104,
-      "game": "genshin-impact",
-      "code": "GENSHINGIFT",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Primogems",
-          "quantity": 50,
+          "quantity": 20000,
           "image": null
         },
         {
@@ -119,11 +72,11 @@
       "expiry": {
         "type": "unknown",
         "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
+        "expiresAt": "2026-08-24T23:59:59.000Z",
+        "sourceTimezone": "UTC",
         "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
+        "local": "24/08/2026, 23:59:59 UTC",
+        "expired": true
       },
       "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
       "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
@@ -134,421 +87,18 @@
         "https://game8.co/games/Genshin-Impact/archives/304759"
       ],
       "sourceKey": null,
-      "notes": "Recurring code; may temporarily stop accepting redemptions.",
+      "notes": "Listed as active through August 24, 2026; redeem as soon as possible. Reclassified 2026-11-07: recorded expiry already passed or November 2026 external code trackers report expired.",
       "firstSeenAt": "2026-08-24T09:20:34.000Z",
       "lastSeenAt": "2026-08-24T11:01:57.000Z",
       "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
-    },
-    {
-      "id": 1510,
-      "game": "genshin-impact",
-      "code": "Mora",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1508,
-      "game": "genshin-impact",
-      "code": "Primogem",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1507,
-      "game": "genshin-impact",
-      "code": "s",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1516,
-      "game": "genshin-impact",
-      "code": "x10",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1519,
-      "game": "genshin-impact",
-      "code": "x100",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:43.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:43.000Z"
-    },
-    {
-      "id": 1515,
-      "game": "genshin-impact",
-      "code": "x10000",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1509,
-      "game": "genshin-impact",
-      "code": "x160",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1511,
-      "game": "genshin-impact",
-      "code": "x3",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1514,
-      "game": "genshin-impact",
-      "code": "x30",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1517,
-      "game": "genshin-impact",
-      "code": "x30000",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1513,
-      "game": "genshin-impact",
-      "code": "x5",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
-    },
-    {
-      "id": 1518,
-      "game": "genshin-impact",
-      "code": "x50",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:43.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:43.000Z"
-    },
-    {
-      "id": 1512,
-      "game": "genshin-impact",
-      "code": "x60",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:01.000Z",
-      "lastSeenAt": "2026-08-24T11:02:42.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:42.000Z"
     },
     {
       "id": 101,
       "game": "genshin-impact",
       "code": "XVIZDH2B9WGX",
       "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
+      "status": "expired",
+      "verificationStatus": "historical-expiry",
       "items": [
         {
           "name": "Mora",
@@ -584,7 +134,7 @@
         "sourceTimezone": null,
         "selectedTimezone": "UTC",
         "local": null,
-        "expired": false
+        "expired": true
       },
       "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
       "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
@@ -595,31 +145,36 @@
         "https://game8.co/games/Genshin-Impact/archives/304759"
       ],
       "sourceKey": null,
-      "notes": null,
+      "notes": "Reclassified 2026-11-07: recorded expiry already passed or November 2026 external code trackers report expired.",
       "firstSeenAt": "2026-08-24T09:20:34.000Z",
       "lastSeenAt": "2026-08-24T11:01:57.000Z",
       "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
     },
     {
-      "id": 100,
+      "id": 99,
       "game": "genshin-impact",
-      "code": "MySnezhnayaCareer",
+      "code": "BALLETCOLLAB",
       "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
+      "status": "expired",
+      "verificationStatus": "historical-expiry",
       "items": [
         {
           "name": "Primogems",
-          "quantity": 160,
+          "quantity": 30,
           "image": null
         },
         {
           "name": "Mora",
-          "quantity": 20000,
+          "quantity": 10000,
           "image": null
         },
         {
           "name": "Hero's Wit",
+          "quantity": 3,
+          "image": null
+        },
+        {
+          "name": "Mystic Enhancement Ore",
           "quantity": 3,
           "image": null
         }
@@ -628,11 +183,11 @@
       "expiry": {
         "type": "unknown",
         "isLifetime": false,
-        "expiresAt": "2026-08-24T23:59:59.000Z",
-        "sourceTimezone": "UTC",
+        "expiresAt": null,
+        "sourceTimezone": null,
         "selectedTimezone": "UTC",
-        "local": "24/08/2026, 23:59:59 UTC",
-        "expired": false
+        "local": null,
+        "expired": true
       },
       "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
       "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
@@ -643,56 +198,11 @@
         "https://game8.co/games/Genshin-Impact/archives/304759"
       ],
       "sourceKey": null,
-      "notes": "Listed as active through August 24, 2026; redeem as soon as possible.",
+      "notes": "Reclassified 2026-11-07: recorded expiry already passed or November 2026 external code trackers report expired.",
       "firstSeenAt": "2026-08-24T09:20:34.000Z",
       "lastSeenAt": "2026-08-24T11:01:57.000Z",
       "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
     },
-    {
-      "id": 103,
-      "game": "genshin-impact",
-      "code": "LEGEDILJKSGM",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Primogems",
-          "quantity": 60,
-          "image": null
-        },
-        {
-          "name": "Adventurer's Experience",
-          "quantity": 5,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": "2026-09-02T23:59:59.000Z",
-        "sourceTimezone": "UTC",
-        "selectedTimezone": "UTC",
-        "local": "02/09/2026, 23:59:59 UTC",
-        "expired": false
-      },
-      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
-      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pcgamesn.com/genshin-impact/codes-redeem-promo",
-        "https://game8.co/games/Genshin-Impact/archives/304759"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:34.000Z",
-      "lastSeenAt": "2026-08-24T11:01:57.000Z",
-      "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
-    }
-  ],
-  "Expired": [
     {
       "id": 990,
       "game": "genshin-impact",
@@ -8516,5 +8026,375 @@
       "lastVerifiedAt": null
     }
   ],
-  "Unknown": []
+  "Unknown": [
+    {
+      "id": 102,
+      "game": "genshin-impact",
+      "code": "2BJ64QRZ7RT8",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "needs-redemption-check",
+      "items": [
+        {
+          "name": "Primogems",
+          "quantity": 60,
+          "image": null
+        },
+        {
+          "name": "Adventurer's Experience",
+          "quantity": 5,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.pcgamesn.com/genshin-impact/codes-redeem-promo",
+        "https://game8.co/games/Genshin-Impact/archives/304759"
+      ],
+      "sourceKey": null,
+      "notes": "Reclassified 2026-11-07: published sources disagree or no current independent redemption confirmation.",
+      "firstSeenAt": "2026-08-24T09:20:34.000Z",
+      "lastSeenAt": "2026-08-24T11:01:57.000Z",
+      "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
+    },
+    {
+      "id": 104,
+      "game": "genshin-impact",
+      "code": "GENSHINGIFT",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "needs-redemption-check",
+      "items": [
+        {
+          "name": "Primogems",
+          "quantity": 50,
+          "image": null
+        },
+        {
+          "name": "Hero's Wit",
+          "quantity": 3,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse Gift Redemption site or in-game Settings > Account > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.pcgamesn.com/genshin-impact/codes-redeem-promo",
+        "https://game8.co/games/Genshin-Impact/archives/304759"
+      ],
+      "sourceKey": null,
+      "notes": "Recurring code; may temporarily stop accepting redemptions. Reclassified 2026-11-07: published sources disagree or no current independent redemption confirmation.",
+      "firstSeenAt": "2026-08-24T09:20:34.000Z",
+      "lastSeenAt": "2026-08-24T11:01:57.000Z",
+      "lastVerifiedAt": "2026-08-24T11:01:57.000Z"
+    },
+    {
+      "id": 1671,
+      "game": "genshin-impact",
+      "code": "PJ2KEBRAYSRM",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Primogems",
+          "quantity": 60,
+          "image": null
+        },
+        {
+          "name": "Adventurer's Experience",
+          "quantity": 5,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse redemption website",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.game.guide/genshin-impact-codes",
+        "https://www.gacha.gg/genshin-impact/codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported by current November 2026 third-party trackers; not tested against a HoYoverse account. Confirm before claiming active.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1672,
+      "game": "genshin-impact",
+      "code": "6LS3F3LS5K87",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Primogems",
+          "quantity": 20,
+          "image": null
+        },
+        {
+          "name": "Geode of Replication",
+          "quantity": 160,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse redemption website",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.game.guide/genshin-impact-codes",
+        "https://www.gacha.gg/genshin-impact/codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported by current November 2026 third-party trackers; not tested against a HoYoverse account. Confirm before claiming active.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1673,
+      "game": "genshin-impact",
+      "code": "OPERACOLLAB",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Primogems",
+          "quantity": 30,
+          "image": null
+        },
+        {
+          "name": "Mora",
+          "quantity": 20000,
+          "image": null
+        },
+        {
+          "name": "Hero's Wit",
+          "quantity": 2,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse redemption website",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.game.guide/genshin-impact-codes",
+        "https://www.gacha.gg/genshin-impact/codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported by current November 2026 third-party trackers; not tested against a HoYoverse account. Confirm before claiming active.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1674,
+      "game": "genshin-impact",
+      "code": "Y6JYMKV6JKSL",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Primogems",
+          "quantity": 60,
+          "image": null
+        },
+        {
+          "name": "Adventurer's Experience",
+          "quantity": 5,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse redemption website",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.game.guide/genshin-impact-codes",
+        "https://www.gacha.gg/genshin-impact/codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported by current November 2026 third-party trackers; not tested against a HoYoverse account. Confirm before claiming active.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1675,
+      "game": "genshin-impact",
+      "code": "KeepUpWithMitya",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Guide to Charity",
+          "quantity": 3,
+          "image": null
+        },
+        {
+          "name": "Energy-Replenishing Meal",
+          "quantity": 3,
+          "image": null
+        },
+        {
+          "name": "Kristallfold",
+          "quantity": 3,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse redemption website",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://gamewith.net/genshin-impact/article/show/22737",
+        "https://www.dexerto.com/genshin-impact/genshin-impact-codes-redeem-primogems-mora-1428686/"
+      ],
+      "sourceKey": null,
+      "notes": "Reported by current November 2026 third-party trackers; not tested against a HoYoverse account. Confirm before claiming active.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1676,
+      "game": "genshin-impact",
+      "code": "MIJIQ23V2437",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Mora",
+          "quantity": 10000,
+          "image": null
+        },
+        {
+          "name": "Adventurer's Experience",
+          "quantity": 10,
+          "image": null
+        },
+        {
+          "name": "Fine Enhancement Ore",
+          "quantity": 5,
+          "image": null
+        },
+        {
+          "name": "Jueyun Chili Chicken",
+          "quantity": 5,
+          "image": null
+        },
+        {
+          "name": "Stir-Fried Fish Noodles",
+          "quantity": 5,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://genshin.hoyoverse.com/en/gift",
+      "redeemLocation": "Official HoYoverse redemption website",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://gamewith.net/genshin-impact/article/show/22737",
+        "https://timesaver.gg/blog/genshin-impact-codes-october-2026"
+      ],
+      "sourceKey": null,
+      "notes": "Reported by current November 2026 third-party trackers; not tested against a HoYoverse account. Confirm before claiming active.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    }
+  ]
 }

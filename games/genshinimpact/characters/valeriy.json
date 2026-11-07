@@ -1,0 +1,17 @@
+{
+  "name": "Valeriy",
+  "title": "Fort Fulguration",
+  "description": "Electro support character who can provide buffs and shields.",
+  "element": "Electro",
+  "weapon": "Sword",
+  "rating": 4,
+  "rarity": 4,
+  "region": "Snezhnaya",
+  "releaseDate": "2026-11-04",
+  "version": "7.2",
+  "slug": "valeriy",
+  "source": {
+    "provider": "HoYoverse",
+    "url": "https://genshin.hoyoverse.com/en/news/detail/167187"
+  }
+}

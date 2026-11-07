@@ -1,0 +1,17 @@
+{
+  "name": "Mitya",
+  "title": "Rules Set at Naught",
+  "description": "Electro damage dealer specialising in Stellar-Conduct reactions.",
+  "element": "Electro",
+  "weapon": "Catalyst",
+  "rating": 5,
+  "rarity": 5,
+  "region": "Snezhnaya",
+  "releaseDate": "2026-11-04",
+  "version": "7.2",
+  "slug": "mitya",
+  "source": {
+    "provider": "HoYoverse",
+    "url": "https://genshin.hoyoverse.com/en/news/detail/167187"
+  }
+}
