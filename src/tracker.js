@@ -24,7 +24,7 @@ function createTracker({cacheDir,githubToken,fetchImpl}={}){
     get:(id,options={})=>record(category,id,options)
   });}
   const groupNamespace=Object.freeze({...namespace('groups'),searchOnline:onlineGroups.search});
-  const worldNamespace=Object.freeze({...namespace('worlds'),searchOnline:onlineWorlds.search});
+  const worldNamespace=Object.freeze({...namespace('worlds'),searchOnline:onlineWorlds.search,browse:onlineWorlds.browse,browseSorts:onlineWorlds.sortOptions});
   const avatarNamespace=Object.freeze({...namespace('avatars'),searchOnline:avatarSearch.search,checkProviders:avatarSearch.check,providers:avatarSearch.sources});
   return Object.freeze({About:()=>data.get('meta.json'),search,record,data,avatarSearch:avatarSearch.search,
     players:namespace('players'),groups:groupNamespace,worlds:worldNamespace,avatars:avatarNamespace,

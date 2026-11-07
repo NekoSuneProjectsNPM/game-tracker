@@ -154,3 +154,26 @@ This sends `GET https://vrcavatarsearch.nekosunevr.co.uk/api/v1/worlds/search?se
 - `vrchat.groups.searchOnline(query,{page:1})` — online Groups API (unchanged).
 
 Network problems, HTTP 403/404/500, invalid JSON, and mismatched response formats produce a `WorldSearchError` with `code`, `status` and `url` where available. The live API may change or reject a platform value, so the automated tests mock the documented response; they do not establish current endpoint availability.
+
+## Browse public VRChat worlds
+
+Browse the live Worlds directory with **24 worlds per page**. Sorting is performed by the remote API; this method does not sort the small local JSON collection.
+
+```js
+const VRChat = require('@nekosuneprojects/vrchat-api');
+const vrc = VRChat();
+
+// GET /api/v1/worlds/browse?sort=popular&page=1
+const first = await vrc.worlds.browse({sort:'popular',page:1});
+console.log(first.data.map(world => world.name));
+console.log(first.meta); // { count: 24, page: 1, totalPages, totalCount }
+
+// Other supported sorting modes
+const recentlyUpdated = await vrc.worlds.browse({sort:'updated',page:1});
+const newest = await vrc.worlds.browse({sort:'newest',page:2});
+const oldest = await vrc.worlds.browse({sort:'oldest',page:1});
+```
+
+Supported `sort` values: **`updated`, `newest`, `oldest`, `popular`**. Defaults: `sort: 'popular'` and `page: 1`. Page must be a positive integer. This API accepts no `search` parameter: use `worlds.searchOnline(query,{platform:'pc'})` to search by world name.
+
+The endpoint is `https://vrcavatarsearch.nekosunevr.co.uk/api/v1/worlds/browse?sort=<sort>&page=<page>`. The complete `data` array is returned unchanged along with `meta.count`, `meta.page`, `meta.totalPages` and `meta.totalCount`. The API may return fewer than 24 worlds on the final page. HTTP/network/invalid JSON failures throw `WorldSearchError` with a descriptive `code` and `status` when available.

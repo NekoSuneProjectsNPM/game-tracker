@@ -65,7 +65,61 @@ function createWorldSearch({fetchImpl=globalThis.fetch,timeoutMs=12000,userAgent
       if(signal) signal.removeEventListener('abort',onAbort);
     }
   }
-  return Object.freeze({search,endpoint:ENDPOINT});
+
+  const SORT_OPTIONS=Object.freeze(['updated','newest','oldest','popular']);
+  async function browse({sort='popular',page=1,signal}={}) {
+    if(!SORT_OPTIONS.includes(sort)) throw new RangeError('sort must be one of: '+SORT_OPTIONS.join(', '));
+    if(!Number.isSafeInteger(page)||page<1) throw new RangeError('page must be a positive integer');
+    const url=new URL('https://vrcavatarsearch.nekosunevr.co.uk/api/v1/worlds/browse');
+    url.searchParams.set('sort',sort);
+    url.searchParams.set('page',String(page));
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),timeoutMs);
+    const onAbort=()=>controller.abort();
+    if(signal){
+      if(signal.aborted)controller.abort();
+      else signal.addEventListener('abort',onAbort,{once:true});
+    }
+    try{
+      let response;
+      try{
+        response=await fetchImpl(url.toString(),{
+          method:'GET',
+          headers:{Accept:'application/json','User-Agent':userAgent},
+          signal:controller.signal
+        });
+      }catch(error){
+        throw new WorldSearchError(controller.signal.aborted?'World browsing timed out or was cancelled':'World browsing network failure',{
+          code:controller.signal.aborted?'ABORTED':'NETWORK_ERROR',url:url.toString(),cause:error
+        });
+      }
+      if(!response.ok)throw new WorldSearchError('World browsing HTTP '+response.status,{
+        code:'HTTP_ERROR',status:response.status,url:url.toString()
+      });
+      let body;
+      try{body=await response.json();}
+      catch(error){
+        throw new WorldSearchError('World browse response was not valid JSON',{
+          code:'INVALID_JSON',status:response.status,url:url.toString(),cause:error
+        });
+      }
+      if(!body||!Array.isArray(body.data)||!body.meta||typeof body.meta!=='object'||
+        !Number.isInteger(body.meta.count)||body.meta.count<0||
+        !Number.isInteger(body.meta.page)||body.meta.page<1||
+        !Number.isInteger(body.meta.totalPages)||body.meta.totalPages<0||
+        !Number.isInteger(body.meta.totalCount)||body.meta.totalCount<0){
+        throw new WorldSearchError('World browse response does not match {data,meta:{count,page,totalPages,totalCount}}',{
+          code:'INVALID_RESPONSE',status:response.status,url:url.toString()
+        });
+      }
+      // Server owns sorting and page size (24). Return all original fields.
+      return body;
+    }finally{
+      clearTimeout(timer);
+      if(signal)signal.removeEventListener('abort',onAbort);
+    }
+  }
+  return Object.freeze({search,browse,sortOptions:SORT_OPTIONS,endpoint:ENDPOINT,browseEndpoint:'https://vrcavatarsearch.nekosunevr.co.uk/api/v1/worlds/browse'});
 }
 
 module.exports={createWorldSearch,WorldSearchError,ENDPOINT};
