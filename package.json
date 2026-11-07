@@ -1,7 +1,7 @@
 {
-  "name": "@nekosuneprojects/replace-me",
+  "name": "@nekosuneprojects/warframe-api",
   "version": "2.5.0",
-  "description": "Reusable game tracker starter for offline JSON, GitHub JSON sync, direct APIs, and hybrid game data.",
+  "description": "Warframe live worldstate, profiles, items, drops and rivens via WarframeStat.us with locally searchable Warframe character JSON and GitHub synchronization.",
   "main": "index.js",
   "type": "commonjs",
   "repository": {
@@ -13,14 +13,15 @@
   },
   "funding": "https://github.com/NekoSuneProjectsNPM/game-tracker?sponsor",
   "keywords": [
-    "game",
-    "tracker",
+    "warframe",
+    "warframe-api",
+    "warframestat",
+    "wfcd",
+    "worldstate",
+    "characters",
     "json",
     "offline",
-    "github-sync",
-    "direct-api",
-    "hybrid",
-    "nekosuneprojects"
+    "game-tracker"
   ],
   "author": "NekoSuneVR",
   "license": "MIT",

@@ -1,19 +1,22 @@
 'use strict';
-
-/**
- * REPLACE THESE VALUES IN EACH GAME BRANCH USING VERIFIED PROVIDER DOCUMENTATION.
- * No caller-supplied API URL. Do NOT invent URLs or endpoints.
- *
- * Examples of authentication:
- * auth: { type: 'none' }
- * auth: { type: 'bearer', required: true }
- * auth: { type: 'header', header: 'x-api-key', required: true }
- * auth: { type: 'query', parameter: 'api_key', required: true }
- */
+const BASE = 'https://api.warframestat.us/';
+const PLATFORMS = Object.freeze(['pc','ps4','psn','xb1','swi','ns']);
+const WORLDSTATE_FIELDS = Object.freeze([
+  'alerts','arbitration','archonHunt','cambionCycle','cetusCycle','conclaveChallenges',
+  'constructionProgress','dailyDeals','darvo','earthCycle','events','fissures',
+  'flashSales','globalUpgrades','invasions','kuva','news','nightwave','persistentEnemies',
+  'sentientOutposts','simaris','sortie','steelPath','syndicateMissions','thermia',
+  'vallisCycle','voidTrader','weeklyChallenges'
+]);
+const STATIC_KEYS = Object.freeze([
+  'arcanes','synthTargets','solNodes','conclave','events','operationTypes',
+  'persistentEnemy','sortie','upgradeTypes','fissureModifiers','archonShards',
+  'factions','missionTypes','languages','locales','mods','weapons','warframes','items'
+]);
 module.exports = Object.freeze({
-  baseUrl: null, // Replace with the real, verified provider API base URL.
-  auth: Object.freeze({ type: 'none' }),
-  routes: Object.freeze({
-    // playerStats: playerId => ({ path: `players/${encodeURIComponent(playerId)}` })
-  }),
+  baseUrl: BASE,
+  auth: Object.freeze({type:'none'}),
+  platforms: PLATFORMS,
+  worldstateFields: WORLDSTATE_FIELDS,
+  staticKeys: STATIC_KEYS
 });
