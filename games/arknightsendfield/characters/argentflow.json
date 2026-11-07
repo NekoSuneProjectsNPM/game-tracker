@@ -1,0 +1,17 @@
+{
+  "name": "Argent Flow",
+  "description": "Six-star Electric Guard wielding a Sword; introduced in Version 1.6.",
+  "rarity": "6",
+  "class": "Guard",
+  "element": "Electric",
+  "weapon": "Sword",
+  "faction": "Hongshan Academy of Sciences",
+  "releaseDate": "2026-11-05",
+  "version": "1.6",
+  "slug": "argentflow",
+  "source": {
+    "provider": "Version 1.6 operator roster and banner records",
+    "url": "https://www.enfieldbuild.com/characters/argent-flow"
+  },
+  "url": "https://www.enfieldbuild.com/characters/argent-flow"
+}
