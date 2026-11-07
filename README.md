@@ -56,48 +56,45 @@ const warThunderTracker = WarThunder(); // Only if the chosen provider needs no 
 
 These are **illustrative imports only**; no unimplemented package is claimed as published. If a game-specific tracker needs a different method name, document the real method in its own README. Separate variables and objects avoid name collisions; CommonJS modules are already independently scoped. Use per-game environment variable names where multiple trackers are installed.
 
+## Search and open JSON records in any game
+
+Search scans locally bundled and cached JSON files by name, ID, filename, aliases and string content. It returns separate matches rather than automatically choosing between similar names. Exact lookups load the complete JSON record.
+
+```js
+// Example only: future Warframe tracker created from TEMPLATE
+const Warframe = require('@nekosuneprojects/warframe-api');
+const warframeTracker = Warframe();
+
+const found = await warframeTracker.search('Ash');
+console.log(found.results);
+// [{ id:'ash', name:'Ash', type:'characters', path:'characters/ash.json' },
+//  { id:'ashprime', name:'Ash Prime', type:'characters', path:'characters/ashprime.json' }]
+
+const normalAsh = await warframeTracker.character('ash');
+const primeAsh = await warframeTracker.character('ashprime');
+```
+
+If no match exists, `search` returns `{ total:0, results:[], message:"We don't have anything related to ..."}`. Missing exact records throw `NOT_FOUND`. Search results include distinct IDs and paths for selection. Other game trackers reuse the same functions `search(query)`, `character(id)`, `item(id)`, `code(id)`, `map(id)`, and `record(category,id)` as appropriate for that game's data.
+
+Each game must use its own `gameId` in `src/data-source.js`. The default remote source is **this repository's JsonData branch**, under `games/<gameId>/`. The `gaming-infos` project is only a layout reference; no JSON is copied from it.
+
 ## Local JSON data and GitHub synchronization
 
 Game metadata, characters, game codes, weapons, maps and other JSON records can all be organised in files. A tracker branch chooses its *own* data source in `src/data-source.js`. The template ships a harmless `data/example.json` file; no game-specific source is enabled by default.
 
-### Example: Warframe data from gaming-infos
+### Source: game-tracker / JsonData
 
-Set `src/data-source.js` inside the **Warframe tracker branch**:
-
-```js
-'use strict';
-const path = require('node:path');
-module.exports = {
-  gameId: 'warframe',
-  bundledDir: path.join(__dirname, '..', 'data'),
-  github: {
-    owner: 'NekoSuneProjectsNPM',
-    repo: 'gaming-infos',
-    branch: 'main',
-    directory: 'data/warframe'
-  }
-};
-```
-
-Game consumers then use game-specific variables:
+In a Warframe package branch, set `gameId: 'warframe'` in `src/data-source.js`. The preconfigured remote source resolves to `NekoSuneProjectsNPM/game-tracker` → `JsonData` → `games/warframe`.
 
 ```js
-const Warframe = require('@nekosuneprojects/warframe-api');
-const warframeTracker = Warframe(); // No API key when only reading public JSON
-
-const cached = await warframeTracker.data.get('meta.json');
-const files = await warframeTracker.data.list();
-console.log(cached, files);
-
-// Explicit network refresh; compares remote SHA to cached manifest.
-const summary = await warframeTracker.data.sync();
-console.log(summary); // { updated, unchanged, checked, cacheDir }
-
-// Read downloaded character JSON later, even without the internet.
-const ash = await warframeTracker.data.get('characters/ash.json');
+const Warframe = require('@nekosuneprojects/warframe-api'); // illustrative future module
+const warframeTracker = Warframe({ cacheDir: './storage/warframe' });
+await warframeTracker.data.sync();
+const matches = await warframeTracker.search('Ash');
+const ash = await warframeTracker.character('ash');
 ```
 
-*This is an illustrative package usage, not a claim that `warframe-api` has been published.*
+JSON changes in `JsonData` are independent of npm versions. For offline use, read any previously synchronized or bundled files without `sync()`.
 
 ### Update and caching behaviour
 
@@ -114,7 +111,7 @@ const ash = await warframeTracker.data.get('characters/ash.json');
 
 ### Game codes and editable JSON
 
-Store codes in `data/codes.json` or `data/codes/<code>.json` and expose game-specific accessor methods when the relevant branch is implemented. Codes and expiration details must be based on verified sources; the template does not fabricate redemption codes.
+Store codes as individual files in `data/codes/<code>.json` (or `games/<gameId>/codes/<code>.json` in JsonData) and expose game-specific accessor methods when the relevant branch is implemented. Codes and expiration details must be based on verified sources; the template does not fabricate redemption codes.
 
 To update files using GPT, use [the reusable JSON-maintenance prompt](docs/AI-JSON-PROMPT.md). Review the generated JSON, commit it to the correct game's GitHub data folder, then call `gameTracker.data.sync()` locally. Updating data files on GitHub **does not publish a new npm version**.
 

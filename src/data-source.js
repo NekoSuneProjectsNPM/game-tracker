@@ -1,10 +1,17 @@
 'use strict';
 const path = require('node:path');
-// CUSTOMISE per game branch. Null means local-only until the game owner supplies a source.
-// Example Warframe source (do not activate for unrelated tracker branches):
-// github: { owner: 'NekoSuneProjectsNPM', repo: 'gaming-infos', branch: 'main', directory: 'data/warframe' }
+
+// On each game package branch, change gameId to the game slug.
+// All JSON comes from JsonData in THIS repository, never gaming-infos.
+// "template" has no production JSON. Example gameId: "warframe".
+const gameId = 'template';
 module.exports = Object.freeze({
-  gameId: 'template',
+  gameId,
   bundledDir: path.join(__dirname, '..', 'data'),
-  github: null,
+  github: {
+    owner: 'NekoSuneProjectsNPM',
+    repo: 'game-tracker',
+    branch: 'JsonData',
+    directory: 'games/' + gameId
+  },
 });
