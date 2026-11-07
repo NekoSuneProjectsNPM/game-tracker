@@ -182,10 +182,70 @@ All live methods are grouped under `api` so the live equipment endpoints never o
 | Player profile | `api.profile(playerId)`, `api.profileStats(playerId)`, `api.profileXP(playerId)`, `getPlayerStats(playerId)` |
 | Other static and feeds | `api.staticData(key)`, `api.searchStatic(key,query)`, `api.arcanes()`, `api.synthTargets()`, `api.rss()`, `api.twitter()`, `api.wfinfoFilteredItems()`, `api.wfinfoPrices()` |
 | Diagnostics | `api.health()` |
+| WFCD datasets | `wfcd.drops.*`, `wfcd.items.*`, `wfcd.relics.*`, `wfcd.patchlogs.*` |
+| Optional WFCD modules | `market(options)`, `createUpdateMonitor(options)` |
 | Offline game and characters | `About()`, `search(query,{refresh})`, `character(id,{refresh})`, `record(category,id)`, `data.get(path)`, `data.ensure(path,{refresh})`, `data.list()`, `data.sync()` |
 | Offline codes | `codes.raw()`, `codes.list()`, `codes.active()`, `codes.expired()`, `codes.unknown()`, `codes.search()`, `codes.get()`, `codes.summary()`, `codes.sync()`, `code(codeOrId)` |
 
 Some community API endpoints may return 404, change behaviour, or be temporarily unavailable. HTTP failures are surfaced as `TrackerError` with `status` when available. Check [WarframeStat.us docs](https://docs.warframestat.us/) for current upstream availability.
+
+## Warframe Community Developers (WFCD) integrations
+
+Four upstream WFCD datasets are available through fixed, on-demand GitHub sources with **persistent disk caching and SHA verification**. Data is downloaded only when requested, not at package startup. These repositories are third-party community sources and may contain upstream-stale records. The default package does not bulk-download all their assets.
+
+| WFCD project | Integrated access | What it provides |
+| --- | --- | --- |
+| [warframe-drop-data](https://github.com/WFCD/warframe-drop-data) | `wfcd.drops` | Drop tables, relic drops, mission rewards, bounty rewards, build metadata |
+| [warframe-items](https://github.com/WFCD/warframe-items) | `wfcd.items` | Compiled items, Warframes, weapons, mods, arcanes, crafting data |
+| [warframe-relic-data](https://github.com/WFCD/warframe-relic-data) | `wfcd.relics` | Relic JSON from the upstream `development` branch; the upstream project warns its data may be stale |
+| [warframe-patchlogs](https://github.com/WFCD/warframe-patchlogs) | `wfcd.patchlogs` | Parsed patch note JSON |
+| [warframe-nexus-query](https://github.com/WFCD/warframe-nexus-query) | `market()` | Optional market price query library using Warframe.Market |
+| [warframe-updates](https://github.com/WFCD/warframe-updates) | `createUpdateMonitor()` | Optional event-driven patch deployment monitor |
+
+```js
+const Warframe = require('@nekosuneprojects/warframe-api');
+const warframeData = Warframe({ cacheDir: './storage/warframe' });
+
+// Directly read individual WFCD JSON files; cached locally after first use.
+const dropInfo = await warframeData.wfcd.drops.info();
+const drops = await warframeData.wfcd.drops.all();
+const missionRewards = await warframeData.wfcd.drops.missionRewards();
+
+const allWarframes = await warframeData.wfcd.items.warframes();
+const weapons = await warframeData.wfcd.items.weapons();
+const mods = await warframeData.wfcd.items.mods();
+const arcanes = await warframeData.wfcd.items.arcanes();
+
+const relics = await warframeData.wfcd.relics.all();
+const patchlogs = await warframeData.wfcd.patchlogs.all();
+
+// Refresh a particular upstream file by checking its Git blob hash:
+const latestWarframes = await warframeData.wfcd.items.refresh('Warframes.json');
+```
+
+Each dataset also exposes `get(filename)`, `refresh(filename)`, and `files`, a list of supported JSON filenames. Filename selection is restricted to verified source directories and known files, not arbitrary URL inputs. Cached files remain usable offline; `refresh()` needs GitHub connectivity. Some categories, particularly large item data files, may require significant download bandwidth and memory.
+
+### Optional WFCD market pricing and patch update monitoring
+
+The two upstream libraries are **optional**, not npm dependencies bundled into this project. Install them separately in the consuming application:
+
+```bash
+npm install warframe-nexus-query warframe-updates
+```
+
+```js
+// Market query package is loaded on demand (ESM dynamic import).
+const marketQuery = await warframeData.market({ logger: console });
+const pricing = await marketQuery.priceCheckQuery('loki prime', 'pc');
+await marketQuery.stopUpdating();
+
+// Patch monitor is an EventEmitter supplied by the upstream package.
+// It may poll periodically; stop/cleanup according to the upstream API.
+const patchMonitor = warframeData.createUpdateMonitor({ interval: 60000 });
+patchMonitor.on('update', update => console.log(update));
+```
+
+**Compatibility note:** The two optional integrations wrap the documented upstream constructors and require those packages to be installed. Their runtime compatibility and live availability are not yet end-to-end verified. The other four WFCD sources do **not** require an additional npm dependency. No third-party source code is bundled into this package.
 
 ## Supported runtime and packaging
 
@@ -197,6 +257,7 @@ Some community API endpoints may return 404, change behaviour, or be temporarily
 - `githubToken`: optional GitHub Contents read token for private `JsonData` sync.
 - `fetchImpl`: optional mocked fetch implementation for tests.
 - Package entry `index.js`, license MIT, author NekoSuneVR.
+- WFCD datasets are optional on-demand downloads; market and update monitor require separate installation of their upstream packages.
 - No npm dependency on `gaming-infos`; all bundled JSON comes from the **JsonData branch in this repository**.
 
 ## Development, validation and release
