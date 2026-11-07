@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: npmjs-package-${{ github.event.release.tag_name }}
@@ -52,14 +53,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Ensure npm publishing token exists
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          if [ -z "$NPM_TOKEN" ]; then
-            echo "::error::Missing NPM_TOKEN secret with npm publishing permissions."
-            exit 1
-          fi
 
       - name: Publish released version to npmjs.org
         env:

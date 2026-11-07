@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: '24'
           registry-url: https://npm.pkg.github.com/
-          scope: '@nekosuneprojects'
+          scope: '@nekosuneprojectsnpm'
 
       - name: Validate release tag and package identity
         shell: bash
@@ -64,7 +64,9 @@ jobs:
           node - <<'NODE'
           const fs = require('fs');
           const p = JSON.parse(fs.readFileSync('package.json','utf8'));
+          if (!p.name.startsWith('@nekosuneprojects/')) throw Error('Unexpected npmjs package scope');
+          p.name = p.name.replace('@nekosuneprojects/','@nekosuneprojectsnpm/');
           p.publishConfig = { ...p.publishConfig, registry: 'https://npm.pkg.github.com/' };
           fs.writeFileSync('package.json', JSON.stringify(p, null, 2) + '\n');
           NODE
-          npm publish --registry=https://npm.pkg.github.com/
+          npm publish --ignore-scripts --registry=https://npm.pkg.github.com/
