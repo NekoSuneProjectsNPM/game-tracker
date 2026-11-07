@@ -90,7 +90,15 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, sy
       if (!/^[0-9a-f]{40}$/.test(item.sha) || item.size > 5 * 1024 * 1024) throw new Error('Invalid or oversized GitHub JSON blob');
       const target = path.join(cache, item.name);
       if (old[item.name] === item.sha) {
-        try { await fs.access(target); unchanged++; continue; } catch {}
+        try {
+          const existing = await fs.readFile(target);
+          const existingHash = require('node:crypto').createHash('sha1')
+            .update('blob ' + existing.length + '\0').update(existing).digest('hex');
+          JSON.parse(existing.toString('utf8'));
+          if (existingHash === item.sha) { unchanged++; continue; }
+        } catch (err) {
+          if (err.code !== 'ENOENT' && !(err instanceof SyntaxError)) throw err;
+        }
       }
       // GitHub Git Blob API supports private repositories with a fine-grained read token.
       // Fetch by content SHA so the downloaded file matches the exact tree snapshot.
@@ -113,6 +121,18 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, sy
     await atomicWrite(manifestFile, JSON.stringify({ source: JSON.stringify({source, files: syncFiles || null}), files: next }, null, 2) + '\n');
     return { updated, unchanged, checked: files.length, cacheDir: cache };
   }
-  return Object.freeze({ get, list, sync, cacheDir: cache });
+  // Ensures a newly published remote JSON record is available even when it
+  // was absent from the npm package and from this machine's cache.
+  async function ensure(file, { signal, refresh = false } = {}) {
+    const relative = safePath(file);
+    if (!refresh) {
+      try { return await get(relative); }
+      catch (err) { if (err.code !== 'ENOENT') throw err; }
+    }
+    if (!source) return get(relative);
+    await sync({ signal });
+    return get(relative);
+  }
+  return Object.freeze({ get, list, sync, ensure, cacheDir: cache });
 }
 module.exports = { createDataStore };
