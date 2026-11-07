@@ -1,0 +1,45 @@
+{
+  "name": "@nekosuneprojects/vrchat-api",
+  "version": "1.0.0",
+  "description": "Local-first VRChat players, groups and worlds JSON, with optional verified GitHub synchronization.",
+  "main": "index.js",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NekoSuneProjectsNPM/game-tracker/issues"
+  },
+  "keywords": [
+    "vrchat",
+    "vrchat-api",
+    "vrchat-worlds",
+    "vrchat-groups",
+    "vrchat-players",
+    "offline",
+    "json",
+    "game-tracker"
+  ],
+  "author": "NekoSuneVR",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.js",
+    "src/",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/validate-package.js",
+    "prepack": "npm run check && npm test"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
