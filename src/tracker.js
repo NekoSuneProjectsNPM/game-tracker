@@ -69,11 +69,6 @@ function createWarframeTracker({platform='pc',language='en',timeoutMs=15000,cach
     wfinfoFilteredItems:()=>request('wfinfo/filtered_items'),
     wfinfoPrices:()=>request('wfinfo/prices')
   });
-  for(const field of provider.worldstateFields) {
-    if(!Object.hasOwn(api,field)) {
-      // convenience functions are attached below on a new immutable object
-    }
-  }
   const fields=Object.fromEntries(provider.worldstateFields.filter(k=>!Object.hasOwn(api,k)).map(k=>[k,options=>worldstate(k,options)]));
   const fullApi=Object.freeze({...api,...fields});
   return Object.freeze({
