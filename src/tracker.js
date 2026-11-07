@@ -21,7 +21,10 @@ function createWarframeTracker({platform='pc',language='en',timeoutMs=15000,cach
     cacheDir, githubToken, fetchImpl
   });
   const catalog=createCatalog(data);
-  const worldstate=(field,options={})=>request(selected+'/'+parameter(field,'worldstate field'),optionsQuery(options,['filter']));
+  const worldstate=(field,options={})=>{
+    if(typeof field!=='string' || !/^[a-zA-Z][a-zA-Z0-9]*$/.test(field)) throw new TypeError('Invalid worldstate field');
+    return request(selected+'/'+field,optionsQuery(options,['filter']));
+  };
   const listing=(kind,options={})=>{
     if(!itemTypes.has(kind))throw new RangeError('Unknown item type');
     return request(kind,optionsQuery(options,['language','filter','only','remove']));
