@@ -3,7 +3,7 @@
 **Warframe live-game information, fully local game/character JSON, and redeem-code/glyph records.** A CommonJS npm package by NekoSuneVR, currently version **1.0.0**.
 
 - Live data: [WarframeStat.us](https://api.warframestat.us/) — public community API for worldstate, equipment, drops, rivens and supported profiles (not an official Digital Extremes API).
-- Local character data: **127 bundled JSON files** from [game-tracker → JsonData → games/warframe](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/JsonData/games/warframe), including `meta.json`.
+- Local character data: **129 bundled JSON files** from [game-tracker → JsonData → games/warframe](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/JsonData/games/warframe), including `meta.json`, **Narin** and **Citrine Prime** (Update 44).
 - Local codes: **one bundled `codes/games/warframe.json` snapshot** from [JsonData](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/JsonData/codes/games/warframe.json), containing 503 `Active`, 32 `Expired`, and 0 `Unknown` entries at the time of integration. Status information is a *snapshot*, not a promise that any code is still redeemable.
 - Optional separate GitHub synchronization for characters and codes. Offline queries work immediately using bundled JSON, with no API key or download required.
 - Direct API URL is fixed in the package. **Do not configure a custom API URL.** The documented WarframeStat.us public endpoints do not require an API key.
@@ -115,6 +115,24 @@ console.log(summary);
 
 **Data freshness:** An `active` label reflects the supplied JSON snapshot and its verification timestamps, not a live check of redemption availability. For real-world usage, inspect `expiry`, `verificationStatus`, `lastVerifiedAt`, `requirements` and `sourceUrls`.
 
+### Missing Warframe JSON and automatic retrieval on exact lookups
+
+The bundled character snapshot already includes Narin and Citrine Prime. If another character is added to `JsonData` later and is not bundled or cached, an exact `character(id)` lookup will attempt one GitHub synchronization and then read the newly downloaded record:
+
+```js
+// Character is fetched from JsonData if not found locally:
+const futureCharacter = await warframeData.character('futurecharacterid');
+
+// Explicitly discover new files in search results:
+const matches = await warframeData.search('Future', { refresh: true });
+
+// Skip GitHub if you require strictly offline behaviour:
+const onlyLocal = await warframeData.search('Ash');
+const character = await warframeData.character('ash', { refresh: false });
+```
+
+Existing local records are read immediately without network requests. For updates to *existing* records, call `data.sync()` explicitly (or use `data.ensure('characters/ash.json', { refresh: true })`). This keeps offline usage fast and avoids silently making network requests for every search. Missing files, changed files, and missing cached copies are downloaded using GitHub SHA comparisons; successfully cached data survives offline operation. A private repository still requires a read token to fetch additions.
+
 ### Separate incremental JSON synchronization
 
 ```js
@@ -164,7 +182,7 @@ All live methods are grouped under `api` so the live equipment endpoints never o
 | Player profile | `api.profile(playerId)`, `api.profileStats(playerId)`, `api.profileXP(playerId)`, `getPlayerStats(playerId)` |
 | Other static and feeds | `api.staticData(key)`, `api.searchStatic(key,query)`, `api.arcanes()`, `api.synthTargets()`, `api.rss()`, `api.twitter()`, `api.wfinfoFilteredItems()`, `api.wfinfoPrices()` |
 | Diagnostics | `api.health()` |
-| Offline game and characters | `About()`, `search(query)`, `character(id)`, `record(category,id)`, `data.get(path)`, `data.list()`, `data.sync()` |
+| Offline game and characters | `About()`, `search(query,{refresh})`, `character(id,{refresh})`, `record(category,id)`, `data.get(path)`, `data.ensure(path,{refresh})`, `data.list()`, `data.sync()` |
 | Offline codes | `codes.raw()`, `codes.list()`, `codes.active()`, `codes.expired()`, `codes.unknown()`, `codes.search()`, `codes.get()`, `codes.summary()`, `codes.sync()`, `code(codeOrId)` |
 
 Some community API endpoints may return 404, change behaviour, or be temporarily unavailable. HTTP failures are surfaced as `TrackerError` with `status` when available. Check [WarframeStat.us docs](https://docs.warframestat.us/) for current upstream availability.
