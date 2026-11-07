@@ -131,3 +131,26 @@ try{
 ```
 
 The remote service's current uptime and its response for arbitrary searches are not guaranteed. This integration has mock-based tests and requires a separate live probe to verify actual connectivity.
+
+## NekoSune public Worlds Search API
+
+Search worlds using the live NekoSune endpoint independently of bundled `JsonData`. Both the search term and platform are caller supplied; the example `1KB` is **not** hardcoded anywhere.
+
+```js
+const VRChat=require('@nekosuneprojects/vrchat-api');
+const vrchat=VRChat();
+
+const response=await vrchat.worlds.searchOnline('Mirror',{platform:'pc'});
+for(const world of response.data){
+  console.log(world.worldId,world.name,world.authorName,world.platformBadge,world.visits);
+}
+console.log(response.meta.count);
+```
+
+This sends `GET https://vrcavatarsearch.nekosunevr.co.uk/api/v1/worlds/search?search=<encoded query>&platform=<platform>`. `platform` defaults to `pc` and may be set to a supported value accepted by the remote service. The original response is preserved: `{data:[...],meta:{count}}`, including author IDs, descriptions, images, platform badges, world capacity, occupants, visits, favorites, timestamps, and other provided properties.
+
+- `vrchat.worlds.search(query)` — local bundled JSON (offline).
+- `vrchat.worlds.searchOnline(query,{platform:'pc'})` — online Worlds API.
+- `vrchat.groups.searchOnline(query,{page:1})` — online Groups API (unchanged).
+
+Network problems, HTTP 403/404/500, invalid JSON, and mismatched response formats produce a `WorldSearchError` with `code`, `status` and `url` where available. The live API may change or reject a platform value, so the automated tests mock the documented response; they do not establish current endpoint availability.
