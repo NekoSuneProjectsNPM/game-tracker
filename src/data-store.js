@@ -98,7 +98,7 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, fe
       const blob = await response.json();
       if (blob.encoding !== 'base64' || typeof blob.content !== 'string')
         throw new Error('Unexpected GitHub blob encoding for ' + item.name);
-      const buffer = Buffer.from(blob.content.replace(/\\s/g, ''), 'base64');
+      const buffer = Buffer.from(blob.content.replace(/\s/g, ''), 'base64');
       if (buffer.length > 5 * 1024 * 1024) throw new Error('JSON file too large');
       const gitHash = require('node:crypto').createHash('sha1').update('blob ' + buffer.length + '\0').update(buffer).digest('hex');
       if (gitHash !== item.sha) throw new Error('GitHub JSON checksum mismatch: ' + item.name);
