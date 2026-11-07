@@ -1,7 +1,7 @@
 {
   "name": "@nekosuneprojects/warframe-api",
-  "version": "2.5.0",
-  "description": "Warframe live worldstate, profiles, items, drops and rivens via WarframeStat.us with locally searchable Warframe character JSON and GitHub synchronization.",
+  "version": "1.0.0",
+  "description": "WarframeStat.us live API, offline Warframe characters, and redeem-code/glyph JSON browsing with independent GitHub synchronization.",
   "main": "index.js",
   "type": "commonjs",
   "repository": {
@@ -21,7 +21,10 @@
     "characters",
     "json",
     "offline",
-    "game-tracker"
+    "game-tracker",
+    "redeem-codes",
+    "glyphs",
+    "creator-glyphs"
   ],
   "author": "NekoSuneVR",
   "license": "MIT",

@@ -20,10 +20,12 @@ function sourceConfig(source) {
       !/^[a-zA-Z0-9_/-]+$/.test(directory)) throw new TypeError('Invalid GitHub source directory');
   return { owner, repo, branch, directory };
 }
-function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, fetchImpl = globalThis.fetch } = {}) {
+function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, syncFiles, fetchImpl = globalThis.fetch } = {}) {
   if (typeof gameId !== 'string' || !/^[a-z0-9][a-z0-9_-]*$/.test(gameId)) throw new TypeError('Valid gameId required');
   if (typeof fetchImpl !== 'function') throw new TypeError('fetch is required');
   const source = sourceConfig(github);
+  const whitelist = syncFiles === undefined ? null : new Set(syncFiles.map(safePath));
+  if (syncFiles !== undefined && (!Array.isArray(syncFiles) || syncFiles.length === 0)) throw new TypeError('syncFiles must be a nonempty array of JSON paths');
   if (githubToken !== undefined && (typeof githubToken !== 'string' || !githubToken.trim())) throw new TypeError('githubToken must be a nonempty string');
   const githubHeaders = { Accept: 'application/vnd.github+json', 'User-Agent': 'NekoSune-Game-Tracker', ...(githubToken ? { Authorization: 'Bearer ' + githubToken } : {}) };
   const cache = path.resolve(cacheDir || path.join(os.homedir(), '.cache', 'nekosune-game-tracker', gameId));
@@ -32,7 +34,7 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, fe
   async function loadManifest() {
     try {
       const current = JSON.parse(await fs.readFile(manifestFile, 'utf8'));
-      if (current.source !== JSON.stringify(source) || !current.files || typeof current.files !== 'object') return {};
+      if (current.source !== JSON.stringify({source, files: syncFiles || null}) || !current.files || typeof current.files !== 'object') return {};
       return current.files;
     } catch (err) { if (err.code === 'ENOENT' || err instanceof SyntaxError) return {}; throw err; }
   }
@@ -78,7 +80,7 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, fe
     const tree = await request.json();
     if (tree.truncated || !Array.isArray(tree.tree)) throw new Error('GitHub directory listing incomplete; refusing partial sync');
     const prefix = directory + '/';
-    const files = tree.tree.filter(item => item.type === 'blob' && item.path.startsWith(prefix) && item.path.endsWith('.json'))
+    const files = tree.tree.filter(item => item.type === 'blob' && item.path.startsWith(prefix) && item.path.endsWith('.json') && (!whitelist || whitelist.has(item.path.slice(prefix.length))))
       .map(item => ({ name: safePath(item.path.slice(prefix.length)), sha: item.sha, size: item.size }));
     if (files.length > 5000) throw new Error('Too many JSON files');
     const old = await loadManifest();
@@ -108,7 +110,7 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, fe
       updated++;
     }
     // Cache is additive: do not automatically delete removed upstream files or user files.
-    await atomicWrite(manifestFile, JSON.stringify({ source: JSON.stringify(source), files: next }, null, 2) + '\n');
+    await atomicWrite(manifestFile, JSON.stringify({ source: JSON.stringify({source, files: syncFiles || null}), files: next }, null, 2) + '\n');
     return { updated, unchanged, checked: files.length, cacheDir: cache };
   }
   return Object.freeze({ get, list, sync, cacheDir: cache });
