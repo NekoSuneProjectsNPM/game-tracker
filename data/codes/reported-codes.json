@@ -1,6 +1,6 @@
 {
   "snapshotDate": "2026-11-07",
-  "notes": "Community reports, not redeemed by this SDK; sources conflict.",
+  "notes": "Third-party reports checked November 7, 2026. Disputed availability and expiry estimates are not account-level redemption confirmations.",
   "codes": [
     {
       "code": "NTENIGHT1021",
@@ -40,7 +40,8 @@
       "expiresAt": "2026-11-02T00:00:00Z",
       "sourceUrls": [
         "https://senseos.gg/guides/neverness-to-everness/redeem-codes/"
-      ]
+      ],
+      "notes": "Disputed expiry: one listing reports November 10; other sources report the codes expired after November 1. Do not assume a successful redemption."
     },
     {
       "code": "INVALIDNUMBER",
@@ -48,7 +49,8 @@
       "expiresAt": "2026-11-02T00:00:00Z",
       "sourceUrls": [
         "https://senseos.gg/guides/neverness-to-everness/redeem-codes/"
-      ]
+      ],
+      "notes": "Disputed expiry: one listing reports November 10; other sources report the codes expired after November 1. Do not assume a successful redemption."
     },
     {
       "code": "HIOLDFRIEND",
@@ -56,7 +58,17 @@
       "expiresAt": "2026-11-02T00:00:00Z",
       "sourceUrls": [
         "https://senseos.gg/guides/neverness-to-everness/redeem-codes/"
-      ]
+      ],
+      "notes": "Disputed expiry: one listing reports November 10; other sources report the codes expired after November 1. Do not assume a successful redemption."
+    },
+    {
+      "code": "961251AXACTTZDNY",
+      "status": "reported-active-unverified",
+      "expiresAt": null,
+      "sourceUrls": [
+        "https://mobalytics.gg/neverness-to-everness/redemption-codes"
+      ],
+      "notes": "Community-listed code; current status is Unknown in the audited archive until reliable verification."
     }
   ]
 }

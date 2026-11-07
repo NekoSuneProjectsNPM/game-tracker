@@ -15,8 +15,8 @@ test('historical archive is separate from November reports',async()=>{
  assert.equal(raw.Active.length,3);assert.equal(raw.Expired.length,17);assert.equal(raw.Unknown.length,16);
  assert.equal((await api.codes.all()).length,36);
  assert.equal((await api.codes.candidates()).some(x=>x.code==='Copy'),false);
- assert.equal((await api.codes.reported({now:Date.parse('2026-11-07T00:00:00Z')})).length,4);
- assert.equal((await api.codes.reported({includeExpired:true})).length,7);
+ assert.equal((await api.codes.reported({now:Date.parse('2026-11-07T00:00:00Z')})).length,5);
+ assert.equal((await api.codes.reported({includeExpired:true})).length,8);
  assert.deepEqual(await api.codes.verifiedActive(),[]);
 });
 test('rejects unsafe input and invalid filters',async()=>{
