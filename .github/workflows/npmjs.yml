@@ -1,0 +1,67 @@
+name: Node.js Package NPMJS
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: npmjs-package-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish-npmjs:
+    if: github.event.release.prerelease == false && github.event.release.draft == false
+    runs-on: [self-hosted, Linux, docker, buildx]
+    steps:
+      - name: Checkout released tracker tag (never default branch)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
+
+      - name: Setup Node.js 24 for npmjs.org
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org/
+
+      - name: Validate release tag and package identity
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const tag = process.env.RELEASE_TAG;
+          const match = /^([a-z0-9][a-z0-9._-]*)-v(\d+\.\d+\.\d+)$/.exec(tag || '');
+          if (!match || ['main', 'TEMPLATE'].includes(match[1])) throw Error('Refusing non-tracker release tag: ' + tag);
+          const p = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          if (p.name !== '@nekosuneprojects/' + match[1] || p.version !== match[2]) {
+            throw Error('Release tag does not match the packaged tracker name and version');
+          }
+          console.log('Verified release ' + p.name + '@' + p.version);
+          NODE
+          npm run check
+
+      - name: Install dependencies from lockfile
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Ensure npm publishing token exists
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::error::Missing NPM_TOKEN secret with npm publishing permissions."
+            exit 1
+          fi
+
+      - name: Publish released version to npmjs.org
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --registry=https://registry.npmjs.org/

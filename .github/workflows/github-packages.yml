@@ -1,0 +1,70 @@
+name: Node.js Package GitHub Mode
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: github-package-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish-gpr:
+    if: github.event.release.prerelease == false && github.event.release.draft == false
+    runs-on: [self-hosted, Linux, docker, buildx]
+    steps:
+      - name: Checkout released tracker tag (never default branch)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
+
+      - name: Setup Node.js 24 for GitHub Packages
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@nekosuneprojects'
+
+      - name: Validate release tag and package identity
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const tag = process.env.RELEASE_TAG;
+          const match = /^([a-z0-9][a-z0-9._-]*)-v(\d+\.\d+\.\d+)$/.exec(tag || '');
+          if (!match || ['main', 'TEMPLATE'].includes(match[1])) throw Error('Refusing non-tracker release tag: ' + tag);
+          const p = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          if (p.name !== '@nekosuneprojects/' + match[1] || p.version !== match[2]) {
+            throw Error('Release tag does not match the packaged tracker name and version');
+          }
+          console.log('Verified release ' + p.name + '@' + p.version);
+          NODE
+          npm run check
+
+      - name: Install dependencies from lockfile
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Publish released version to GitHub Packages
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # package.json defaults to npmjs. Explicitly select GitHub Packages
+          # for this publish only, without committing a registry change.
+          node - <<'NODE'
+          const fs = require('fs');
+          const p = JSON.parse(fs.readFileSync('package.json','utf8'));
+          p.publishConfig = { ...p.publishConfig, registry: 'https://npm.pkg.github.com/' };
+          fs.writeFileSync('package.json', JSON.stringify(p, null, 2) + '\n');
+          NODE
+          npm publish --registry=https://npm.pkg.github.com/

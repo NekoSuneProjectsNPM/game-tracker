@@ -67,6 +67,21 @@ These are **illustrative imports only**; no unimplemented package is claimed as 
 7. Update tests with mocked valid responses, run `npm test`, `npm run check`, `npm pack --dry-run`.
 8. Publish through the branch-specific GitHub Actions workflow after configuring the repository's `NPM_TOKEN` secret.
 
+## Two registries, one game-tracker release
+
+A new push to an implemented tracker branch runs `publish.yml`: tests, select next version, update lockfile, and create the branch-prefixed GitHub release `<branch>-v<version>`. On a **published** GitHub release, two independent workflows then publish the exact tagged code:
+
+- `Node.js Package NPMJS` → `@nekosuneprojects/<branch>` at `https://registry.npmjs.org/`.
+- `Node.js Package GitHub Mode` → the same package/version at `https://npm.pkg.github.com/`.
+
+Both published-release jobs use Node.js 24 on runner labels `[self-hosted, Linux, docker, buildx]`, execute `npm ci` and `npm test`, verify the release tag against the package name and version, and skip prereleases. Neither `main` nor `TEMPLATE` can be published.
+
+**Repository setup required:** `NPM_TOKEN` (npm publish token), `RELEASE_TOKEN` (fine-grained PAT / GitHub App token with repository Contents write to create releases that trigger other workflows), and a trusted online self-hosted runner with all four required labels. `GITHUB_TOKEN` is used for GitHub Packages. Tokens must have the necessary organisation/package rights. Releases created using the default `GITHUB_TOKEN` **do not** trigger new release-event workflows; that's why `RELEASE_TOKEN` is required.
+
+The two release workflows are also stored on `main` solely because GitHub evaluates published-release event workflows from the default branch. They **always check out the released tracker tag**, never the `main` branch. They cannot install or publish a package without a valid tracker tag.
+
+Do not manually create release tags against unrelated commits; publishing requires the name and version to match exactly. Retry any failed publish after verifying whether that version already exists in the relevant registry. Once a version is published to a registry, npm does not permit replacing it.
+
 ## Project conventions
 
 - `main` = central package directory; `TEMPLATE` = starter; both excluded from automatic release.
@@ -74,7 +89,7 @@ These are **illustrative imports only**; no unimplemented package is claimed as 
 - CommonJS: `main: "index.js"`, `type: "commonjs"`. The default export is the game tracker factory, callable as `APEX({ apiKey })` and assignable to `apexTracker` or another game-specific instance identifier.
 - API URLs/endpoints stay internal and must be sourced from verified documentation.
 - Never expose a `baseUrl` or `apiUrl` user option unless the project owner explicitly requests that feature for a particular tracker.
-- Package versioning and branch-specific npm publishing remain handled by `.github/workflows/publish.yml`.
+- Package versioning is handled by `.github/workflows/publish.yml`; actual registry publication is handled by the two `release: published` workflows.
 - Use Node.js 18+ and npm for normal development.
 
 MIT © NekoSuneVR · https://github.com/NekoSuneProjectsNPM/game-tracker
