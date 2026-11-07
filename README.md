@@ -7,10 +7,10 @@ Standalone **local-first Genshin Impact JSON SDK** for Node.js 18+, following th
 Sourced from the [`JsonData` branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/JsonData):
 
 - `games/genshinimpact/meta.json` — game metadata
-- `games/genshinimpact/characters/*.json` — **121 character entries**
-- `codes/games/genshin-impact.json` — **19 Active**, **248 Expired**, **0 Unknown** codes in the source snapshot
+- `games/genshinimpact/characters/*.json` — **124 character entries**
+- `codes/games/genshin-impact.json` — **0 confirmed Active**, **252 Expired**, **8 Unknown/unverified** codes in the source snapshot
 
-These classifications reflect the saved JSON snapshot, **not a guarantee that an Active code is still redeemable today**. Code expiry and redemption availability must be checked with the official redemption site. No API keys, account access or real-time HoYoverse connections are required.
+The November 7, 2026 audit removed 13 scraped reward fragments from the code list and moved outdated or disputed statuses out of Active. Six newly reported codes are retained under Unknown with source URLs. **No code is confirmed currently redeemable** without an official check or successful redemption. Code expiry and redemption availability must be checked with the official redemption site. No API keys, account access or real-time HoYoverse connections are required.
 
 ## Install (after npm publication)
 
@@ -81,3 +81,14 @@ npm pack --dry-run
 ```
 
 This branch supports the shared manual publish workflow in `main`, selecting `tracker_branch=genshinimpact-api`. Publishing must use a unique version and appropriate npmjs authentication (Trusted Publisher OIDC or token permitted by npm account policy). No npm release is created by this commit.
+
+## Code and character audit — 7 November 2026
+
+- Added three verified missing character records: **Mitya**, **Valeriy** (official Version 7.2 update), and **Vodyanitsa** (official character trailer).
+- Removed 13 malformed reward-text entries (such as `Mora`, `Primogem`, `x100`) mistakenly scraped as redeem codes.
+- Reclassified `BALLETCOLLAB`, `XVIZDH2B9WGX`, `MySnezhnayaCareer`, and `LEGEDILJKSGM` as expired.
+- Moved `GENSHINGIFT` and `2BJ64QRZ7RT8` to Unknown pending independent confirmation due to conflicting sources.
+- Added `PJ2KEBRAYSRM`, `6LS3F3LS5K87`, `OPERACOLLAB`, `Y6JYMKV6JKSL`, `KeepUpWithMitya` and `MIJIQ23V2437` under Unknown (`verificationStatus: reported-active-unverified`) because they are listed by recent trackers, but were not tested in-game.
+- Historical code data is an archive; an old `lastVerifiedAt` is not proof a code still works.
+
+Primary character source: [HoYoverse's 7.2 patch notes](https://genshin.hoyoverse.com/en/news/detail/167187). Code-reference sources are attached per entry. Codes will only be promoted to Active after suitable verification.

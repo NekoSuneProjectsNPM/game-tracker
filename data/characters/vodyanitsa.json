@@ -1,0 +1,17 @@
+{
+  "name": "Vodyanitsa",
+  "title": "Lingering Siren-Song",
+  "description": "Hydro character known for her Water Imp form.",
+  "element": "Hydro",
+  "weapon": null,
+  "rating": null,
+  "rarity": null,
+  "region": null,
+  "releaseDate": null,
+  "version": "7.1",
+  "slug": "vodyanitsa",
+  "source": {
+    "provider": "HoYoverse",
+    "url": "https://genshin.hoyoverse.com/en/news/detail/166325"
+  }
+}
