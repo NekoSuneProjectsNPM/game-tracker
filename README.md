@@ -74,3 +74,42 @@ Use the shared manual release workflow in `main` with `tracker_branch=zenlesszon
 - The local code archive now contains **115 entries**: **4 Active (unverified)**, **109 Expired**, and **2 Unknown**. `codes.verifiedActive()` remains empty until there is actual redemption verification.
 
 Always treat a community listing as reported availability, not proof that the specific account can redeem a code.
+
+## Optional Enka.Network ZZZ player profiles
+
+Read public Zenless Zone Zero UID profiles via `https://enka.network/api/zzz/uid/{UID}`. This uses Enka's *ZZZ-specific* response shape, not Genshin's `playerInfo` or Star Rail's `detailInfo`. The original capitalization and all numeric IDs and equipment attributes are preserved.
+
+```js
+const ZZZ = require('@nekosuneprojects/zenlesszonezero-api');
+const zzz = ZZZ();
+
+const uid = '1300528351'; // Example only; supply your own UID
+const player = await zzz.enka.player(uid); // Alias: zzz.player(uid)
+console.log(player.PlayerInfo.SocialDetail.ProfileDetail.Nickname);
+console.log(player.PlayerInfo.SocialDetail.ProfileDetail.Level);
+
+const agents = await zzz.enka.agents(uid);
+for (const agent of agents) {
+  console.log(agent.Id, agent.Level);
+  console.log(agent.Weapon);        // W-Engine
+  console.log(agent.EquippedList);  // Drive Discs, main and sub-properties
+  console.log(agent.SkillLevelList);
+}
+const profile = await zzz.enka.info(uid); // Cached SocialDetail.ProfileDetail
+const social = await zzz.enka.social(uid); // SocialDetail, medals and description
+```
+
+| Method | Purpose |
+| --- | --- |
+| `enka.get(uid)`, `enka.player(uid)`, `player(uid)` | Raw original response including `PlayerInfo`, `ttl`, `uid`, `region` |
+| `enka.info(uid)` | `PlayerInfo.SocialDetail.ProfileDetail`, or `null` if unavailable |
+| `enka.social(uid)` | `PlayerInfo.SocialDetail`, or `null` |
+| `enka.agents(uid)`, `enka.avatars(uid)` | `PlayerInfo.ShowcaseDetail.AvatarList`, or `[]` for a closed/empty showcase |
+| `enka.clearCache(uid?)` | Remove cached UID or clear entire in-memory cache |
+| `enka.player(uid,{refresh:true,signal})` | Bypass cache or supply an AbortSignal |
+
+The Enka API has dynamic UID rate limits. To avoid unnecessary requests, the module uses the server's `ttl` (seconds) with a maximum one-hour memory cache and deduplicates concurrent requests. Requests supply a custom User-Agent and support a configurable timeout, `fetchImpl`, and `enkaOptions`. HTTP 400, 404, 424, 429, 500 and 503 errors are mapped to typed `EnkaError` exceptions, including `retryAfter` when reported. There is no account authentication, private showcase bypass, or automated UID scanning.
+
+Read [Enka's ZZZ data documentation](https://github.com/EnkaNetwork/API-docs/blob/master/docs/zzz/api.md) for `AvatarList`, W-Engine and Drive Disc field definitions. Item IDs are **not automatically decoded to item names**; doing so requires an additional local game-data mapping. Use a Node.js backend for live requests, since setting User-Agent is restricted in browsers.
+
+All ordinary `character()`, `characters.list()`, and `codes` methods remain offline. Live Enka responses are only fetched when an `enka` or `player` method is called.

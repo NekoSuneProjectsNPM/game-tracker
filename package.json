@@ -1,7 +1,7 @@
 {
   "name": "@nekosuneprojects/zenlesszonezero-api",
   "version": "1.0.0",
-  "description": "Offline-first Zenless Zone Zero game, playable Agent and archived redemption-code JSON with opt-in GitHub sync.",
+  "description": "Local-first ZZZ Agents, game data and redeem codes, plus optional Enka.Network public UID player showcases.",
   "main": "index.js",
   "type": "commonjs",
   "engines": {
@@ -25,7 +25,13 @@
     "agents",
     "characters",
     "redeem-codes",
-    "offline-json"
+    "offline-json",
+    "enka",
+    "enka-network",
+    "uid",
+    "player-showcase",
+    "drive-discs",
+    "w-engines"
   ],
   "files": [
     "index.js",
