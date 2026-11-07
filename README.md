@@ -56,6 +56,26 @@ const warThunderTracker = WarThunder(); // Only if the chosen provider needs no 
 
 These are **illustrative imports only**; no unimplemented package is claimed as published. If a game-specific tracker needs a different method name, document the real method in its own README. Separate variables and objects avoid name collisions; CommonJS modules are already independently scoped. Use per-game environment variable names where multiple trackers are installed.
 
+## Game information: `About()`
+
+Each tracker reads the game's own `meta.json` from local bundled or cached JSON, without requiring an API key or API URL. The method preserves the JSON fields as authored (including `name`, `title`, `Platform`, `engine`, `Genre`, `developers`, `publisher`, `description` and any extra game-specific fields). The method does not invent fields or change their casing.
+
+```js
+// Example once a Warframe tracker has been built and configured:
+const Warframe = require('@nekosuneprojects/warframe-api');
+const warframeData = Warframe();
+
+await warframeData.data.sync(); // Optional, checks JsonData on GitHub
+const warframeAbout = await warframeData.About();
+console.log(warframeAbout.name, warframeAbout.Platform);
+```
+
+The `About()` method returns the complete `games/<gameId>/meta.json` object. If there is no bundled or cached `meta.json`, it rejects with an `ENOENT` error rather than making up game information. To read while offline, synchronize first or include `data/meta.json` in the game package.
+
+Currently identified game metadata folders in `JsonData`: `arknightsendfield`, `fortnite`, `genshinimpact`, `honkaistarrail`, `nte`, `toweroffantasy`, `vrchat`, `warframe`, `wutheringwaves` and `zenlesszonezero`. Set `gameId` to the exact folder name in each future tracker branch. This doesn't create those tracker packages automatically.
+
+The `JsonData/codes/` directory is deliberately left untouched for later work.
+
 ## Search and open JSON records in any game
 
 Search scans locally bundled and cached JSON files by name, ID, filename, aliases and string content. It returns separate matches rather than automatically choosing between similar names. Exact lookups load the complete JSON record.

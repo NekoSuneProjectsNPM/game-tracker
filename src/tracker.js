@@ -12,6 +12,7 @@ function createTracker({ apiKey, timeoutMs, fetchImpl, cacheDir } = {}) {
   return Object.freeze({
     data,
     search: catalog.search,
+    About: () => data.get('meta.json'),
     character: catalog.character,
     item: catalog.item,
     code: catalog.code,
