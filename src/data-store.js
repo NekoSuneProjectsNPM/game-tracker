@@ -24,8 +24,8 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, sy
   if (typeof gameId !== 'string' || !/^[a-z0-9][a-z0-9_-]*$/.test(gameId)) throw new TypeError('Valid gameId required');
   if (typeof fetchImpl !== 'function') throw new TypeError('fetch is required');
   const source = sourceConfig(github);
-  const whitelist = syncFiles === undefined ? null : new Set(syncFiles.map(safePath));
   if (syncFiles !== undefined && (!Array.isArray(syncFiles) || syncFiles.length === 0)) throw new TypeError('syncFiles must be a nonempty array of JSON paths');
+  const whitelist = syncFiles === undefined ? null : new Set(syncFiles.map(safePath));
   if (githubToken !== undefined && (typeof githubToken !== 'string' || !githubToken.trim())) throw new TypeError('githubToken must be a nonempty string');
   const githubHeaders = { Accept: 'application/vnd.github+json', 'User-Agent': 'NekoSune-Game-Tracker', ...(githubToken ? { Authorization: 'Bearer ' + githubToken } : {}) };
   const cache = path.resolve(cacheDir || path.join(os.homedir(), '.cache', 'nekosune-game-tracker', gameId));
