@@ -1,84 +1,6 @@
 {
   "Active": [
     {
-      "id": 332,
-      "game": "neverness-to-everness",
-      "code": "000",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "curated-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:22:30.000Z",
-      "lastSeenAt": "2026-08-24T11:00:34.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:34.000Z"
-    },
-    {
-      "id": 499,
-      "game": "neverness-to-everness",
-      "code": "04980102FKGOVNS",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Annulith",
-          "quantity": 30,
-          "image": null
-        },
-        {
-          "name": "20",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pocketgamer.com/neverness-to-everness/codes/"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:22:48.000Z",
-      "lastSeenAt": "2026-08-24T11:01:05.000Z",
-      "lastVerifiedAt": "2026-08-24T11:01:05.000Z"
-    },
-    {
       "id": 135,
       "game": "neverness-to-everness",
       "code": "COMEBACK",
@@ -118,52 +40,56 @@
       "lastVerifiedAt": "2026-08-24T11:00:34.000Z"
     },
     {
-      "id": 333,
+      "id": 1945,
       "game": "neverness-to-everness",
-      "code": "Copy",
+      "code": "NTENIGHT1021",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "curated-source",
-      "items": [],
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Annulith ×60",
+          "image": null
+        },
+        {
+          "name": "Floe Cinema Ticket ×2",
+          "image": null
+        }
+      ],
       "image": null,
       "expiry": {
-        "type": "unknown",
+        "type": "date",
         "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
+        "expiresAt": "2026-11-11T23:59:59Z",
+        "sourceTimezone": "approximate/unspecified",
         "selectedTimezone": "UTC",
         "local": null,
         "expired": false
       },
       "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "redeemLocation": "In-game: phone menu > ... > Redeem Code",
       "claimType": "free",
       "requirements": [],
       "sourceUrls": [
+        "https://gachafeed.moe/nte/codes/",
         "https://www.ntebuild.com/codes"
       ],
       "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:22:30.000Z",
-      "lastSeenAt": "2026-08-24T11:00:35.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:35.000Z"
+      "notes": "Reported date only; exact local expiry time unverified. No successful in-game redemption by this SDK.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
     },
     {
-      "id": 155,
+      "id": 1946,
       "game": "neverness-to-everness",
-      "code": "NTEFREE",
+      "code": "BLACKBIRDHERE",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "verified-source",
+      "verificationStatus": "reported-active-unverified",
       "items": [
         {
-          "name": "30",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fons",
-          "quantity": 0,
+          "name": "Blackbird Avatar Frame ×1",
           "image": null
         }
       ],
@@ -178,380 +104,21 @@
         "expired": false
       },
       "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "redeemLocation": "In-game: phone menu > ... > Redeem Code",
       "claimType": "free",
       "requirements": [],
       "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
+        "https://gachafeed.moe/nte/codes/",
+        "https://www.ntebuild.com/codes"
       ],
       "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:01:05.000Z",
-      "lastVerifiedAt": "2026-08-24T11:01:05.000Z"
-    },
-    {
-      "id": 157,
-      "game": "neverness-to-everness",
-      "code": "NTEFUNGAME",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "10",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fons",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:01:05.000Z",
-      "lastVerifiedAt": "2026-08-24T11:01:05.000Z"
-    },
-    {
-      "id": 136,
-      "game": "neverness-to-everness",
-      "code": "NTEKokushi",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "curated-source",
-      "items": [
-        {
-          "name": "30",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fons",
-          "quantity": 0,
-          "image": null
-        },
-        {
-          "name": "30",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins - No",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:35.000Z",
-      "lastSeenAt": "2026-08-24T11:00:35.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:35.000Z"
-    },
-    {
-      "id": 137,
-      "game": "neverness-to-everness",
-      "code": "NTEMusou",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "curated-source",
-      "items": [
-        {
-          "name": "10",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fons",
-          "quantity": 0,
-          "image": null
-        },
-        {
-          "name": "10",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins - No",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:35.000Z",
-      "lastSeenAt": "2026-08-24T11:00:35.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:35.000Z"
-    },
-    {
-      "id": 138,
-      "game": "neverness-to-everness",
-      "code": "NTENENE",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "10",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fons",
-          "quantity": 0,
-          "image": null
-        },
-        {
-          "name": "DynamiK",
-          "quantity": 10,
-          "image": null
-        },
-        {
-          "name": "Clicky Fries - No",
-          "quantity": 10,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:01:05.000Z",
-      "lastVerifiedAt": "2026-08-24T11:01:05.000Z"
-    },
-    {
-      "id": 156,
-      "game": "neverness-to-everness",
-      "code": "NTEWINFONS",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "10",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fons",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:01:05.000Z",
-      "lastVerifiedAt": "2026-08-24T11:01:05.000Z"
-    },
-    {
-      "id": 134,
-      "game": "neverness-to-everness",
-      "code": "ZANKOU0819",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "curated-source",
-      "items": [
-        {
-          "name": "Annulith",
-          "quantity": 30,
-          "image": null
-        },
-        {
-          "name": "50",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fons",
-          "quantity": 0,
-          "image": null
-        },
-        {
-          "name": "30",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins - No",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:35.000Z",
-      "lastSeenAt": "2026-08-24T11:00:34.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:34.000Z"
+      "notes": "Community-listed code; account redemption not tested.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
     }
   ],
   "Expired": [
-    {
-      "id": 158,
-      "game": "neverness-to-everness",
-      "code": "504980102FKGOVNS",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Beetle Coins",
-          "quantity": 20000,
-          "image": null
-        },
-        {
-          "name": "Gubichi Original Flavor Chips",
-          "quantity": 1,
-          "image": null
-        },
-        {
-          "name": "Annulith",
-          "quantity": 30,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:03:14.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:14.000Z"
-    },
     {
       "id": 335,
       "game": "neverness-to-everness",
@@ -582,127 +149,6 @@
       "firstSeenAt": "2026-08-24T09:22:30.000Z",
       "lastSeenAt": "2026-08-24T11:00:36.000Z",
       "lastVerifiedAt": "2026-08-24T11:00:36.000Z"
-    },
-    {
-      "id": 1944,
-      "game": "neverness-to-everness",
-      "code": "Accessibility",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:28.000Z",
-      "lastSeenAt": "2026-08-24T11:03:15.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:15.000Z"
-    },
-    {
-      "id": 339,
-      "game": "neverness-to-everness",
-      "code": "Contact",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "curated-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:22:31.000Z",
-      "lastSeenAt": "2026-08-24T11:00:37.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:37.000Z"
-    },
-    {
-      "id": 140,
-      "game": "neverness-to-everness",
-      "code": "DREAMWALK0603",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Annulith",
-          "quantity": 100,
-          "image": null
-        },
-        {
-          "name": "Rising Hunter Guides",
-          "quantity": 5,
-          "image": null
-        },
-        {
-          "name": "Light Dyes",
-          "quantity": 5,
-          "image": null
-        },
-        {
-          "name": "4",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": "Listed expiry has passed, but recent community verification reports it still redeemable.",
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:03:15.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:15.000Z"
     },
     {
       "id": 336,
@@ -888,55 +334,6 @@
       ],
       "sourceKey": null,
       "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:03:14.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:14.000Z"
-    },
-    {
-      "id": 139,
-      "game": "neverness-to-everness",
-      "code": "NTEGIFT",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Annulith",
-          "quantity": 50,
-          "image": null
-        },
-        {
-          "name": "Rising Hunter Guides",
-          "quantity": 5,
-          "image": null
-        },
-        {
-          "name": "Light Dye",
-          "quantity": 5,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": "Some trackers still show the original expiry date, but recent community verification reports it still redeemable.",
       "firstSeenAt": "2026-08-24T09:20:36.000Z",
       "lastSeenAt": "2026-08-24T11:03:14.000Z",
       "lastVerifiedAt": "2026-08-24T11:03:14.000Z"
@@ -1130,187 +527,6 @@
       "lastVerifiedAt": "2026-08-24T11:00:36.000Z"
     },
     {
-      "id": 153,
-      "game": "neverness-to-everness",
-      "code": "NTEvtuber200",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "10",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins",
-          "quantity": 0,
-          "image": null
-        },
-        {
-          "name": "10",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Fon",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:03:14.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:14.000Z"
-    },
-    {
-      "id": 1943,
-      "game": "neverness-to-everness",
-      "code": "PCGamesN",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:28.000Z",
-      "lastSeenAt": "2026-08-24T11:03:15.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:15.000Z"
-    },
-    {
-      "id": 142,
-      "game": "neverness-to-everness",
-      "code": "RACENOLIMIT",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Annulith",
-          "quantity": 100,
-          "image": null
-        },
-        {
-          "name": "Elite Hunter Guides",
-          "quantity": 2,
-          "image": null
-        },
-        {
-          "name": "Chaotic Dyes",
-          "quantity": 2,
-          "image": null
-        },
-        {
-          "name": "12",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": "Listed expiry has passed, but recent community verification reports it still redeemable.",
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:03:15.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:15.000Z"
-    },
-    {
-      "id": 338,
-      "game": "neverness-to-everness",
-      "code": "s",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "curated-source",
-      "items": [
-        {
-          "name": "FAQ",
-          "quantity": null,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:22:31.000Z",
-      "lastSeenAt": "2026-08-24T11:00:36.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:36.000Z"
-    },
-    {
       "id": 334,
       "game": "neverness-to-everness",
       "code": "SHINKU0708",
@@ -1340,65 +556,6 @@
       "firstSeenAt": "2026-08-24T09:22:30.000Z",
       "lastSeenAt": "2026-08-24T11:00:36.000Z",
       "lastVerifiedAt": "2026-08-24T11:00:36.000Z"
-    },
-    {
-      "id": 141,
-      "game": "neverness-to-everness",
-      "code": "TOMATO100",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [
-        {
-          "name": "Annulith",
-          "quantity": 100,
-          "image": null
-        },
-        {
-          "name": "Senior Hunter Guides",
-          "quantity": 5,
-          "image": null
-        },
-        {
-          "name": "Colorless Dyes",
-          "quantity": 5,
-          "image": null
-        },
-        {
-          "name": "6",
-          "quantity": null,
-          "image": null
-        },
-        {
-          "name": "Beetle Coins",
-          "quantity": 0,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Me > Settings > Redeem Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.ntebuild.com/codes",
-        "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
-      ],
-      "sourceKey": null,
-      "notes": "Listed expiry has passed, but recent community verification reports it still redeemable.",
-      "firstSeenAt": "2026-08-24T09:20:36.000Z",
-      "lastSeenAt": "2026-08-24T11:03:14.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:14.000Z"
     },
     {
       "id": 146,
@@ -1642,12 +799,896 @@
       "lastVerifiedAt": "2026-08-24T11:00:34.000Z"
     },
     {
+      "id": 1948,
+      "game": "neverness-to-everness",
+      "code": "EXENORESPONSE",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Annulith ×100",
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": "2026-11-01T23:59:59Z",
+        "sourceTimezone": "approximate/unspecified",
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: phone menu > ... > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://senseos.gg/guides/neverness-to-everness/next-version/",
+        "https://mobalytics.gg/neverness-to-everness/redemption-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported date only; exact local expiry time unverified. No successful in-game redemption by this SDK.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1949,
+      "game": "neverness-to-everness",
+      "code": "HIOLDFRIEND",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Annulith ×100",
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": "2026-11-01T23:59:59Z",
+        "sourceTimezone": "approximate/unspecified",
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: phone menu > ... > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://senseos.gg/guides/neverness-to-everness/next-version/",
+        "https://mobalytics.gg/neverness-to-everness/redemption-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported date only; exact local expiry time unverified. No successful in-game redemption by this SDK.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1950,
+      "game": "neverness-to-everness",
+      "code": "INVALIDNUMBER",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Annulith ×100",
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": "2026-11-01T23:59:59Z",
+        "sourceTimezone": "approximate/unspecified",
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: phone menu > ... > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://senseos.gg/guides/neverness-to-everness/next-version/",
+        "https://mobalytics.gg/neverness-to-everness/redemption-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported date only; exact local expiry time unverified. No successful in-game redemption by this SDK.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
+    }
+  ],
+  "Unknown": [
+    {
+      "id": 499,
+      "game": "neverness-to-everness",
+      "code": "04980102FKGOVNS",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Annulith",
+          "quantity": 30,
+          "image": null
+        },
+        {
+          "name": "20",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:22:48.000Z",
+      "lastSeenAt": "2026-08-24T11:01:05.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 155,
+      "game": "neverness-to-everness",
+      "code": "NTEFREE",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "30",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fons",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:01:05.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 157,
+      "game": "neverness-to-everness",
+      "code": "NTEFUNGAME",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "10",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fons",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:01:05.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 136,
+      "game": "neverness-to-everness",
+      "code": "NTEKokushi",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "30",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fons",
+          "quantity": 0,
+          "image": null
+        },
+        {
+          "name": "30",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins - No",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:35.000Z",
+      "lastSeenAt": "2026-08-24T11:00:35.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 137,
+      "game": "neverness-to-everness",
+      "code": "NTEMusou",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "10",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fons",
+          "quantity": 0,
+          "image": null
+        },
+        {
+          "name": "10",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins - No",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:35.000Z",
+      "lastSeenAt": "2026-08-24T11:00:35.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 138,
+      "game": "neverness-to-everness",
+      "code": "NTENENE",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "10",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fons",
+          "quantity": 0,
+          "image": null
+        },
+        {
+          "name": "DynamiK",
+          "quantity": 10,
+          "image": null
+        },
+        {
+          "name": "Clicky Fries - No",
+          "quantity": 10,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:01:05.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 156,
+      "game": "neverness-to-everness",
+      "code": "NTEWINFONS",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "10",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fons",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:01:05.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 134,
+      "game": "neverness-to-everness",
+      "code": "ZANKOU0819",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Annulith",
+          "quantity": 30,
+          "image": null
+        },
+        {
+          "name": "50",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fons",
+          "quantity": 0,
+          "image": null
+        },
+        {
+          "name": "30",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins - No",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:35.000Z",
+      "lastSeenAt": "2026-08-24T11:00:34.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 158,
+      "game": "neverness-to-everness",
+      "code": "504980102FKGOVNS",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Beetle Coins",
+          "quantity": 20000,
+          "image": null
+        },
+        {
+          "name": "Gubichi Original Flavor Chips",
+          "quantity": 1,
+          "image": null
+        },
+        {
+          "name": "Annulith",
+          "quantity": 30,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:03:14.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 140,
+      "game": "neverness-to-everness",
+      "code": "DREAMWALK0603",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Annulith",
+          "quantity": 100,
+          "image": null
+        },
+        {
+          "name": "Rising Hunter Guides",
+          "quantity": 5,
+          "image": null
+        },
+        {
+          "name": "Light Dyes",
+          "quantity": 5,
+          "image": null
+        },
+        {
+          "name": "4",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Listed expiry has passed, but recent community verification reports it still redeemable. NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:03:15.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 139,
+      "game": "neverness-to-everness",
+      "code": "NTEGIFT",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Annulith",
+          "quantity": 50,
+          "image": null
+        },
+        {
+          "name": "Rising Hunter Guides",
+          "quantity": 5,
+          "image": null
+        },
+        {
+          "name": "Light Dye",
+          "quantity": 5,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Some trackers still show the original expiry date, but recent community verification reports it still redeemable. NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:03:14.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 153,
+      "game": "neverness-to-everness",
+      "code": "NTEvtuber200",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "10",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins",
+          "quantity": 0,
+          "image": null
+        },
+        {
+          "name": "10",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Fon",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:03:14.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 142,
+      "game": "neverness-to-everness",
+      "code": "RACENOLIMIT",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Annulith",
+          "quantity": 100,
+          "image": null
+        },
+        {
+          "name": "Elite Hunter Guides",
+          "quantity": 2,
+          "image": null
+        },
+        {
+          "name": "Chaotic Dyes",
+          "quantity": 2,
+          "image": null
+        },
+        {
+          "name": "12",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Listed expiry has passed, but recent community verification reports it still redeemable. NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:03:15.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 141,
+      "game": "neverness-to-everness",
+      "code": "TOMATO100",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Annulith",
+          "quantity": 100,
+          "image": null
+        },
+        {
+          "name": "Senior Hunter Guides",
+          "quantity": 5,
+          "image": null
+        },
+        {
+          "name": "Colorless Dyes",
+          "quantity": 5,
+          "image": null
+        },
+        {
+          "name": "6",
+          "quantity": null,
+          "image": null
+        },
+        {
+          "name": "Beetle Coins",
+          "quantity": 0,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Me > Settings > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.ntebuild.com/codes",
+        "https://www.pocketgamer.com/neverness-to-everness/codes/",
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Listed expiry has passed, but recent community verification reports it still redeemable. NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
+      "firstSeenAt": "2026-08-24T09:20:36.000Z",
+      "lastSeenAt": "2026-08-24T11:03:14.000Z",
+      "lastVerifiedAt": null
+    },
+    {
       "id": 147,
       "game": "neverness-to-everness",
       "code": "WELCOMETONTE",
       "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "curated-source",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
       "items": [
         {
           "name": "Celebration Fireworks Avatar Frame - Jul 8",
@@ -1673,7 +1714,7 @@
         "sourceTimezone": "UTC",
         "selectedTimezone": "UTC",
         "local": "18/08/2026, 23:59:59 UTC",
-        "expired": true
+        "expired": false
       },
       "redeemUrl": null,
       "redeemLocation": "In-game: Me > Settings > Redeem Code",
@@ -1682,14 +1723,64 @@
       "sourceUrls": [
         "https://www.ntebuild.com/codes",
         "https://www.pocketgamer.com/neverness-to-everness/codes/",
-        "https://www.pcgamesn.com/neverness-to-everness/codes"
+        "https://www.pcgamesn.com/neverness-to-everness/codes",
+        "https://www.game.guide/neverness-to-everness-codes",
+        "https://www.prydwen.gg/neverness-to-everness/codes",
+        "https://www.minutetactics.com/codes/nte-neverness-to-everness-promo-codes"
       ],
       "sourceKey": null,
-      "notes": null,
+      "notes": "NTE audit 2026-11-07: third-party source reports conflict; not checked by an actual player redemption. Status is provisional.",
       "firstSeenAt": "2026-08-24T09:20:36.000Z",
       "lastSeenAt": "2026-08-24T11:00:35.000Z",
-      "lastVerifiedAt": "2026-08-24T11:00:35.000Z"
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1947,
+      "game": "neverness-to-everness",
+      "code": "961251AXACTTZDNY",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-or-unverified",
+      "items": [
+        {
+          "name": "Rising Hunter Guide ×3",
+          "image": null
+        },
+        {
+          "name": "Light Dye ×3",
+          "image": null
+        },
+        {
+          "name": "Manhole Thug ×3",
+          "image": null
+        },
+        {
+          "name": "Fons ×10000",
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: phone menu > ... > Redeem Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://mobalytics.gg/neverness-to-everness/redemption-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Community-listed code; account redemption not tested.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
     }
-  ],
-  "Unknown": []
+  ]
 }
