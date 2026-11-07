@@ -1,7 +1,7 @@
 {
   "name": "@nekosuneprojects/genshinimpact-api",
   "version": "1.0.0",
-  "description": "Local-first Genshin Impact character information and redeem-code JSON tracker with optional GitHub data synchronization.",
+  "description": "Local-first Genshin Impact characters and redeem codes with optional Enka.Network UID profiles.",
   "main": "index.js",
   "type": "commonjs",
   "repository": {
@@ -25,7 +25,10 @@
     "redeem-codes",
     "offline",
     "json",
-    "game-tracker"
+    "game-tracker",
+    "enka-network",
+    "uid",
+    "player-profile"
   ],
   "files": [
     "index.js",

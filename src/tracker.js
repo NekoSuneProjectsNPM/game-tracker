@@ -3,8 +3,9 @@ const path=require('node:path');
 const {createDataStore}=require('./data-store');
 const {createCatalog}=require('./catalog');
 const {createCodes}=require('./codes');
+const {createEnka}=require('./enka');
 
-function createGenshinTracker({cacheDir,codesCacheDir,githubToken,fetchImpl}={}){
+function createGenshinTracker({cacheDir,codesCacheDir,githubToken,fetchImpl,enkaOptions}={}){
   const data=createDataStore({
     gameId:'genshinimpact', cacheDir, githubToken, fetchImpl,
     github:{owner:'NekoSuneProjectsNPM',repo:'game-tracker',branch:'JsonData',directory:'games/genshinimpact'},
@@ -12,6 +13,7 @@ function createGenshinTracker({cacheDir,codesCacheDir,githubToken,fetchImpl}={})
   });
   const catalog=createCatalog(data);
   const codes=createCodes({cacheDir:codesCacheDir,githubToken,fetchImpl});
+  const enka=createEnka({fetchImpl,...enkaOptions});
   async function character(id,{refresh=false,signal}={}){
     try{return await catalog.get('characters',id);}
     catch(error){
@@ -29,6 +31,6 @@ function createGenshinTracker({cacheDir,codesCacheDir,githubToken,fetchImpl}={})
     search:(query,options={})=>search(query,{...options,category:'characters'}),
     get:character
   });
-  return Object.freeze({About:()=>data.get('meta.json'),character,characters,search,codes,data});
+  return Object.freeze({About:()=>data.get('meta.json'),character,characters,search,codes,data,enka,player:enka.player});
 }
 module.exports={createGenshinTracker};

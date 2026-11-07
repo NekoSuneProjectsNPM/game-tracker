@@ -35,7 +35,7 @@ const activeInSnapshot = await gi.codes.active();
 const expiredInSnapshot = await gi.codes.expired();
 const allCodes = await gi.codes.all();
 const codeMatches = await gi.codes.search('Primogems');
-const codeDetails = await gi.codes.get(activeInSnapshot[0].code);
+const codeDetails = await gi.codes.get('GENSHINGIFT'); // audited status: unknown
 
 console.log(about.name, amber.name, furina.name);
 console.log(characters.length, matches.total, activeInSnapshot.length);
@@ -92,3 +92,41 @@ This branch supports the shared manual publish workflow in `main`, selecting `tr
 - Historical code data is an archive; an old `lastVerifiedAt` is not proof a code still works.
 
 Primary character source: [HoYoverse's 7.2 patch notes](https://genshin.hoyoverse.com/en/news/detail/167187). Code-reference sources are attached per entry. Codes will only be promoted to Active after suitable verification.
+
+## Optional Enka.Network player UID API
+
+Use public Genshin profile/showcase data from [Enka.Network](https://enka.network/) separately from local JSON records. No API key is needed, but Enka requires a custom User-Agent, discourages UID enumeration, and applies dynamic rate limits.
+
+```js
+const Genshin=require('@nekosuneprojects/genshinimpact-api');
+const gi=Genshin();
+const uid='123456789'; // Pass the player's real 9-digit UID
+
+const player=await gi.enka.player(uid); // Alias: gi.player(uid)
+console.log(player.playerInfo.nickname,player.playerInfo.level);
+console.log(player.avatarInfoList ?? []); // Full showcase builds and equipment
+
+const basic=await gi.enka.info(uid); // ?info, player details only
+const avatars=await gi.enka.avatars(uid); // Public detailed builds or []
+```
+
+By default this integration requests **`https://enka.network/api/gi/uid/{UID}/`**, as supplied. The [documented Enka endpoint](https://github.com/EnkaNetwork/API-docs/blob/master/api.md) is `/api/uid/{UID}/`; select it explicitly if the newer route fails:
+
+```js
+const gi=Genshin({enkaOptions:{endpoint:'legacy'}});
+await gi.enka.player('123456789');
+```
+
+| Method | Function |
+|---|---|
+| `enka.player(uid)`, `enka.get(uid)`, `player(uid)` | Full original Enka response |
+| `enka.info(uid)` | Only `playerInfo` (`?info`) |
+| `enka.avatars(uid)` | Detailed public showcase array; empty if absent |
+| `enka.clearCache(uid?)` | Delete one or all in-memory cached profiles |
+| `enka.player(uid,{refresh:true,signal})` | Bypass TTL cache, optional AbortSignal |
+
+The response is preserved without losing `playerInfo`, `avatarInfoList`, `propMap`, `fightPropMap`, `equipList`, `ttl`, `uid` or `region`. It does not claim raw numerical IDs are mapped to locally named items. `ttl` is respected via in-memory caching (up to one hour), and overlapping reads are deduplicated. No persistent UID database or background scanning is created.
+
+Errors are typed `EnkaError` exceptions with `code`, `status`, `retryAfter` as available. HTTP 400, 404, 424, 429, 500 and 503 are handled. No private showcase bypasses or automatic retry loops are implemented. Use this API in Node.js/server code rather than browser clients where setting User-Agent is restricted.
+
+**Verification:** The implementation has mocked API tests, but the specific `/api/gi/uid/` path was not live-tested from this environment. Use the documented `legacy` path if required.
