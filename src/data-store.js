@@ -20,10 +20,12 @@ function sourceConfig(source) {
       !/^[a-zA-Z0-9_/-]+$/.test(directory)) throw new TypeError('Invalid GitHub source directory');
   return { owner, repo, branch, directory };
 }
-function createDataStore({ gameId, cacheDir, bundledDir, github, fetchImpl = globalThis.fetch } = {}) {
+function createDataStore({ gameId, cacheDir, bundledDir, github, githubToken, fetchImpl = globalThis.fetch } = {}) {
   if (typeof gameId !== 'string' || !/^[a-z0-9][a-z0-9_-]*$/.test(gameId)) throw new TypeError('Valid gameId required');
   if (typeof fetchImpl !== 'function') throw new TypeError('fetch is required');
   const source = sourceConfig(github);
+  if (githubToken !== undefined && (typeof githubToken !== 'string' || !githubToken.trim())) throw new TypeError('githubToken must be a nonempty string');
+  const githubHeaders = { Accept: 'application/vnd.github+json', 'User-Agent': 'NekoSune-Game-Tracker', ...(githubToken ? { Authorization: 'Bearer ' + githubToken } : {}) };
   const cache = path.resolve(cacheDir || path.join(os.homedir(), '.cache', 'nekosune-game-tracker', gameId));
   const bundled = bundledDir ? path.resolve(bundledDir) : null;
   const manifestFile = path.join(cache, '.manifest.json');
@@ -71,7 +73,7 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, fetchImpl = glo
     if (!source) throw new Error('No GitHub JSON source configured in this tracker branch');
     const { owner, repo, branch, directory } = source;
     const api = 'https://api.github.com/repos/' + owner + '/' + repo + '/git/trees/' + encodeURIComponent(branch) + '?recursive=1';
-    const request = await fetchImpl(api, { headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'NekoSune-Game-Tracker' }, signal });
+    const request = await fetchImpl(api, { headers: githubHeaders, signal });
     if (!request.ok) throw new Error('GitHub tree request failed: HTTP ' + request.status);
     const tree = await request.json();
     if (tree.truncated || !Array.isArray(tree.tree)) throw new Error('GitHub directory listing incomplete; refusing partial sync');
@@ -88,11 +90,15 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, fetchImpl = glo
       if (old[item.name] === item.sha) {
         try { await fs.access(target); unchanged++; continue; } catch {}
       }
-      const raw = 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + encodeURIComponent(branch) + '/' +
-        [...directory.split('/'), ...item.name.split('/')].map(encodeURIComponent).join('/');
-      const response = await fetchImpl(raw, { headers: { 'User-Agent': 'NekoSune-Game-Tracker' }, signal });
+      // GitHub Git Blob API supports private repositories with a fine-grained read token.
+      // Fetch by content SHA so the downloaded file matches the exact tree snapshot.
+      const blobUrl = 'https://api.github.com/repos/' + owner + '/' + repo + '/git/blobs/' + item.sha;
+      const response = await fetchImpl(blobUrl, { headers: githubHeaders, signal });
       if (!response.ok) throw new Error('GitHub JSON download failed (' + item.name + '): HTTP ' + response.status);
-      const buffer = Buffer.from(await response.arrayBuffer());
+      const blob = await response.json();
+      if (blob.encoding !== 'base64' || typeof blob.content !== 'string')
+        throw new Error('Unexpected GitHub blob encoding for ' + item.name);
+      const buffer = Buffer.from(blob.content.replace(/\\s/g, ''), 'base64');
       if (buffer.length > 5 * 1024 * 1024) throw new Error('JSON file too large');
       const gitHash = require('node:crypto').createHash('sha1').update('blob ' + buffer.length + '\0').update(buffer).digest('hex');
       if (gitHash !== item.sha) throw new Error('GitHub JSON checksum mismatch: ' + item.name);

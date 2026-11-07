@@ -18,18 +18,21 @@ test('reads bundled JSON without network and rejects traversal', async () => {
   } finally { await fs.rm(dir, { recursive:true, force:true }); }
 });
 
-test('downloads only changed GitHub JSON, persists and reads offline', async () => {
+test('downloads changed GitHub blobs using optional token and retains cached data offline', async () => {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tracker-sync-'));
   let downloads = 0;
   const content = Buffer.from('{"name":"Warframe"}');
   const sha = crypto.createHash('sha1').update('blob ' + content.length + '\0').update(content).digest('hex');
-  const fetchImpl = async url => {
-    if (String(url).includes('/git/trees/')) return { ok:true, json:async()=>({ tree:[{ path:'data/warframe/meta.json', type:'blob', sha, size: content.length }] }) };
+  const fetchImpl = async (url,options) => {
+    assert.equal(options.headers.Authorization, 'Bearer token-example');
+    if (String(url).includes('/git/trees/'))
+      return { ok:true, json:async()=>({ tree:[{ path:'games/warframe/meta.json', type:'blob', sha, size: content.length }] }) };
+    assert.ok(String(url).endsWith('/git/blobs/'+sha));
     downloads++;
-    return {ok:true, arrayBuffer:async()=>content};
+    return {ok:true, json:async()=>({encoding:'base64',content:content.toString('base64')})};
   };
   try {
-    const settings = { gameId:'warframe', cacheDir:dir, github:{owner:'NekoSuneProjectsNPM',repo:'gaming-infos',branch:'main',directory:'data/warframe'} };
+    const settings = { gameId:'warframe', cacheDir:dir, githubToken:'token-example', github:{owner:'NekoSuneProjectsNPM',repo:'game-tracker',branch:'JsonData',directory:'games/warframe'} };
     const online = createDataStore({ ...settings, fetchImpl });
     assert.equal((await online.sync()).updated,1);
     assert.deepEqual(await online.get('meta.json'),{name:'Warframe'});
