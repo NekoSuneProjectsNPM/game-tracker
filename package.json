@@ -19,7 +19,10 @@
     "vrchat-players",
     "offline",
     "json",
-    "game-tracker"
+    "game-tracker",
+    "avatar-search",
+    "vrcx",
+    "avatar-providers"
   ],
   "author": "NekoSuneVR",
   "license": "MIT",
@@ -36,7 +39,8 @@
   "scripts": {
     "test": "node --test",
     "check": "node scripts/validate-package.js",
-    "prepack": "npm run check && npm test"
+    "prepack": "npm run check && npm test",
+    "test:avatar-providers:live": "node scripts/probe-avatar-providers.js Rindo"
   },
   "publishConfig": {
     "access": "public",
