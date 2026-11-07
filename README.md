@@ -76,6 +76,10 @@ Currently identified game metadata folders in `JsonData`: `arknightsendfield`, `
 
 The `JsonData/codes/` directory is deliberately left untouched for later work.
 
+## Missing JSON file downloads
+
+`data.sync()` discovers files newly added to GitHub, downloads missing or changed JSON and leaves unchanged files cached. For new characters, `character(id)` tries local data first and performs a GitHub sync only when the exact record is absent. `search(query, { refresh: true })` checks for new files before searching, while `data.ensure('characters/record.json', { refresh: true })` forces a check for updated content. No automatic npm version bump or publishing occurs.
+
 ## Search and open JSON records in any game
 
 Search scans locally bundled and cached JSON files by name, ID, filename, aliases and string content. It returns separate matches rather than automatically choosing between similar names. Exact lookups load the complete JSON record.

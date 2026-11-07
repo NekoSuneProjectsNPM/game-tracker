@@ -86,7 +86,15 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, fetchImpl = glo
       if (!/^[0-9a-f]{40}$/.test(item.sha) || item.size > 5 * 1024 * 1024) throw new Error('Invalid or oversized GitHub JSON blob');
       const target = path.join(cache, item.name);
       if (old[item.name] === item.sha) {
-        try { await fs.access(target); unchanged++; continue; } catch {}
+        try {
+          const existing = await fs.readFile(target);
+          const checksum = require('node:crypto').createHash('sha1')
+            .update('blob ' + existing.length + '\0').update(existing).digest('hex');
+          JSON.parse(existing.toString('utf8'));
+          if (checksum === item.sha) { unchanged++; continue; }
+        } catch (error) {
+          if (error.code !== 'ENOENT' && !(error instanceof SyntaxError)) throw error;
+        }
       }
       const raw = 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + encodeURIComponent(branch) + '/' +
         [...directory.split('/'), ...item.name.split('/')].map(encodeURIComponent).join('/');
@@ -105,6 +113,16 @@ function createDataStore({ gameId, cacheDir, bundledDir, github, fetchImpl = glo
     await atomicWrite(manifestFile, JSON.stringify({ source: JSON.stringify(source), files: next }, null, 2) + '\n');
     return { updated, unchanged, checked: files.length, cacheDir: cache };
   }
-  return Object.freeze({ get, list, sync, cacheDir: cache });
+  async function ensure(file, { signal, refresh = false } = {}) {
+    const name = safePath(file);
+    if (!refresh) {
+      try { return await get(name); }
+      catch (error) { if (error.code !== 'ENOENT') throw error; }
+    }
+    if (!source) return get(name);
+    await sync({ signal });
+    return get(name);
+  }
+  return Object.freeze({ get, list, sync, ensure, cacheDir: cache });
 }
 module.exports = { createDataStore };
