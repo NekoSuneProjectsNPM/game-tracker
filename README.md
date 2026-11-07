@@ -86,11 +86,27 @@ Only that manually created published GitHub Release triggers the npmjs.org and G
 - A project's GitHub release tag is `<branch>-v<version>` so identical versions of different tracker packages do not conflict.
 - npm publication requires npm credentials and appropriate package permissions. Creating the GitHub workflow **does not** itself configure npm.
 
-## Local JSON and GitHub-synced data
+## JsonData branch: game data for all trackers
 
-Individual game trackers can expose `gameTracker.data.get('meta.json')`, `gameTracker.data.list()` and `gameTracker.data.sync()` for JSON files. A tracker selects a fixed public GitHub data directory (for example [gaming-infos/data/warframe](https://github.com/NekoSuneProjectsNPM/gaming-infos/tree/main/data/warframe)) in its own `src/data-source.js`.
+The dedicated [JsonData branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/JsonData) stores all your JSON records inside `games/<gameId>/`. The [data layout guide](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/JsonData/docs/DATA-LAYOUT.md) defines paths for `characters/`, `items/`, `codes/`, `maps/` and `meta.json`.
 
-The synchronizer downloads only new/changed files by comparing Git blob hashes, caches JSON to disk, and supports reading cached files offline. Each game can also bundle files under `data/`. Changes to GitHub JSON do not require a new npm version. The shared [TEMPLATE usage guide](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/TEMPLATE) contains a Warframe illustration, cache configuration and an [AI JSON editing prompt](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/TEMPLATE/docs/AI-JSON-PROMPT.md).
+Tracker packages use the same reusable lookup functions. For a future Warframe package (example only):
+
+```js
+const Warframe = require('@nekosuneprojects/warframe-api');
+const warframeTracker = Warframe();
+await warframeTracker.data.sync();
+
+const matches = await warframeTracker.search('Ash'); // Distinct Ash and Ash Prime matches
+const ash = await warframeTracker.character('ash');
+const ashPrime = await warframeTracker.character('ashprime');
+```
+
+Search returns `{query, total, results, message}`. Each result has `id`, `name`, `type` and `path`. When no match exists, the results are empty and the message explains that the data is unavailable. Exact `character(id)` and `record(category,id)` calls return the complete JSON. Other built-in category shortcuts are `item(id)`, `code(id)` and `map(id)`.
+
+Files are searched **locally**, using bundled JSON or the locally stored GitHub cache. An explicit `data.sync()` checks remote SHA hashes and saves only new/changed JSON. No npm package version is changed by updating JsonData. The reference `gaming-infos` repository is not used as a data source.
+
+See the [TEMPLATE branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/TEMPLATE) for implementation and [GPT JSON editing instructions](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/TEMPLATE/docs/AI-JSON-PROMPT.md).
 
 ## Game data and integrations
 
