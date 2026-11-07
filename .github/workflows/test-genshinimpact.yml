@@ -1,0 +1,29 @@
+name: Test Genshin Impact API
+
+on:
+  push:
+    branches: [genshinimpact-api]
+  pull_request:
+    branches: [genshinimpact-api]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org/
+      - name: Install
+        run: npm ci --ignore-scripts
+      - name: Validate module and bundled JSON
+        run: npm run check
+      - name: Run offline tests
+        run: npm test
+      - name: Verify npm tarball
+        run: npm pack --dry-run --ignore-scripts
