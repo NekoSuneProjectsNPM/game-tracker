@@ -1,0 +1,13 @@
+{
+  "name": "Chisa",
+  "slug": "chisa",
+  "rarity": 5,
+  "version": "2.8",
+  "element": "Havoc",
+  "weapon": "Broadblade",
+  "status": "released",
+  "source": {
+    "provider": "Kuro Games patch notes cross referenced with SenseOS Version 3.7 roster",
+    "url": "https://senseos.gg/wiki/wuthering-waves/resonators/"
+  }
+}

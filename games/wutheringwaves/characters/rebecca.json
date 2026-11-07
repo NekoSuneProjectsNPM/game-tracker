@@ -1,0 +1,13 @@
+{
+  "name": "Rebecca",
+  "slug": "rebecca",
+  "rarity": 5,
+  "version": "3.4",
+  "element": "Electro",
+  "weapon": "Pistols",
+  "status": "released",
+  "source": {
+    "provider": "Kuro Games patch notes cross referenced with SenseOS Version 3.7 roster",
+    "url": "https://senseos.gg/wiki/wuthering-waves/resonators/"
+  }
+}

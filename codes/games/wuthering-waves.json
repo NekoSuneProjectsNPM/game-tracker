@@ -1,68 +1,6 @@
 {
   "Active": [
     {
-      "id": 1946,
-      "game": "wuthering-waves",
-      "code": "Astrite",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Wuthering-Waves/archives/453149"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:33.000Z",
-      "lastSeenAt": "2026-08-24T11:03:20.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:20.000Z"
-    },
-    {
-      "id": 1945,
-      "game": "wuthering-waves",
-      "code": "Attention!",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Wuthering-Waves/archives/453149"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:33.000Z",
-      "lastSeenAt": "2026-08-24T11:03:20.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:20.000Z"
-    },
-    {
       "id": 219,
       "game": "wuthering-waves",
       "code": "WUTHERINGGIFT",
@@ -121,19 +59,35 @@
       "lastVerifiedAt": "2026-08-24T11:03:20.000Z"
     },
     {
-      "id": 1948,
+      "id": 1985,
       "game": "wuthering-waves",
-      "code": "x2",
+      "code": "TRAINOFSOULS",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
+      "verificationStatus": "officially-reported-unredeemed",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 100,
+          "image": null
+        },
+        {
+          "name": "Premium Resonance Potion",
+          "quantity": 3,
+          "image": null
+        },
+        {
+          "name": "Advanced Revival Inhaler",
+          "quantity": 2,
+          "image": null
+        }
+      ],
       "image": null,
       "expiry": {
-        "type": "unknown",
+        "type": "date",
         "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
+        "expiresAt": "2026-11-08T15:59:00.000Z",
+        "sourceTimezone": "PT",
         "selectedTimezone": "UTC",
         "local": null,
         "expired": false
@@ -141,30 +95,49 @@
       "redeemUrl": null,
       "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
       "claimType": "free",
-      "requirements": [],
+      "requirements": [
+        "Union Level 2"
+      ],
       "sourceUrls": [
-        "https://game8.co/games/Wuthering-Waves/archives/453149"
+        "https://www.pockettactics.com/wuthering-waves/codes",
+        "https://timesaver.gg/blog/wuthering-waves-codes"
       ],
       "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:33.000Z",
-      "lastSeenAt": "2026-08-24T11:03:20.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:20.000Z"
+      "notes": "Version 3.8 preview code announced Nov 6, expires Nov 8 07:59 PST. Player redemption not tested.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
     },
     {
-      "id": 1947,
+      "id": 1986,
       "game": "wuthering-waves",
-      "code": "x50",
+      "code": "BLOOMINGFLOWERS",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
+      "verificationStatus": "officially-reported-unredeemed",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 100,
+          "image": null
+        },
+        {
+          "name": "Premium Enclosure Tank III",
+          "quantity": 2,
+          "image": null
+        },
+        {
+          "name": "Shell Credit",
+          "quantity": 40000,
+          "image": null
+        }
+      ],
       "image": null,
       "expiry": {
-        "type": "unknown",
+        "type": "date",
         "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
+        "expiresAt": "2026-11-08T15:59:00.000Z",
+        "sourceTimezone": "PT",
         "selectedTimezone": "UTC",
         "local": null,
         "expired": false
@@ -172,15 +145,68 @@
       "redeemUrl": null,
       "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
       "claimType": "free",
-      "requirements": [],
+      "requirements": [
+        "Union Level 2"
+      ],
       "sourceUrls": [
-        "https://game8.co/games/Wuthering-Waves/archives/453149"
+        "https://www.pockettactics.com/wuthering-waves/codes",
+        "https://timesaver.gg/blog/wuthering-waves-codes"
       ],
       "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:33.000Z",
-      "lastSeenAt": "2026-08-24T11:03:20.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:20.000Z"
+      "notes": "Version 3.8 preview code announced Nov 6, expires Nov 8 07:59 PST. Player redemption not tested.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1987,
+      "game": "wuthering-waves",
+      "code": "SCHOOLLIFE",
+      "category": "redeem-code",
+      "status": "active",
+      "verificationStatus": "officially-reported-unredeemed",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 100,
+          "image": null
+        },
+        {
+          "name": "Premium Tuner",
+          "quantity": 20,
+          "image": null
+        },
+        {
+          "name": "Advanced Sealed Tube",
+          "quantity": 5,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": "2026-11-08T15:59:00.000Z",
+        "sourceTimezone": "PT",
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
+      "claimType": "free",
+      "requirements": [
+        "Union Level 2"
+      ],
+      "sourceUrls": [
+        "https://www.pockettactics.com/wuthering-waves/codes",
+        "https://timesaver.gg/blog/wuthering-waves-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Version 3.8 preview code announced Nov 6, expires Nov 8 07:59 PST. Player redemption not tested.",
+      "firstSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastSeenAt": "2026-11-07T17:26:00.000Z",
+      "lastVerifiedAt": null
     }
   ],
   "Expired": [
@@ -246,68 +272,6 @@
       "firstSeenAt": "2026-08-24T09:24:33.000Z",
       "lastSeenAt": "2026-08-24T11:03:21.000Z",
       "lastVerifiedAt": "2026-08-24T11:03:21.000Z"
-    },
-    {
-      "id": 1269,
-      "game": "wuthering-waves",
-      "code": "Accessibility",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pcgamesn.com/wuthering-waves/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:23:49.000Z",
-      "lastSeenAt": "2026-08-24T11:02:28.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:28.000Z"
-    },
-    {
-      "id": 1983,
-      "game": "wuthering-waves",
-      "code": "Add-Ons",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Wuthering-Waves/archives/453149"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:35.000Z",
-      "lastSeenAt": "2026-08-24T11:03:25.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:25.000Z"
     },
     {
       "id": 1264,
@@ -1254,37 +1218,6 @@
       "firstSeenAt": "2026-08-24T09:23:47.000Z",
       "lastSeenAt": "2026-08-24T11:03:22.000Z",
       "lastVerifiedAt": "2026-08-24T11:03:22.000Z"
-    },
-    {
-      "id": 1268,
-      "game": "wuthering-waves",
-      "code": "PCGamesN",
-      "category": "redeem-code",
-      "status": "expired",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": true
-      },
-      "redeemUrl": null,
-      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pcgamesn.com/wuthering-waves/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:23:49.000Z",
-      "lastSeenAt": "2026-08-24T11:02:28.000Z",
-      "lastVerifiedAt": "2026-08-24T11:02:28.000Z"
     },
     {
       "id": 1240,

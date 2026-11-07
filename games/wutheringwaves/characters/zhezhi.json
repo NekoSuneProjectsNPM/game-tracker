@@ -1,0 +1,13 @@
+{
+  "name": "Zhezhi",
+  "slug": "zhezhi",
+  "rarity": 5,
+  "version": "1.2",
+  "element": null,
+  "weapon": null,
+  "status": "released",
+  "source": {
+    "provider": "Kuro Games patch notes cross referenced with SenseOS Version 3.7 roster",
+    "url": "https://senseos.gg/wiki/wuthering-waves/resonators/"
+  }
+}
