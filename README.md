@@ -98,3 +98,36 @@ npm run test:avatar-providers:live
 ```
 
 The probe prints each provider's HTTP status, response state, count, timing and errors, and is deliberately non-blocking for expected third-party outages.
+
+## NekoSune public Groups Search API
+
+The package supports the public [NekoSune group search endpoint](https://vrcavatarsearch.nekosunevr.co.uk/api/v1/groups/search) as a **separate, on-demand online API**. Pass **any group name or keyword**; names such as NekoSune are examples, not hardcoded search terms.
+
+```js
+const VRChat=require('@nekosuneprojects/vrchat-api');
+const vrchat=VRChat();
+
+const pageOne=await vrchat.groups.searchOnline('Dance',{page:1});
+const pageTwo=await vrchat.groups.searchOnline('Club',{page:2});
+
+for(const group of pageOne.data){
+  console.log(group.groupId,group.name,group.shortCode,group.memberCount);
+}
+console.log(pageOne.meta); // { count, page, totalPages }
+```
+
+This calls `GET https://vrcavatarsearch.nekosunevr.co.uk/api/v1/groups/search?search=<user query>&page=<page>` with URL-encoded user input and a JSON Accept header. It preserves the original `{data,meta}` response, including group IDs, names, URLs, counts, and pagination. `page` defaults to 1 and must be a positive integer.
+
+The existing `vrchat.groups.search(query)` still searches **local bundled JSON only**, while `vrchat.groups.searchOnline(query,{page})` calls the online service. There is no built-in named-group search, automatic crawling, authentication bypass or background polling.
+
+Non-2xx HTTP statuses, network errors, invalid JSON, and incompatible payloads reject with a `GroupSearchError` containing `code` and (for HTTP errors) `status`. Example:
+
+```js
+try{
+  console.log(await vrchat.groups.searchOnline('Dance'));
+}catch(error){
+  console.error(error.code,error.status,error.message);
+}
+```
+
+The remote service's current uptime and its response for arbitrary searches are not guaranteed. This integration has mock-based tests and requires a separate live probe to verify actual connectivity.
