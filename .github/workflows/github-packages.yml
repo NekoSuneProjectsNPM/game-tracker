@@ -64,7 +64,7 @@ jobs:
           node - <<'NODE'
           const fs = require('fs');
           const p = JSON.parse(fs.readFileSync('package.json','utf8'));
-          if (!p.name.startsWith('@nekosuneprojects/')) throw Error('Unexpected npmjs package scope');
+          if (!p.name.startsWith('@nekosuneprojects/')) throw Error('Unexpected source package scope');
           p.name = p.name.replace('@nekosuneprojects/','@nekosuneprojectsnpm/');
           p.publishConfig = { ...p.publishConfig, registry: 'https://npm.pkg.github.com/' };
           fs.writeFileSync('package.json', JSON.stringify(p, null, 2) + '\n');

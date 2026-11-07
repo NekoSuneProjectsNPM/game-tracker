@@ -209,7 +209,7 @@ jobs:
           npm ci
           npm run check
           npm test
-      - name: Publish under GitHub organisation scope to GitHub Packages
+      - name: Publish exact package.json version to GitHub Packages
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
         shell: bash
@@ -217,15 +217,12 @@ jobs:
           node - <<'NODE'
           const fs=require('node:fs');
           const p=JSON.parse(fs.readFileSync('package.json','utf8'));
-          // GitHub Packages requires the owning GitHub organization scope.
-          // Do not change the npmjs package name in the committed source.
           if (!p.name.startsWith('@nekosuneprojects/')) throw Error('Unexpected source package scope');
           p.name = p.name.replace('@nekosuneprojects/','@nekosuneprojectsnpm/');
           p.publishConfig={...p.publishConfig,registry:'https://npm.pkg.github.com/'};
           fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n');
           NODE
-          # The package was already tested before the temporary registry-specific
-          # name change. Do not run the source-only prepack name validator again.
+          # Already tested under original scope; skip name-specific prepack validation.
           npm publish --ignore-scripts --registry=https://npm.pkg.github.com/
 
   release:

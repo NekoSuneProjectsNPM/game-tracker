@@ -1,0 +1,46 @@
+{
+  "name": "@nekosuneprojects/genshinimpact-api",
+  "version": "1.0.0",
+  "description": "Local-first Genshin Impact character information and redeem-code JSON tracker with optional GitHub data synchronization.",
+  "main": "index.js",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NekoSuneProjectsNPM/game-tracker/issues"
+  },
+  "author": "NekoSuneVR",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "genshin-impact",
+    "genshinimpact-api",
+    "genshin",
+    "characters",
+    "codes",
+    "redeem-codes",
+    "offline",
+    "json",
+    "game-tracker"
+  ],
+  "files": [
+    "index.js",
+    "src/",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node scripts/validate-package.js",
+    "test": "node --test",
+    "prepack": "npm run check && npm test"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
