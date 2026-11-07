@@ -1,0 +1,12 @@
+'use strict';
+const fs = require('node:fs');
+const p = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const isPlaceholder = p.name === '@nekosuneprojects/replace-me';
+const fail = message => { console.error(message); process.exitCode = 1; };
+if (!/^@nekosuneprojects\/[a-z0-9][a-z0-9._-]*$/.test(p.name) || isPlaceholder) fail('Set a unique @nekosuneprojects/<package-name> in package.json before packing or publishing.');
+if (!/^\d+\.\d+\.\d+(?:-[\w.-]+)?$/.test(p.version)) fail('Use semantic versioning in package.json.');
+if (!p.description || p.description.length < 15) fail('Provide a meaningful package description.');
+if (p.main !== 'index.js' || p.type !== 'commonjs') fail('Keep main=index.js and type=commonjs.');
+if (!p.repository?.url?.includes('NekoSuneProjectsNPM/game-tracker')) fail('Repository must point to game-tracker.');
+if (!p.bugs?.url?.includes('NekoSuneProjectsNPM/game-tracker/issues')) fail('Issue URL must point to game-tracker.');
+if (!fs.existsSync(p.main) || !fs.existsSync('README.md')) fail('Missing entrypoint or README.');

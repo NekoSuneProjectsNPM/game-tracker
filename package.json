@@ -1,0 +1,44 @@
+{
+  "name": "@nekosuneprojects/replace-me",
+  "version": "2.5.0",
+  "description": "Reusable modular game statistics tracker template for official and supported third-party APIs.",
+  "main": "index.js",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git",
+    "directory": ""
+  },
+  "bugs": {
+    "url": "https://github.com/NekoSuneProjectsNPM/game-tracker/issues"
+  },
+  "funding": "https://github.com/sponsors/NekoSuneProjectsNPM",
+  "keywords": [
+    "game",
+    "tracker",
+    "statistics",
+    "api",
+    "nekosuneprojects",
+    "template"
+  ],
+  "author": "NekoSuneVR",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.js",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/validate-package.js",
+    "prepack": "npm run check && npm test"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
