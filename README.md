@@ -86,6 +86,21 @@ Only that manually created published GitHub Release triggers the npmjs.org and G
 - A project's GitHub release tag is `<branch>-v<version>` so identical versions of different tracker packages do not conflict.
 - npm publication requires npm credentials and appropriate package permissions. Creating the GitHub workflow **does not** itself configure npm.
 
+## Game and platform metadata: About()
+
+Every tracker created from `TEMPLATE` exposes `About()` for the game's `meta.json`, whether the JSON was bundled or downloaded from the `JsonData` branch. It returns the complete stored JSON without requiring an API key.
+
+```js
+const Warframe = require('@nekosuneprojects/warframe-api'); // Illustrative future package
+const warframeData = Warframe();
+
+await warframeData.data.sync(); // Optional when the data is already cached
+const aboutWarframe = await warframeData.About();
+console.log(aboutWarframe.name, aboutWarframe.Platform);
+```
+
+The `JsonData` branch currently has game metadata folders for Arknights Endfield, Fortnite, Genshin Impact, Honkai Star Rail, Neverness to Everness, Tower of Fantasy, VRChat, Warframe, Wuthering Waves and Zenless Zone Zero. The tracker must use the **exact game folder identifier**; search and About use only that game's JSON. Missing `meta.json` results in `ENOENT`, not fabricated data. The `codes/` directory remains untouched.
+
 ## JsonData branch: game data for all trackers
 
 The dedicated [JsonData branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/JsonData) stores all your JSON records inside `games/<gameId>/`. The [data layout guide](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/JsonData/docs/DATA-LAYOUT.md) defines paths for `characters/`, `items/`, `codes/`, `maps/` and `meta.json`.
