@@ -16,9 +16,9 @@ test('audited code archive retains four candidates and old history',async()=>{
  const api=WuWa({fetchImpl:async()=>{throw Error('Network not permitted');}});
  const doc=await api.codes.snapshot();
  assert.equal(doc.Active.length,4);
- assert.equal(doc.Expired.length,68);
- assert.equal(doc.Unknown.length,0);
- assert.equal((await api.codes.all()).length,72);
+ assert.equal(doc.Expired.length,73);
+ assert.equal(doc.Unknown.length,1);
+ assert.equal((await api.codes.all()).length,78);
  for(const label of ['Astrite','Attention!','x2','x50','Accessibility','Add-Ons','PCGamesN'])assert.ok(!(await api.codes.all()).some(x=>x.code===label));
  for(const code of ['TRAINOFSOULS','BLOOMINGFLOWERS','SCHOOLLIFE','WUTHERINGGIFT'])assert.ok((await api.codes.get(code)).code===code);
  assert.equal((await api.codes.candidates({now:Date.parse('2026-11-07T12:00:00Z')})).length,4);
@@ -33,4 +33,16 @@ test('rejects invalid local paths and code filters',async()=>{
  await assert.rejects(api.codes.all({hasCode:1}),TypeError);
  await assert.rejects(api.codes.get('NO_REAL_CODE'),{code:'NOT_FOUND'});
  await assert.rejects(api.character('unknown-resonator'),{code:'NOT_FOUND'});
+});
+
+test('historical November audit includes recent expired and disputed codes',async()=>{
+ const api=WuWa();
+ for(const code of ['STARRYSTAGE2','KEEPONSHINING','FALLINGSANCTUM','FINDSENTINEL','WAKINGMOON'])assert.equal((await api.codes.get(code)).status,'expired');
+ const disputed=await api.codes.get('DVME2MOHOQJT');
+ assert.equal(disputed.status,'unknown');
+ assert.equal(disputed.verificationStatus,'conflicting-sources');
+ const gift=await api.codes.get('WUTHERINGGIFT');
+ assert.equal(gift.status,'active');
+ assert.equal(gift.items.find(x=>/Shell Credit/i.test(x.name)).quantity,null);
+ assert.equal((await api.codes.candidates({now:Date.parse('2026-11-09T00:00:00Z')})).length,1);
 });

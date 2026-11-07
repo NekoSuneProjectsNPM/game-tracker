@@ -6,7 +6,7 @@ Standalone **Wuthering Waves (WuWa)** local-first Node.js 18+ API. Version `1.0.
 
 - `data/meta.json` — game metadata from `JsonData/games/wutheringwaves`.
 - `data/characters/*.json` — **57 playable Resonator records** through Version **3.7** (30 September–11 November 2026).
-- `data/codes/wuthering-waves.json` — **4 reported Active, 68 historical Expired, 0 Unknown** codes. Seven scraped non-code fragments have been removed.
+- `data/codes/wuthering-waves.json` — **4 reported Active, 73 historical Expired, 1 Unknown** codes. Seven scraped non-code fragments have been removed.
 
 The 57-Resonator snapshot is grounded in [Kuro Games Version 3.7 patch notes](https://wutheringwaves.kurogames.com/en/main/news/detail/5571), earlier patch notes, and [SenseOS's roster cross-check](https://senseos.gg/wiki/wuthering-waves/resonators/). Every record contains name, rarity, version and optional element/weapon when documented by reviewed sources. **Null means unknown, not absence.** Rover's alternate elements are not separate characters. Future Version 3.8 additions are intentionally excluded until release.
 
@@ -17,7 +17,7 @@ The 57-Resonator snapshot is grounded in [Kuro Games Version 3.7 patch notes](ht
 | `TRAINOFSOULS` | 100 Astrite + materials | 8 Nov 2026 15:59 UTC |
 | `BLOOMINGFLOWERS` | 100 Astrite + materials | 8 Nov 2026 15:59 UTC |
 | `SCHOOLLIFE` | 100 Astrite + materials | 8 Nov 2026 15:59 UTC |
-| `WUTHERINGGIFT` | 50 Astrite + materials | No announced end date |
+| `WUTHERINGGIFT` | 50 Astrite + materials (Shell Credit amount disputed) | No announced end date |
 
 Three livestream codes were published during the [6 November Version 3.8 preview](https://www.pockettactics.com/wuthering-waves/codes). They expire **8 November 07:59 PST / 15:59 UTC** per [reviewed sources](https://timesaver.gg/blog/wuthering-waves-codes). `codes.candidates({now})` automatically excludes these after their expiry. No account-level redemption was performed; all Active statuses mean **reported active**, not guaranteed. `codes.verifiedActive()` returns `[]` until genuinely verified.
 
@@ -64,3 +64,11 @@ npm pack --dry-run
 ```
 
 Use the dedicated branch Actions workflow to validate and the shared manual npm workflow (with `tracker_branch=wutheringwaves-api`) when ready. No publish or merge is automatically triggered.
+
+## November 7, 2026 historical code audit
+
+The four originally reported-active game codes remain unchanged. Five confirmed historical expired entries were missing and are now included in the local snapshot: `STARRYSTAGE2`, `KEEPONSHINING` (reported expired October 13), and `FALLINGSANCTUM`, `FINDSENTINEL`, `WAKINGMOON` (reported expired September 21). Source: [Timesaver November 7 code report](https://timesaver.gg/blog/wuthering-waves-codes).
+
+`DVME2MOHOQJT` is included as **Unknown / conflicting sources** because [Beebom](https://beebom.com/wuthering-waves-redeem-codes/amp/) and [Shane the Gamer](https://www.shanethegamer.com/redeem-codes/wuthering-waves-codes/) reported it active, whereas [KeyGold](https://keygold.gg/blog/detail/wuthering-waves-redeem-codes) reported it expired. Do not advertise it as working without actual redemption.
+
+`WUTHERINGGIFT` remains reported active, but its Shell Credit reward quantity is now `null` because reliable trackers list either **10,000 or 15,000**; the ambiguous amount must not be invented. The historically expired PC-only `WUWA4PC` entry is explicitly flagged as disputed by newer trackers. These corrections bring the archive to **78 total entries: 4 Active, 73 Expired, 1 Unknown**. The source statuses are not account-level redemption proofs.
