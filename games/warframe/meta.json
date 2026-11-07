@@ -1,0 +1,5 @@
+{
+  "id": "warframe",
+  "name": "Warframe",
+  "description": "Minimal dataset scaffold. Extend with verified game metadata."
+}
