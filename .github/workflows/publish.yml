@@ -16,10 +16,19 @@ on:
           - both
           - npmjs
           - github
+      npm_auth:
+        description: "npmjs authentication: automation token (2FA bypass) or npm Trusted Publisher OIDC"
+        required: true
+        type: choice
+        default: token
+        options:
+          - token
+          - trusted
 
 permissions:
   contents: write
   packages: write
+  id-token: write
 
 concurrency:
   group: manual-tracker-${{ inputs.tracker_branch }}
@@ -122,15 +131,35 @@ jobs:
           npm ci
           npm run check
           npm test
-      - name: Validate publishing credentials
+      - name: Check npm CLI and authentication configuration
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_METHOD: ${{ inputs.npm_auth }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        shell: bash
         run: |
-          test -n "$NODE_AUTH_TOKEN" || { echo "::error::Configure NPM_TOKEN (npmjs publishing), not RELEASE_TOKEN."; exit 1; }
+          npm --version
+          if [ "$NPM_AUTH_METHOD" = "token" ]; then
+            if [ -z "$NPM_TOKEN" ]; then
+              echo "::error::Set NPM_TOKEN to an npm granular access token with publishing rights and 2FA bypass for automation, or select npm_auth=trusted after configuring npm Trusted Publishing."
+              exit 1
+            fi
+          else
+            node -e "const [a,b]=process.versions.node.split('.').map(Number);if(a<22||(a===22&&b<14))process.exit(1)"
+            npm --version | awk -F. '{ if ($1 < 11 || ($1 == 11 && $2 < 5)) exit 1 }'
+          fi
       - name: Publish exact package.json version to npmjs
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public --registry=https://registry.npmjs.org/
+          NPM_AUTH_METHOD: ${{ inputs.npm_auth }}
+          NPM_TOKEN_SECRET: ${{ secrets.NPM_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$NPM_AUTH_METHOD" = "token" ]; then
+            export NODE_AUTH_TOKEN="$NPM_TOKEN_SECRET"
+          else
+            unset NODE_AUTH_TOKEN
+          fi
+          npm publish --access public --registry=https://registry.npmjs.org/
 
   github-packages:
     if: inputs.registry == 'both' || inputs.registry == 'github'
@@ -147,7 +176,7 @@ jobs:
         with:
           node-version: '24'
           registry-url: https://npm.pkg.github.com/
-          scope: '@nekosuneprojects'
+          scope: '@nekosuneprojectsnpm'
       - name: Install and test
         run: |
           npm ci
@@ -161,10 +190,13 @@ jobs:
           node - <<'NODE'
           const fs=require('node:fs');
           const p=JSON.parse(fs.readFileSync('package.json','utf8'));
+          if (!p.name.startsWith('@nekosuneprojects/')) throw Error('Unexpected source package scope');
+          p.name = p.name.replace('@nekosuneprojects/','@nekosuneprojectsnpm/');
           p.publishConfig={...p.publishConfig,registry:'https://npm.pkg.github.com/'};
           fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n');
           NODE
-          npm publish --registry=https://npm.pkg.github.com/
+          # Already tested under original scope; skip name-specific prepack validation.
+          npm publish --ignore-scripts --registry=https://npm.pkg.github.com/
 
   release:
     if: |
