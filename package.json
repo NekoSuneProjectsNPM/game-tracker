@@ -1,6 +1,6 @@
 {
   "name": "@nekosuneprojects/warframe-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WarframeStat.us live API, offline Warframe characters, and redeem-code/glyph JSON browsing with independent GitHub synchronization.",
   "main": "index.js",
   "type": "commonjs",
