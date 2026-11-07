@@ -159,7 +159,34 @@ jobs:
           else
             unset NODE_AUTH_TOKEN
           fi
-          npm publish --access public --registry=https://registry.npmjs.org/
+          PACKAGE_NAME="$(node -p "require('./package.json').name")"
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          # npm OIDC automatically creates provenance. Its transparency-log service
+          # sometimes returns TLOG_CREATE_ENTRY_ERROR (HTTP 500).
+          # Check registry state before retrying an immutable package version.
+          if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version --registry=https://registry.npmjs.org/ --prefer-online >/dev/null 2>&1; then
+            echo "::error::${PACKAGE_NAME}@${PACKAGE_VERSION} already exists on npmjs. Do not republish an immutable version."
+            exit 1
+          fi
+          publish_log="$(mktemp)"
+          if npm publish --access public --registry=https://registry.npmjs.org/ 2>&1 | tee "$publish_log"; then
+            rm -f "$publish_log"
+            exit 0
+          fi
+          if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version --registry=https://registry.npmjs.org/ --prefer-online >/dev/null 2>&1; then
+            echo "::notice::npmjs has ${PACKAGE_NAME}@${PACKAGE_VERSION} despite the publish command failing."
+            rm -f "$publish_log"
+            exit 0
+          fi
+          if grep -q 'TLOG_CREATE_ENTRY_ERROR' "$publish_log"; then
+            echo "::warning::npm transparency log failed. Retry with provenance disabled, retaining npm Trusted Publishing OIDC authentication."
+            rm -f "$publish_log"
+            NPM_CONFIG_PROVENANCE=false npm publish --access public --registry=https://registry.npmjs.org/
+          else
+            echo "::error::npm publish failed for a reason other than the known transparency-log error; not retrying automatically."
+            rm -f "$publish_log"
+            exit 1
+          fi
 
   github-packages:
     if: inputs.registry == 'both' || inputs.registry == 'github'
