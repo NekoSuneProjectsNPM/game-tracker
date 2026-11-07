@@ -1,7 +1,7 @@
 {
   "name": "@nekosuneprojects/arknightsendfield-api",
   "version": "1.0.0",
-  "description": "Local-first Arknights: Endfield Operators and game metadata with archived redemption codes and optional GitHub sync.",
+  "description": "Local-first Arknights: Endfield Operators and redeem codes, with optional Enka.Network UID business cards and public profiles.",
   "main": "index.js",
   "type": "commonjs",
   "engines": {
@@ -29,7 +29,13 @@
     "characters",
     "redeem-codes",
     "offline-json",
-    "local-first"
+    "local-first",
+    "enka",
+    "enka-network",
+    "uid",
+    "player-profiles",
+    "business-cards",
+    "achievements"
   ],
   "files": [
     "index.js",

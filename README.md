@@ -70,3 +70,42 @@ The branch's CI runs Node 24 on push and on pull requests targeting the branch. 
 ## Operator roster audit (7 November 2026)
 
 Added **Si** (six-star Cryo Supporter, Great Sword, Version 1.6) and **Argent Flow** (six-star Electric Guard, Sword, Version 1.6) to both the `JsonData` source branch and this bundled npm snapshot. Sources: [Endfield Talos Wiki — Si](https://endfield.wiki.gg/wiki/Si), [Argent Flow 1.6 profile](https://www.enfieldbuild.com/characters/argent-flow), [Icy Veins operator roster](https://www.icy-veins.com/arknights-endfield/operators). The SDK now contains 34 Operator records.
+
+## Optional Enka.Network Endfield UID lookup
+
+The optional provider performs a live request to `https://enka.network/api/ef/uid/{UID}` only when a method on `enka` is called. It does **not** change the offline game, Operator or redemption-code behavior.
+
+```js
+const Endfield=require('@nekosuneprojects/arknightsendfield-api');
+const endfield=Endfield();
+
+const uid='6976332004'; // Example public UID; substitute another valid Endfield UID
+const response=await endfield.enka.player(uid); // Alias: endfield.player(uid)
+console.log(response.playerInfo.businessCard.name);
+console.log(response.playerInfo.businessCard.adventureLevel);
+
+const card=await endfield.enka.businessCard(uid);
+const achievements=await endfield.enka.achievements(uid);
+const domains=await endfield.enka.domains(uid);
+const stats=await endfield.enka.statistics(uid);
+const characters=await endfield.enka.operators(uid);
+console.log(card.signature,achievements,domains,stats,characters);
+```
+
+| Method | Data returned |
+|---|---|
+| `enka.player(uid)`, `enka.get(uid)`, `player(uid)` | Entire original raw response, including `playerInfo`, `ttl`, `uid`, `region` |
+| `enka.profile(uid)` | `playerInfo` object |
+| `enka.businessCard(uid)` | `playerInfo.businessCard` or null |
+| `enka.operators(uid)`, `enka.characters(uid)` | Available public `businessCard.charList` or `playerInfo.charData`; empty array if absent |
+| `enka.achievements(uid)` | Achievement display and info lists |
+| `enka.domains(uid)` | Domain development details, or empty array |
+| `enka.statistics(uid)` | Public `charNum`, `weaponNum`, `docNum` and other statistics, if available |
+| `enka.clearCache(uid?)` | Clear one UID's in-memory cache or the whole cache |
+| `enka.player(uid,{refresh:true,signal})` | Skip cache or pass an AbortSignal |
+
+The example's `businessCard.charList` is empty; that is **not** evidence that the player owns zero Operators. The `statistic.charNum` field represents a separate profile statistic. The integration preserves the response's original names, ID types and nested structure, and never guesses private characters or hidden details.
+
+Enka's [API guidelines](https://github.com/EnkaNetwork/API-docs/blob/master/api.md) request a custom User-Agent, discourage mass UID enumeration, and describe a dynamic rate limit. The SDK caches by returned `ttl` in memory (maximum one hour) and coalesces duplicate in-flight lookups. There are no automatic retry loops and no persistent UID database. HTTP 400, 404, 424, 429, 500 and 503 become typed `EnkaError` exceptions including `retryAfter` if provided.
+
+`fetchImpl`, `enkaOptions.userAgent`, and `enkaOptions.timeoutMs` can be configured when constructing the SDK. Use a Node.js backend for this integration because browsers cannot set custom User-Agent headers. The live Endfield route is based on the supplied Enka response; automated unit tests mock the response rather than contacting Enka itself.
