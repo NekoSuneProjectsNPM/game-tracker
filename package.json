@@ -1,0 +1,45 @@
+{
+  "name": "@nekosuneprojects/arknightsendfield-api",
+  "version": "1.0.0",
+  "description": "Local-first Arknights: Endfield Operators and game metadata with archived redemption codes and optional GitHub sync.",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node scripts/validate-package.js",
+    "test": "node --test",
+    "prepack": "npm run check && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NekoSuneProjectsNPM/game-tracker/issues"
+  },
+  "author": "NekoSuneVR",
+  "license": "MIT",
+  "keywords": [
+    "arknights",
+    "endfield",
+    "arknights-endfield",
+    "operators",
+    "characters",
+    "redeem-codes",
+    "offline-json",
+    "local-first"
+  ],
+  "files": [
+    "index.js",
+    "src/",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
