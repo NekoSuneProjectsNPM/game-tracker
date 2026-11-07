@@ -2,7 +2,7 @@
 
 **Author:** NekoSuneVR · **License:** MIT · **Packages:** `@nekosuneprojects/*`
 
-Independent game and player-statistics tracker modules, developed in individual branches of this repository and published as separate npm packages.
+Independent game and player-statistics tracker modules, supporting **offline JSON data, GitHub JSON synchronization, official/authorised direct APIs, and hybrid data sources**, developed in individual branches and published as separate npm packages.
 
 > This `main` branch is the central directory and setup guide, **not** a package that combines game APIs into a single npm release. The individual tracker modules are independently installable.
 
@@ -86,9 +86,15 @@ Only that manually created published GitHub Release triggers the npmjs.org and G
 - A project's GitHub release tag is `<branch>-v<version>` so identical versions of different tracker packages do not conflict.
 - npm publication requires npm credentials and appropriate package permissions. Creating the GitHub workflow **does not** itself configure npm.
 
+## Local JSON and GitHub-synced data
+
+Individual game trackers can expose `gameTracker.data.get('meta.json')`, `gameTracker.data.list()` and `gameTracker.data.sync()` for JSON files. A tracker selects a fixed public GitHub data directory (for example [gaming-infos/data/warframe](https://github.com/NekoSuneProjectsNPM/gaming-infos/tree/main/data/warframe)) in its own `src/data-source.js`.
+
+The synchronizer downloads only new/changed files by comparing Git blob hashes, caches JSON to disk, and supports reading cached files offline. Each game can also bundle files under `data/`. Changes to GitHub JSON do not require a new npm version. The shared [TEMPLATE usage guide](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/TEMPLATE) contains a Warframe illustration, cache configuration and an [AI JSON editing prompt](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/TEMPLATE/docs/AI-JSON-PROMPT.md).
+
 ## Game data and integrations
 
-Trackers should prefer official APIs, then legitimate third-party services where permitted. Clearly label unofficial functionality. Do not claim locally-only game information is available from public endpoints. A future optional local companion app can handle PC-local data after authorisation.
+Trackers may use entirely local JSON without an external API, or combine that data with official APIs and legitimate third-party services where permitted. Clearly label unofficial functionality. Do not claim locally-only game information is available from public endpoints. A future optional local companion app can handle PC-local data after authorisation.
 
 ## Links
 
