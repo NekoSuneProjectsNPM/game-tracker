@@ -65,22 +65,15 @@ These are **illustrative imports only**; no unimplemented package is claimed as 
 5. Only require `apiKey` when the provider actually needs one. Support public/no-key APIs with `GAME()`. Never hard-code credentials.
 6. Replace this README with that individual tracker's installation, supported methods, auth, configuration, examples, rate limits and known limitations. Always use game-specific JavaScript identifiers (`fortniteTracker`, `apexTracker`) and per-game key names.
 7. Update tests with mocked valid responses, run `npm test`, `npm run check`, `npm pack --dry-run`.
-8. Publish through the branch-specific GitHub Actions workflow after configuring the repository's `NPM_TOKEN` secret.
+8. Manually start the publishing workflow in GitHub Actions after configuring publishing credentials.
 
-## Two registries, one game-tracker release
+## Manual releases (no automatic publishing on push)
 
-A new push to an implemented tracker branch runs `publish.yml`: tests, select next version, update lockfile, and create the branch-prefixed GitHub release `<branch>-v<version>`. On a **published** GitHub release, two independent workflows then publish the exact tagged code:
+Normal commits and pushes **never** publish or increment package versions. Set `package.json` version yourself, run `npm install --package-lock-only`, and commit both package files with your code.
 
-- `Node.js Package NPMJS` → `@nekosuneprojects/<branch>` at `https://registry.npmjs.org/`.
-- `Node.js Package GitHub Mode` → the same package/version at `https://npm.pkg.github.com/`.
+Open [Actions: Manually publish tracker version](https://github.com/NekoSuneProjectsNPM/game-tracker/actions/workflows/publish.yml), choose **Run workflow** using the `main` workflow ref, and enter `tracker_branch` (such as `fortnite-api`). The input is text rather than a dynamic branch dropdown. `main` and `TEMPLATE` are blocked. The workflow reads the **exact version in the selected branch's package.json**, verifies the lockfile and tests, then creates tag `<branch>-v<version>`. No version files are edited or committed.
 
-Both published-release jobs use Node.js 24 on runner labels `[self-hosted, Linux, docker, buildx]`, execute `npm ci` and `npm test`, verify the release tag against the package name and version, and skip prereleases. Neither `main` nor `TEMPLATE` can be published.
-
-**Repository setup required:** `NPM_TOKEN` (npm publish token), `RELEASE_TOKEN` (fine-grained PAT / GitHub App token with repository Contents write to create releases that trigger other workflows), and a trusted online self-hosted runner with all four required labels. `GITHUB_TOKEN` is used for GitHub Packages. Tokens must have the necessary organisation/package rights. Releases created using the default `GITHUB_TOKEN` **do not** trigger new release-event workflows; that's why `RELEASE_TOKEN` is required.
-
-The two release workflows are also stored on `main` solely because GitHub evaluates published-release event workflows from the default branch. They **always check out the released tracker tag**, never the `main` branch. They cannot install or publish a package without a valid tracker tag.
-
-Do not manually create release tags against unrelated commits; publishing requires the name and version to match exactly. Retry any failed publish after verifying whether that version already exists in the relevant registry. Once a version is published to a registry, npm does not permit replacing it.
+Only that manually created published GitHub Release triggers the npmjs.org and GitHub Packages release workflows. `RELEASE_TOKEN` with Contents write is needed so that release-created workflows are triggered. The registries also require valid publishing credentials and self-hosted runner availability.
 
 ## Project conventions
 
