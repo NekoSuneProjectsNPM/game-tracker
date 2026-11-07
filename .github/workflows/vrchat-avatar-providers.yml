@@ -1,0 +1,38 @@
+name: VRChat avatar provider diagnostics
+
+on:
+  push:
+    branches: [vrchat-api]
+    paths:
+      - 'src/avatar-providers.js'
+      - 'src/tracker.js'
+      - 'scripts/probe-avatar-providers.js'
+      - 'test/**'
+      - '.github/workflows/vrchat-avatar-providers.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+
+  live-http-probes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Probe all eight public VRCX endpoints with browser User-Agent
+        run: npm run test:avatar-providers:live
