@@ -1,291 +1,12 @@
 {
   "Active": [
     {
-      "id": 1988,
-      "game": "zenless-zone-zero",
-      "code": "Denny",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:27.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:27.000Z"
-    },
-    {
-      "id": 1985,
-      "game": "zenless-zone-zero",
-      "code": "Polychrome",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:27.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:27.000Z"
-    },
-    {
-      "id": 1992,
-      "game": "zenless-zone-zero",
-      "code": "x1",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:28.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:28.000Z"
-    },
-    {
-      "id": 1990,
-      "game": "zenless-zone-zero",
-      "code": "x2",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:27.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:27.000Z"
-    },
-    {
-      "id": 1991,
-      "game": "zenless-zone-zero",
-      "code": "x3",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:27.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:27.000Z"
-    },
-    {
-      "id": 1993,
-      "game": "zenless-zone-zero",
-      "code": "x300",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:28.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:28.000Z"
-    },
-    {
-      "id": 1986,
-      "game": "zenless-zone-zero",
-      "code": "x50",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:27.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:27.000Z"
-    },
-    {
-      "id": 1987,
-      "game": "zenless-zone-zero",
-      "code": "x60",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:27.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:27.000Z"
-    },
-    {
-      "id": 1989,
-      "game": "zenless-zone-zero",
-      "code": "x6666",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "verified-source",
-      "items": [],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://game8.co/games/Zenless-Zone-Zero/archives/435683"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:24:38.000Z",
-      "lastSeenAt": "2026-08-24T11:03:27.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:27.000Z"
-    },
-    {
       "id": 227,
       "game": "zenless-zone-zero",
       "code": "ZENLESSGIFT",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "seeded",
+      "verificationStatus": "reported-active-unverified",
       "items": [
         {
           "name": "Polychrome",
@@ -323,67 +44,31 @@
       "claimType": "free",
       "requirements": [],
       "sourceUrls": [
-        "https://www.pcgamesn.com/zenless-zone-zero/codes"
+        "https://www.pcgamesn.com/zenless-zone-zero/codes",
+        "https://www.icy-veins.com/zenless-zone-zero/redemption-codes"
       ],
       "sourceKey": null,
-      "notes": null,
+      "notes": "2026-11-07: Listed by current sources but has not been tested for redemption; eligibility may vary.",
       "firstSeenAt": "2026-08-24T09:20:39.000Z",
       "lastSeenAt": "2026-08-24T09:20:39.000Z",
       "lastVerifiedAt": null
     },
     {
-      "id": 226,
+      "id": 2024,
       "game": "zenless-zone-zero",
-      "code": "ZZZ2YEAR",
+      "code": "LEVELUP33",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "seeded",
+      "verificationStatus": "reported-active-unverified",
       "items": [
         {
           "name": "Polychrome",
-          "quantity": 50,
-          "image": null
-        }
-      ],
-      "image": null,
-      "expiry": {
-        "type": "unknown",
-        "isLifetime": false,
-        "expiresAt": null,
-        "sourceTimezone": null,
-        "selectedTimezone": "UTC",
-        "local": null,
-        "expired": false
-      },
-      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
-      "claimType": "free",
-      "requirements": [],
-      "sourceUrls": [
-        "https://www.pcgamesn.com/zenless-zone-zero/codes"
-      ],
-      "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:39.000Z",
-      "lastSeenAt": "2026-08-24T09:20:39.000Z",
-      "lastVerifiedAt": null
-    },
-    {
-      "id": 224,
-      "game": "zenless-zone-zero",
-      "code": "ZZZ31REMIELLE",
-      "category": "redeem-code",
-      "status": "active",
-      "verificationStatus": "seeded",
-      "items": [
-        {
-          "name": "Polychrome",
-          "quantity": 60,
+          "quantity": 20,
           "image": null
         },
         {
           "name": "Denny",
-          "quantity": 6666,
+          "quantity": 2222,
           "image": null
         }
       ],
@@ -398,44 +83,35 @@
         "expired": false
       },
       "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
       "claimType": "free",
       "requirements": [],
       "sourceUrls": [
-        "https://www.pcgamesn.com/zenless-zone-zero/codes"
+        "https://www.icy-veins.com/zenless-zone-zero/redemption-codes",
+        "https://gachafeed.moe/zzz/codes/"
       ],
       "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:39.000Z",
-      "lastSeenAt": "2026-08-24T09:20:39.000Z",
+      "notes": "Reported active by November 2026 trackers, not redeemed by this SDK.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
       "lastVerifiedAt": null
     },
     {
-      "id": 225,
+      "id": 2025,
       "game": "zenless-zone-zero",
-      "code": "ZZZMEIJI",
+      "code": "INKSHIFT33",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "seeded",
+      "verificationStatus": "reported-active-unverified",
       "items": [
         {
-          "name": "Official Investigator Log",
-          "quantity": 3,
-          "image": null
-        },
-        {
-          "name": "W-Engine Power Supply",
-          "quantity": 3,
-          "image": null
-        },
-        {
-          "name": "Bangboo Algorithm Module",
-          "quantity": 1,
+          "name": "Polychrome",
+          "quantity": 20,
           "image": null
         },
         {
           "name": "Denny",
-          "quantity": 10000,
+          "quantity": 2222,
           "image": null
         }
       ],
@@ -450,16 +126,60 @@
         "expired": false
       },
       "redeemUrl": "https://zenless.hoyoverse.com/redemption",
-      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
       "claimType": "free",
       "requirements": [],
       "sourceUrls": [
-        "https://www.pcgamesn.com/zenless-zone-zero/codes"
+        "https://www.icy-veins.com/zenless-zone-zero/redemption-codes",
+        "https://gachafeed.moe/zzz/codes/"
       ],
       "sourceKey": null,
-      "notes": null,
-      "firstSeenAt": "2026-08-24T09:20:39.000Z",
-      "lastSeenAt": "2026-08-24T09:20:39.000Z",
+      "notes": "Reported active by November 2026 trackers, not redeemed by this SDK.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 2026,
+      "game": "zenless-zone-zero",
+      "code": "HOLLOWRUN33",
+      "category": "redeem-code",
+      "status": "active",
+      "verificationStatus": "reported-active-unverified",
+      "items": [
+        {
+          "name": "Polychrome",
+          "quantity": 20,
+          "image": null
+        },
+        {
+          "name": "Denny",
+          "quantity": 2222,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.icy-veins.com/zenless-zone-zero/redemption-codes",
+        "https://gachafeed.moe/zzz/codes/"
+      ],
+      "sourceKey": null,
+      "notes": "Reported active by November 2026 trackers, not redeemed by this SDK.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
       "lastVerifiedAt": null
     }
   ],
@@ -3675,7 +3395,346 @@
       "firstSeenAt": "2026-08-24T09:23:14.000Z",
       "lastSeenAt": "2026-08-24T11:03:30.000Z",
       "lastVerifiedAt": "2026-08-24T11:03:30.000Z"
+    },
+    {
+      "id": 224,
+      "game": "zenless-zone-zero",
+      "code": "ZZZ31REMIELLE",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "historical-expired",
+      "items": [
+        {
+          "name": "Polychrome",
+          "quantity": 60,
+          "image": null
+        },
+        {
+          "name": "Denny",
+          "quantity": 6666,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.pcgamesn.com/zenless-zone-zero/codes"
+      ],
+      "sourceKey": null,
+      "notes": "As of 2026-11-07, contemporary redemption-code trackers list this as expired; exact expiry timestamp not independently established.",
+      "firstSeenAt": "2026-08-24T09:20:39.000Z",
+      "lastSeenAt": "2026-08-24T09:20:39.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 225,
+      "game": "zenless-zone-zero",
+      "code": "ZZZMEIJI",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "historical-expired",
+      "items": [
+        {
+          "name": "Official Investigator Log",
+          "quantity": 3,
+          "image": null
+        },
+        {
+          "name": "W-Engine Power Supply",
+          "quantity": 3,
+          "image": null
+        },
+        {
+          "name": "Bangboo Algorithm Module",
+          "quantity": 1,
+          "image": null
+        },
+        {
+          "name": "Denny",
+          "quantity": 10000,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.pcgamesn.com/zenless-zone-zero/codes"
+      ],
+      "sourceKey": null,
+      "notes": "As of 2026-11-07, contemporary redemption-code trackers list this as expired; exact expiry timestamp not independently established.",
+      "firstSeenAt": "2026-08-24T09:20:39.000Z",
+      "lastSeenAt": "2026-08-24T09:20:39.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 2028,
+      "game": "zenless-zone-zero",
+      "code": "JRNY2SKY",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "historical-expired",
+      "items": [
+        {
+          "name": "Polychrome",
+          "quantity": 300,
+          "image": null
+        },
+        {
+          "name": "Denny",
+          "quantity": 30000,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://zenless.hoyoverse.com/en-us/news/166644?page=newsLink"
+      ],
+      "sourceKey": null,
+      "notes": "Official special-program redemption deadline was October 11, 2026 23:59:59 UTC+8.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 2029,
+      "game": "zenless-zone-zero",
+      "code": "FLINTWORKS",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "historical-expired",
+      "items": [],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/zenless-zone-zero-codes-september-2026"
+      ],
+      "sourceKey": null,
+      "notes": "Listed expired by November 2026 trackers; exact expiry time unspecified.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 2030,
+      "game": "zenless-zone-zero",
+      "code": "ZZZVOID32",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "historical-expired",
+      "items": [],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/zenless-zone-zero-codes-september-2026"
+      ],
+      "sourceKey": null,
+      "notes": "Listed expired by November 2026 trackers; exact expiry time unspecified.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 2031,
+      "game": "zenless-zone-zero",
+      "code": "ZZZINK32",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "historical-expired",
+      "items": [],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/zenless-zone-zero-codes-september-2026"
+      ],
+      "sourceKey": null,
+      "notes": "Listed expired by November 2026 trackers; exact expiry time unspecified.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 2032,
+      "game": "zenless-zone-zero",
+      "code": "ZZZGRIND32",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "historical-expired",
+      "items": [],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/zenless-zone-zero-codes-september-2026"
+      ],
+      "sourceKey": null,
+      "notes": "Listed expired by November 2026 trackers; exact expiry time unspecified.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
     }
   ],
-  "Unknown": []
+  "Unknown": [
+    {
+      "id": 226,
+      "game": "zenless-zone-zero",
+      "code": "ZZZ2YEAR",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-sources",
+      "items": [
+        {
+          "name": "Polychrome",
+          "quantity": 50,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "Official HoYoverse redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.pcgamesn.com/zenless-zone-zero/codes",
+        "https://senseos.gg/guides/zenless-zone-zero/zenless-zone-zero-redeem-codes/",
+        "https://timesaver.gg/blog/zenless-zone-zero-codes-september-2026"
+      ],
+      "sourceKey": null,
+      "notes": "2026-11-07: Sources disagree (HoYoverse-posted no specified end date vs redemption trackers listing expired). Verify in game.",
+      "firstSeenAt": "2026-08-24T09:20:39.000Z",
+      "lastSeenAt": "2026-08-24T09:20:39.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 2027,
+      "game": "zenless-zone-zero",
+      "code": "SUNBRINGER",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-sources",
+      "items": [
+        {
+          "name": "Polychrome",
+          "quantity": 30,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": "https://zenless.hoyoverse.com/redemption",
+      "redeemLocation": "HoYoverse ZZZ redemption site or in-game More > Redemption Code",
+      "claimType": "free",
+      "requirements": [],
+      "sourceUrls": [
+        "https://www.icy-veins.com/zenless-zone-zero/redemption-codes",
+        "https://gachafeed.moe/zzz/codes/",
+        "https://www.kodegg.com/en/game/zenless-zone-zero/"
+      ],
+      "sourceKey": null,
+      "notes": "Conflicting trackers: Icy Veins reports active; other trackers omit or classify expired.",
+      "firstSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastSeenAt": "2026-11-07T00:00:00.000Z",
+      "lastVerifiedAt": null
+    }
+  ]
 }

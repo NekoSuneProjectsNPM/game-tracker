@@ -14,17 +14,23 @@ test('loads all 61 playable Agents and local metadata without network',async()=>
  assert.ok((await z.characters.search('Fire')).total>0);
  await assert.rejects(z.character('Severian Lowell'),{code:'NOT_FOUND'});
 });
-test('raw archive kept and candidate codes exclude scraped reward labels',async()=>{
+test('audited archive and reported code candidates exclude scraped reward labels',async()=>{
  const z=ZZZ({fetchImpl:async()=>{throw Error('Unexpected network');}});
  const doc=await z.codes.snapshot();
- assert.equal(doc.Active.length,13);
- assert.equal(doc.Expired.length,102);
- assert.equal(doc.Unknown.length,0);
+ assert.equal(doc.Active.length,4);
+ assert.equal(doc.Expired.length,109);
+ assert.equal(doc.Unknown.length,2);
  assert.equal((await z.codes.all()).length,115);
  const candidates=await z.codes.candidates();
  assert.equal(candidates.length,4);
- assert.ok(candidates.every(x=>x.verificationStatus==='unverified-snapshot'));
- for(const bad of ['Denny','Polychrome','x300'])assert.ok(!candidates.some(x=>x.code===bad));
+ assert.ok(candidates.every(x=>x.verificationStatus==='reported-active-unverified'));
+ for(const bad of ['Denny','Polychrome','x300']){
+  assert.ok(!candidates.some(x=>x.code===bad));
+  assert.ok(!(await z.codes.all()).some(x=>x.code===bad));
+ }
+ for(const known of ['LEVELUP33','INKSHIFT33','HOLLOWRUN33','ZENLESSGIFT'])assert.ok(candidates.some(x=>x.code===known));
+ for(const old of ['ZZZ31REMIELLE','ZZZMEIJI','JRNY2SKY'])assert.equal((await z.codes.get(old)).status,'expired');
+ for(const disputed of ['ZZZ2YEAR','SUNBRINGER'])assert.equal((await z.codes.get(disputed)).status,'unknown');
  assert.deepEqual(await z.codes.verifiedActive(),[]);
  assert.equal((await z.codes.get('ZENLESSGIFT')).code,'ZENLESSGIFT');
 });

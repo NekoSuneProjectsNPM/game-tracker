@@ -6,11 +6,11 @@ Standalone local-first Zenless Zone Zero SDK for Node.js **18+**. Version **1.0.
 
 - `data/meta.json` — game metadata from the repository's `JsonData` branch.
 - `data/characters/*.json` — **61 playable Agent entries**, manually assembled from a public [October 30, 2026 roster](https://timesaver.gg/blog/zzz-characters-list) and checked against [HoYoverse's official character page](https://zenless.hoyoverse.com/en-us/main).
-- `data/codes/zenless-zone-zero.json` — original historical **13 Active / 102 Expired / 0 Unknown** JSON records from `JsonData`, preserved without modifying original history.
+- `data/codes/zenless-zone-zero.json` — audited historical **4 reported Active / 109 Expired / 2 Unknown** JSON records from `JsonData`.
 
 **Important:** As of 7 November 2026, Severian Lowell is *announced for November 11* and is **not included** as an already-released Agent. Characters with a separate playable variant (e.g. Soldier 0 - Anby and Starlight - Billy Kid) have separate records. This snapshot has fields `name`, `slug`, `rank`, `rarity`, `attribute`, `specialty`, `faction`, `version`, `releaseDate` and source; it does not invent unverified stats, skills or weapons.
 
-The old redeem-code archive contains scraped **reward text mistaken for codes** (`Denny`, `Polychrome`, `x300`). `codes.active()` exposes the **unchanged raw status group** for archive compatibility, *not* currently working codes. `codes.candidates()` omits those nine reward fragments and labels the remaining four as `unverified-snapshot`. `codes.verifiedActive()` returns `[]` until genuine redemption verification is possible. Never advertise these four as confirmed working. Redeem codes at <https://zenless.hoyoverse.com/redemption>.
+The November 7 audit removed nine scraped reward fragments (`Denny`, `Polychrome`, `x300`, etc.), moved stale codes to Expired, and flagged disputed entries under Unknown. `codes.active()` shows **four codes reported as active** by contemporary sources, but none were tested against a player account. `codes.candidates()` returns the same four with `reported-active-unverified` status. `codes.verifiedActive()` returns `[]` until genuine redemption verification is possible. Never advertise these four as confirmed working. Redeem codes at <https://zenless.hoyoverse.com/redemption>.
 
 ## Installation (after npm publication)
 
@@ -43,14 +43,14 @@ console.log(game.name,ellen.name,phoenix.name,fireAgents.total);
 | `character(id)`, `characters.get(id)` | Single Agent by slug/name |
 | `characters.list()` | All bundled playable Agents |
 | `characters.search(query,{limit})`, `search(query,options)` | Search locally by name, attribute, faction, role etc. |
-| `codes.snapshot()` | Original Active/Expired/Unknown code archive |
+| `codes.snapshot()` | Audited Active/Expired/Unknown code archive |
 | `codes.all()`, `codes.get(codeOrId)`, `codes.search(query)` | Historical code lookups |
-| `codes.active()`, `codes.expired()`, `codes.unknown()` | Original source-status groups |
-| `codes.candidates()` | Four possible code strings, **not verified working** |
+| `codes.active()`, `codes.expired()`, `codes.unknown()` | Audited source-status groups; Active is not account-verified |
+| `codes.candidates()` | Four community-reported codes, **not tested for redemption** |
 | `codes.verifiedActive()` | Empty list until independent verification |
 | `data.sync()`, `codes.sync()` | Optional manual on-demand GitHub `JsonData` sync |
 
-Normal reads use bundled JSON and optional disk cache. No background fetching. `data.sync()` checks `games/zenlesszonezero/` on `JsonData`; `codes.sync()` independently updates `codes/games/zenless-zone-zero.json`. Characters are bundled in the package because the current `JsonData` branch does not yet contain an Agent catalog. Newer character updates can be committed to `JsonData` later.
+Normal reads use bundled JSON and optional disk cache. No background fetching. `data.sync()` checks `games/zenlesszonezero/` on `JsonData`; `codes.sync()` independently updates `codes/games/zenless-zone-zero.json`. All 61 Agent records are now also mirrored into the `JsonData` branch for on-demand syncing.
 
 ## Validate and publish
 
@@ -62,3 +62,15 @@ npm pack --dry-run
 ```
 
 Use the shared manual release workflow in `main` with `tracker_branch=zenlesszonezero-api`, after tests pass. Do not reuse an npm version that is already published.
+
+## Audit (7 November 2026)
+
+- **61 released Agents** checked against the [Version 3.3 roster](https://timesaver.gg/blog/zzz-characters-list) and [HoYoverse 3.3 Phase I notice](https://zenless.hoyoverse.com/en-us/news/166964). No confirmed missing released Agent as of that date. Severian is expected in Phase II, not yet released.
+- Source `JsonData/games/zenlesszonezero/characters/` now includes the 61 Agent files so `data.sync()` can discover them.
+- Removed **nine scraped reward fragments** incorrectly recorded as redeem codes.
+- Recorded **4 reported-active codes**: `ZENLESSGIFT`, `LEVELUP33`, `INKSHIFT33`, `HOLLOWRUN33`. Source: [Icy Veins](https://www.icy-veins.com/zenless-zone-zero/redemption-codes), [GachaFeed](https://gachafeed.moe/zzz/codes/). No account redemption performed.
+- `ZZZ31REMIELLE` and `ZZZMEIJI` were moved to Expired; additionally archived `JRNY2SKY`, `FLINTWORKS`, `ZZZVOID32`, `ZZZINK32`, and `ZZZGRIND32` as expired. `JRNY2SKY` expired 11 October according to [HoYoverse](https://zenless.hoyoverse.com/en-us/news/166644).
+- `ZZZ2YEAR` and `SUNBRINGER` are **Unknown** due to conflicting reports. Source disagreement is preserved rather than inventing a deadline.
+- The local code archive now contains **115 entries**: **4 Active (unverified)**, **109 Expired**, and **2 Unknown**. `codes.verifiedActive()` remains empty until there is actual redemption verification.
+
+Always treat a community listing as reported availability, not proof that the specific account can redeem a code.
