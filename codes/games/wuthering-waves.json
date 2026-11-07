@@ -6,7 +6,7 @@
       "code": "WUTHERINGGIFT",
       "category": "redeem-code",
       "status": "active",
-      "verificationStatus": "verified-source",
+      "verificationStatus": "reported-active-unverified",
       "items": [
         {
           "name": "Astrite",
@@ -30,7 +30,7 @@
         },
         {
           "name": "Shell Credits",
-          "quantity": 15000,
+          "quantity": null,
           "image": null
         }
       ],
@@ -50,13 +50,15 @@
       "requirements": [],
       "sourceUrls": [
         "https://www.pcgamesn.com/wuthering-waves/codes",
-        "https://game8.co/games/Wuthering-Waves/archives/453149"
+        "https://game8.co/games/Wuthering-Waves/archives/453149",
+        "https://timesaver.gg/blog/wuthering-waves-codes",
+        "https://guildmeta.com/wuthering-waves/codes"
       ],
       "sourceKey": null,
-      "notes": "Permanent welcome code. Some current trackers report 15,000 Shell Credits instead of 10,000.",
+      "notes": "Reported active in multiple November 2026 trackers, but not redeemed against a player account. Shell Credit reward differs by source (10,000 or 15,000); amount deliberately unspecified.",
       "firstSeenAt": "2026-08-24T09:20:39.000Z",
-      "lastSeenAt": "2026-08-24T11:03:20.000Z",
-      "lastVerifiedAt": "2026-08-24T11:03:20.000Z"
+      "lastSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastVerifiedAt": null
     },
     {
       "id": 1985,
@@ -1888,7 +1890,7 @@
       "code": "WUWA4PC",
       "category": "redeem-code",
       "status": "expired",
-      "verificationStatus": "verified-source",
+      "verificationStatus": "conflicting-sources",
       "items": [],
       "image": null,
       "expiry": {
@@ -1905,10 +1907,11 @@
       "claimType": "free",
       "requirements": [],
       "sourceUrls": [
-        "https://game8.co/games/Wuthering-Waves/archives/453149"
+        "https://game8.co/games/Wuthering-Waves/archives/453149",
+        "https://www.u7buy.com/blog/all-wuthering-waves-codes-unveiled/"
       ],
       "sourceKey": null,
-      "notes": null,
+      "notes": "PC-only code. Historical archive classifies it as expired but some November trackers disagree; do not advertise as currently redeemable.",
       "firstSeenAt": "2026-08-24T09:24:35.000Z",
       "lastSeenAt": "2026-08-24T11:03:24.000Z",
       "lastVerifiedAt": "2026-08-24T11:03:24.000Z"
@@ -2404,7 +2407,242 @@
       "firstSeenAt": "2026-08-24T09:20:39.000Z",
       "lastSeenAt": "2026-08-24T11:03:21.000Z",
       "lastVerifiedAt": "2026-08-24T11:03:21.000Z"
+    },
+    {
+      "id": 1988,
+      "game": "wuthering-waves",
+      "code": "STARRYSTAGE2",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 80,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
+      "claimType": "free",
+      "requirements": [
+        "Union Level 2"
+      ],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/wuthering-waves-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported expired on 2026-10-13; exact deadline time not confirmed.",
+      "firstSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1989,
+      "game": "wuthering-waves",
+      "code": "KEEPONSHINING",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 80,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
+      "claimType": "free",
+      "requirements": [
+        "Union Level 2"
+      ],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/wuthering-waves-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported expired on 2026-10-13; exact deadline time not confirmed.",
+      "firstSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1990,
+      "game": "wuthering-waves",
+      "code": "FALLINGSANCTUM",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 100,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
+      "claimType": "free",
+      "requirements": [
+        "Union Level 2"
+      ],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/wuthering-waves-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported expired on 2026-09-21; exact deadline time not confirmed.",
+      "firstSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1991,
+      "game": "wuthering-waves",
+      "code": "FINDSENTINEL",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 100,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
+      "claimType": "free",
+      "requirements": [
+        "Union Level 2"
+      ],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/wuthering-waves-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported expired on 2026-09-21; exact deadline time not confirmed.",
+      "firstSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastVerifiedAt": null
+    },
+    {
+      "id": 1992,
+      "game": "wuthering-waves",
+      "code": "WAKINGMOON",
+      "category": "redeem-code",
+      "status": "expired",
+      "verificationStatus": "reported-expired",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 100,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "date",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": true
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
+      "claimType": "free",
+      "requirements": [
+        "Union Level 2"
+      ],
+      "sourceUrls": [
+        "https://timesaver.gg/blog/wuthering-waves-codes"
+      ],
+      "sourceKey": null,
+      "notes": "Reported expired on 2026-09-21; exact deadline time not confirmed.",
+      "firstSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastVerifiedAt": null
     }
   ],
-  "Unknown": []
+  "Unknown": [
+    {
+      "id": 1993,
+      "game": "wuthering-waves",
+      "code": "DVME2MOHOQJT",
+      "category": "redeem-code",
+      "status": "unknown",
+      "verificationStatus": "conflicting-sources",
+      "items": [
+        {
+          "name": "Astrite",
+          "quantity": 20,
+          "image": null
+        }
+      ],
+      "image": null,
+      "expiry": {
+        "type": "unknown",
+        "isLifetime": false,
+        "expiresAt": null,
+        "sourceTimezone": null,
+        "selectedTimezone": "UTC",
+        "local": null,
+        "expired": false
+      },
+      "redeemUrl": null,
+      "redeemLocation": "In-game: Settings > Other Settings > Redemption Code",
+      "claimType": "free",
+      "requirements": [
+        "Union Level 2"
+      ],
+      "sourceUrls": [
+        "https://beebom.com/wuthering-waves-redeem-codes/amp/"
+      ],
+      "sourceKey": null,
+      "notes": "Some November trackers reported it active, others expired. Not confirmed by official Kuro Games channels. Do not treat as currently valid.",
+      "firstSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastSeenAt": "2026-11-07T17:30:00.000Z",
+      "lastVerifiedAt": null
+    }
+  ]
 }
