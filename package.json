@@ -1,0 +1,41 @@
+{
+  "name": "@nekosuneprojects/wutheringwaves-api",
+  "version": "1.0.0",
+  "description": "Offline-first Wuthering Waves Resonators, game metadata and redeem-code JSON with optional GitHub sync.",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node scripts/validate-package.js",
+    "test": "node --test",
+    "prepack": "npm run check && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git"
+  },
+  "author": "NekoSuneVR",
+  "license": "MIT",
+  "keywords": [
+    "wuthering-waves",
+    "wutheringwaves",
+    "wuwa",
+    "resonators",
+    "characters",
+    "redeem-codes",
+    "offline-json"
+  ],
+  "files": [
+    "index.js",
+    "src/",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

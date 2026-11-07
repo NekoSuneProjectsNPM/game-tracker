@@ -1,181 +1,66 @@
-# NekoSune Game Tracker — npm package collection
+# @nekosuneprojects/wutheringwaves-api
 
-**Author:** NekoSuneVR · **License:** MIT · **Packages:** `@nekosuneprojects/*`
+Standalone **Wuthering Waves (WuWa)** local-first Node.js 18+ API. Version `1.0.0` is source-only until published.
 
-Independent game and player-statistics tracker modules, supporting **offline JSON data, GitHub JSON synchronization, official/authorised direct APIs, and hybrid data sources**, developed in individual branches and published as separate npm packages.
+## Local JSON data
 
-> This `main` branch is the central directory and setup guide, **not** a package that combines game APIs into a single npm release. The individual tracker modules are independently installable.
+- `data/meta.json` — game metadata from `JsonData/games/wutheringwaves`.
+- `data/characters/*.json` — **57 playable Resonator records** through Version **3.7** (30 September–11 November 2026).
+- `data/codes/wuthering-waves.json` — **4 reported Active, 68 historical Expired, 0 Unknown** codes. Seven scraped non-code fragments have been removed.
 
-## Find a tracker
+The 57-Resonator snapshot is grounded in [Kuro Games Version 3.7 patch notes](https://wutheringwaves.kurogames.com/en/main/news/detail/5571), earlier patch notes, and [SenseOS's roster cross-check](https://senseos.gg/wiki/wuthering-waves/resonators/). Every record contains name, rarity, version and optional element/weapon when documented by reviewed sources. **Null means unknown, not absence.** Rover's alternate elements are not separate characters. Future Version 3.8 additions are intentionally excluded until release.
 
-- [Browse all tracker branches](https://github.com/NekoSuneProjectsNPM/game-tracker/branches) — each tracker branch is its own source code, README, tests, npm package and release history.
-- [Reusable tracker starter (TEMPLATE)](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/TEMPLATE)
-- [Published npm namespace](https://www.npmjs.com/org/nekosuneprojects)
-- [GitHub releases](https://github.com/NekoSuneProjectsNPM/game-tracker/releases)
-- [Bug reports / feature requests](https://github.com/NekoSuneProjectsNPM/game-tracker/issues)
+## Redeem-code status (7 November 2026)
 
-### Tracker directory
+| Code | Reward | Published expiry |
+| --- | --- | --- |
+| `TRAINOFSOULS` | 100 Astrite + materials | 8 Nov 2026 15:59 UTC |
+| `BLOOMINGFLOWERS` | 100 Astrite + materials | 8 Nov 2026 15:59 UTC |
+| `SCHOOLLIFE` | 100 Astrite + materials | 8 Nov 2026 15:59 UTC |
+| `WUTHERINGGIFT` | 50 Astrite + materials | No announced end date |
 
-New trackers will be listed here **after their branches and packages exist**. A branch is not automatically a working tracker: refer to its own README to confirm provider support, required credentials, compatible games and limitations.
+Three livestream codes were published during the [6 November Version 3.8 preview](https://www.pockettactics.com/wuthering-waves/codes). They expire **8 November 07:59 PST / 15:59 UTC** per [reviewed sources](https://timesaver.gg/blog/wuthering-waves-codes). `codes.candidates({now})` automatically excludes these after their expiry. No account-level redemption was performed; all Active statuses mean **reported active**, not guaranteed. `codes.verifiedActive()` returns `[]` until genuinely verified.
 
-| Tracker | Source branch | npm installation | Status |
-| --- | --- | --- | --- |
-| Starter (not publishable) | [TEMPLATE](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/TEMPLATE) | N/A | Ready to adapt |
-| Warframe API · v1.0.0 | [warframe-api](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/warframe-api) | `npm install @nekosuneprojects/warframe-api` | Source, offline characters and codes integrated; **not yet published** |
+Redeem in game: reach Union Level 2, then **Settings → Other Settings → Redemption Code**. There is no confirmed official web redemption endpoint. Some trackers disagree about historical codes and the exact reward quantity.
 
-## Warframe tracker — first integrated module
-
-The [warframe-api branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/warframe-api) implements the public [WarframeStat.us API](https://docs.warframestat.us/) for worldstate, missions, cycles, profiles, items, Warframes, weapons, mods, drops, rivens, static data, and available feeds. It also **bundles all 129 Warframe JSON files** currently found in `JsonData/games/warframe` as offline data, including `meta.json` and character profiles, plus the separate `JsonData/codes/games/warframe.json` snapshot. The latter supports `warframeData.codes.active()`, `.expired()`, `.search()`, `.get()`, `.summary()` and `.sync()` independently of character data. Call `warframeData.About()`, `warframeData.search('Ash')`, `warframeData.character('ash')`, `warframeData.api.alerts()` and other methods described in the package README.
-
-This package uses CommonJS with `name: "@nekosuneprojects/warframe-api"` and manually controlled `version: "1.0.0"`. It is **not published** until you explicitly run the manual release workflow. Two missing Update 44 records, **Narin** and **Citrine Prime**, have now been added to `JsonData` and bundled into `warframe-api` without changing the codes source. Missing character JSON is fetched on demand by `character(id)` when online, and `search(query, { refresh: true })` checks GitHub for newly added records. Existing local records remain available offline.
-
-## WFCD extensions for Warframe
-
-The [warframe-api branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/warframe-api) now also supports on-demand cached datasets from [WFCD/warframe-drop-data](https://github.com/WFCD/warframe-drop-data), [WFCD/warframe-items](https://github.com/WFCD/warframe-items), [WFCD/warframe-relic-data](https://github.com/WFCD/warframe-relic-data), and [WFCD/warframe-patchlogs](https://github.com/WFCD/warframe-patchlogs). Optional wrappers support [WFCD/warframe-nexus-query](https://github.com/WFCD/warframe-nexus-query) and [WFCD/warframe-updates](https://github.com/WFCD/warframe-updates) when their npm packages are separately installed.
+## Example
 
 ```js
-const Warframe = require('@nekosuneprojects/warframe-api');
-const warframeData = Warframe();
+const WuWa = require('@nekosuneprojects/wutheringwaves-api');
+const api = WuWa();
 
-const warframes = await warframeData.wfcd.items.warframes();
-const dropTables = await warframeData.wfcd.drops.all();
-const relics = await warframeData.wfcd.relics.all();
-const patchlogs = await warframeData.wfcd.patchlogs.all();
+const game = await api.About();
+const hsin = await api.character('hsin');
+const resonators = await api.characters.list();
+const electro = await api.characters.search('Electro');
+
+const archive = await api.codes.snapshot();
+const candidates = await api.codes.candidates(); // Expires date-scoped entries automatically
+console.log(game.name,hsin.name,resonators.length,electro.total,candidates);
 ```
 
-These are additional optional datasets; original Warframe JSON and live WarframeStat.us methods remain available. Data downloads occur on demand with caching. Normal pushes and JSON updates do not trigger npm publishing; the package is still version 1.0.0 and requires manual release.
+## Methods
 
-### Manual publishing: no RELEASE_TOKEN required
+| API | Purpose |
+| --- | --- |
+| `About()` | Game metadata |
+| `character(id)`, `characters.get(id)`, `characters.list()`, `characters.search(query)` | Offline Resonator JSON |
+| `search(query,{category,limit})` | General local search |
+| `codes.snapshot()`, `codes.all()`, `codes.get(code)`, `codes.search(query)` | Redeem-code history |
+| `codes.active()`, `codes.expired()`, `codes.unknown()` | Raw code labels |
+| `codes.candidates({now})` | Unexpired reported codes, not verified redemptions |
+| `codes.verifiedActive()` | Empty list unless verified in the future |
+| `data.sync()`, `codes.sync()` | Explicit GitHub JsonData synchronization |
 
-The **Manually publish tracker version** action runs only when started with **Run workflow**. Select a tracker branch (never `main`, `TEMPLATE`, or `JsonData`) and choose `both`, `npmjs`, or `github`. All jobs use that branch's **exact committed `package.json` version**, with no automatic version bump.
+Normal methods use bundled data with no API keys or network calls. Optional `sync()` fetches changed JSON from the public `JsonData` branch and verifies Git blob hashes.
 
-The publishing jobs now run **directly inside the manual workflow**. It uses the built-in `GITHUB_TOKEN` to publish GitHub Packages and create the GitHub Release, so no `RELEASE_TOKEN` secret is required. npmjs publishing still requires repository secret `NPM_TOKEN` with correct permissions and any npm 2FA/trusted publishing configuration. GitHub-hosted `ubuntu-latest` runners are used; no self-hosted runner is needed. The GitHub package namespace must have suitable rights for the package scope.
+## Validate and publish
 
-The separate older `release: published` workflows remain available for releases explicitly created outside this manual workflow. Releases created here with `GITHUB_TOKEN` will **not retrigger them**, preventing duplicate uploads.
-
-If one registry succeeds and another fails, its package version may already be published. Choose only the failed registry on a subsequent manual run rather than trying to republish the same version to both.
-
-## Install individual trackers
-
-Each branch is published under its own scoped name, such as:
-
-```bash
-npm install @nekosuneprojects/fortnite-api
+```sh
+npm ci
+npm run check
+npm test
+npm pack --dry-run
 ```
 
-**Illustrative package name only:** install commands will work only once that tracker is implemented and actually published.
-
-Use CommonJS:
-
-```js
-const Fortnite = require('@nekosuneprojects/fortnite-api');
-const fortniteTracker = Fortnite({ apiKey: process.env.FORTNITE_API_KEY });
-// Example only: check the Fortnite branch for actual auth requirements and methods.
-```
-
-You may install as many different tracker modules as needed into one Node.js application. Every module operates independently; no central API keys or shared runtime are assumed.
-
-### Using several trackers without naming conflicts
-
-```js
-const Fortnite = require('@nekosuneprojects/fortnite-api');
-const APEX = require('@nekosuneprojects/apex-api');
-const WarThunder = require('@nekosuneprojects/war-thunder-api');
-
-const fortniteTracker = Fortnite({ apiKey: process.env.FORTNITE_API_KEY });
-const apexTracker = APEX({ apiKey: process.env.APEX_API_KEY });
-const warThunderTracker = WarThunder(); // Example only, if no key is required
-```
-
-These package names and authentication requirements are **illustrative**; verify existence and setup in each tracker's branch README. Each tracker exposes its own game-supported methods. Use distinct, game-specific variables instead of a shared `tracker` or `stats` name, and keep credentials separate per provider.
-
-## Create and publish a new tracker
-
-1. Create a branch **from `TEMPLATE`** (not `main`) using a lowercase name like `fortnite-api`.
-2. Rename the package in `package.json` to `@nekosuneprojects/fortnite-api`. Keep the package suffix identical to the branch name.
-3. Implement game-specific integration under `src/`; export your API from `index.js`.
-4. Document actual supported endpoints, installation, configuration, API key requirements, usage, limitations and source attribution in that branch's `README.md`. Use game-specific module and instance names (such as `Fortnite` / `fortniteTracker`), never a generic `tracker` example.
-5. Add tests and run `npm test`, `npm run check` and `npm pack --dry-run`.
-6. Configure a GitHub Actions secret named `NPM_TOKEN` with npm publish permissions for the `@nekosuneprojects` organisation. The npm scope and package permissions must already be set up on npmjs.com.
-7. Push code without publishing. Run the manual Actions workflow and enter that tracker branch to release its exact package.json version.
-
-## Manual releases (no automatic publishing on push)
-
-Normal commits and pushes **never** publish or increment package versions. Set `package.json` version yourself, run `npm install --package-lock-only`, and commit both package files with your code.
-
-Open [Actions: Manually publish tracker version](https://github.com/NekoSuneProjectsNPM/game-tracker/actions/workflows/publish.yml), choose **Run workflow** using the `main` workflow ref, and enter `tracker_branch` (such as `fortnite-api`). The input is text rather than a dynamic branch dropdown. `main` and `TEMPLATE` are blocked. The workflow reads the **exact version in the selected branch's package.json**, verifies the lockfile and tests, then creates tag `<branch>-v<version>`. No version files are edited or committed.
-
-Only that manually created published GitHub Release triggers the npmjs.org and GitHub Packages release workflows. `RELEASE_TOKEN` with Contents write is needed so that release-created workflows are triggered. The registries also require valid publishing credentials and GitHub-hosted runner availability.
-
-### Publication policies
-
-- `main` collects documentation and links; **never** publishes a tracker.
-- `TEMPLATE` is an unpublishable starter; **never** publishes.
-- Each tracker branch must have exactly one `@nekosuneprojects/<branch>` package.
-- All packages keep `main: "index.js"`, `type: "commonjs"`, author NekoSuneVR and MIT licence.
-- Each package's `repository`, `bugs` and funding metadata must refer to this project.
-- Pushes never publish. Set the package.json and lockfile version manually and start the release workflow for one tracker branch.
-- Release versions can never be reused on npm. If publishing fails, inspect the GitHub Actions logs and fix the cause.
-- A project's GitHub release tag is `<branch>-v<version>` so identical versions of different tracker packages do not conflict.
-- npm publication requires npm credentials and appropriate package permissions. Creating the GitHub workflow **does not** itself configure npm.
-
-## Game and platform metadata: About()
-
-Every tracker created from `TEMPLATE` exposes `About()` for the game's `meta.json`, whether the JSON was bundled or downloaded from the `JsonData` branch. It returns the complete stored JSON without requiring an API key.
-
-```js
-const Warframe = require('@nekosuneprojects/warframe-api'); // Illustrative future package
-const warframeData = Warframe();
-
-await warframeData.data.sync(); // Optional when the data is already cached
-const aboutWarframe = await warframeData.About();
-console.log(aboutWarframe.name, aboutWarframe.Platform);
-```
-
-The `JsonData` branch currently has game metadata folders for Arknights Endfield, Fortnite, Genshin Impact, Honkai Star Rail, Neverness to Everness, Tower of Fantasy, VRChat, Warframe, Wuthering Waves and Zenless Zone Zero. The tracker must use the **exact game folder identifier**; search and About use only that game's JSON. Missing `meta.json` results in `ENOENT`, not fabricated data. The `codes/` directory remains untouched.
-
-## JsonData branch: game data for all trackers
-
-The dedicated [JsonData branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/JsonData) stores all your JSON records inside `games/<gameId>/`. The [data layout guide](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/JsonData/docs/DATA-LAYOUT.md) defines paths for `characters/`, `items/`, `codes/`, `maps/` and `meta.json`.
-
-Tracker packages use the same reusable lookup functions. For a future Warframe package (example only):
-
-```js
-const Warframe = require('@nekosuneprojects/warframe-api');
-const warframeTracker = Warframe();
-await warframeTracker.data.sync();
-
-const matches = await warframeTracker.search('Ash'); // Distinct Ash and Ash Prime matches
-const ash = await warframeTracker.character('ash');
-const ashPrime = await warframeTracker.character('ashprime');
-```
-
-Search returns `{query, total, results, message}`. Each result has `id`, `name`, `type` and `path`. When no match exists, the results are empty and the message explains that the data is unavailable. Exact `character(id)` and `record(category,id)` calls return the complete JSON. Other built-in category shortcuts are `item(id)`, `code(id)` and `map(id)`.
-
-Files are searched **locally**, using bundled JSON or the locally stored GitHub cache. An explicit `data.sync()` checks remote SHA hashes and saves only new/changed JSON. No npm package version is changed by updating JsonData. The reference `gaming-infos` repository is not used as a data source.
-
-See the [TEMPLATE branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/TEMPLATE) for implementation and [GPT JSON editing instructions](https://github.com/NekoSuneProjectsNPM/game-tracker/blob/TEMPLATE/docs/AI-JSON-PROMPT.md).
-
-## Game data and integrations
-
-Trackers may use entirely local JSON without an external API, or combine that data with official APIs and legitimate third-party services where permitted. Clearly label unofficial functionality. Do not claim locally-only game information is available from public endpoints. A future optional local companion app can handle PC-local data after authorisation.
-
-## Links
-
-Repository: https://github.com/NekoSuneProjectsNPM/game-tracker  
-Issues: https://github.com/NekoSuneProjectsNPM/game-tracker/issues  
-Funding: https://github.com/NekoSuneProjectsNPM/game-tracker?sponsor
-
-MIT © NekoSuneVR
-
-## Registry authentication and retrying a failed manual publish
-
-The manual action has **registry** (both/npmjs/github) and **npm_auth** (token/trusted) selections. It runs on GitHub-hosted Ubuntu runners and uses the exact selected tracker's `package.json` version.
-
-- **npmjs.org package:** `@nekosuneprojects/<tracker-branch>` (unchanged).
-- **GitHub Packages package:** `@nekosuneprojectsnpm/<tracker-branch>` (temporarily renamed only in the GitHub Packages publish job, matching repository organisation `NekoSuneProjectsNPM`). The committed package metadata keeps its npmjs name.
-- **npm_auth = token:** Configure `NPM_TOKEN` in GitHub Actions secrets with a granular npm publishing token permitted to bypass interactive 2FA for CI. A standard token that returns `EOTP` cannot complete unattended GitHub Actions publishing; replace it or choose trusted publishing. Do not share the token.
-- **npm_auth = trusted:** Configure npmjs [Trusted publishing](https://docs.npmjs.com/trusted-publishers/) for GitHub organisation/user `NekoSuneProjectsNPM`, repository `game-tracker`, workflow filename `publish.yml`, allowing direct `npm publish`. This uses OIDC (`id-token: write`) and Node.js 24 on GitHub-hosted runners; `NPM_TOKEN` is ignored in this mode. For an unpublished package, first publication may require a properly permissioned npm token before package settings permit Trusted Publisher configuration.
-
-A failed job does not mean the package was published: check the registry package listing. If only one registry succeeded, re-run with **registry = npmjs** or **registry = github** to avoid re-publishing an existing immutable version. The workflow does not automatically bump any version and does not publish on pushes.
-
+Use the dedicated branch Actions workflow to validate and the shared manual npm workflow (with `tracker_branch=wutheringwaves-api`) when ready. No publish or merge is automatically triggered.

@@ -1,0 +1,13 @@
+{
+  "name": "Lynae",
+  "slug": "lynae",
+  "rarity": 5,
+  "version": "3.0",
+  "element": "Spectro",
+  "weapon": "Pistols",
+  "status": "released",
+  "source": {
+    "provider": "Kuro Games patch notes cross referenced with SenseOS Version 3.7 roster",
+    "url": "https://senseos.gg/wiki/wuthering-waves/resonators/"
+  }
+}
