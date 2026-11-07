@@ -64,7 +64,22 @@ These package names and authentication requirements are **illustrative**; verify
 4. Document actual supported endpoints, installation, configuration, API key requirements, usage, limitations and source attribution in that branch's `README.md`. Use game-specific module and instance names (such as `Fortnite` / `fortniteTracker`), never a generic `tracker` example.
 5. Add tests and run `npm test`, `npm run check` and `npm pack --dry-run`.
 6. Configure a GitHub Actions secret named `NPM_TOKEN` with npm publish permissions for the `@nekosuneprojects` organisation. The npm scope and package permissions must already be set up on npmjs.com.
-7. Push to the tracker branch. The inherited publishing workflow checks tests and pack contents, then publishes **only that branch's package** to npm, bumps patch version when necessary, and creates a branch-prefixed GitHub release.
+7. Push to the tracker branch. The inherited publishing workflow checks tests and pack contents, bumps the version when necessary, and creates a branch-prefixed GitHub release. The two published-release workflows then publish the tagged package to npmjs and GitHub Packages.
+
+## Two registries, one game-tracker release
+
+A new push to an implemented tracker branch runs `publish.yml`: tests, select next version, update lockfile, and create the branch-prefixed GitHub release `<branch>-v<version>`. On a **published** GitHub release, two independent workflows then publish the exact tagged code:
+
+- `Node.js Package NPMJS` → `@nekosuneprojects/<branch>` at `https://registry.npmjs.org/`.
+- `Node.js Package GitHub Mode` → the same package/version at `https://npm.pkg.github.com/`.
+
+Both published-release jobs use Node.js 24 on runner labels `[self-hosted, Linux, docker, buildx]`, execute `npm ci` and `npm test`, verify the release tag against the package name and version, and skip prereleases. Neither `main` nor `TEMPLATE` can be published.
+
+**Repository setup required:** `NPM_TOKEN` (npm publish token), `RELEASE_TOKEN` (fine-grained PAT / GitHub App token with repository Contents write to create releases that trigger other workflows), and a trusted online self-hosted runner with all four required labels. `GITHUB_TOKEN` is used for GitHub Packages. Tokens must have the necessary organisation/package rights. Releases created using the default `GITHUB_TOKEN` **do not** trigger new release-event workflows; that's why `RELEASE_TOKEN` is required.
+
+The two release workflows are also stored on `main` solely because GitHub evaluates published-release event workflows from the default branch. They **always check out the released tracker tag**, never the `main` branch. They cannot install or publish a package without a valid tracker tag.
+
+Do not manually create release tags against unrelated commits; publishing requires the name and version to match exactly. Retry any failed publish after verifying whether that version already exists in the relevant registry. Once a version is published to a registry, npm does not permit replacing it.
 
 ### Publication policies
 
