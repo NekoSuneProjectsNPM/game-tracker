@@ -29,6 +29,22 @@ The [warframe-api branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tr
 
 This package uses CommonJS with `name: "@nekosuneprojects/warframe-api"` and manually controlled `version: "1.0.0"`. It is **not published** until you explicitly run the manual release workflow. Two missing Update 44 records, **Narin** and **Citrine Prime**, have now been added to `JsonData` and bundled into `warframe-api` without changing the codes source. Missing character JSON is fetched on demand by `character(id)` when online, and `search(query, { refresh: true })` checks GitHub for newly added records. Existing local records remain available offline.
 
+## WFCD extensions for Warframe
+
+The [warframe-api branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/warframe-api) now also supports on-demand cached datasets from [WFCD/warframe-drop-data](https://github.com/WFCD/warframe-drop-data), [WFCD/warframe-items](https://github.com/WFCD/warframe-items), [WFCD/warframe-relic-data](https://github.com/WFCD/warframe-relic-data), and [WFCD/warframe-patchlogs](https://github.com/WFCD/warframe-patchlogs). Optional wrappers support [WFCD/warframe-nexus-query](https://github.com/WFCD/warframe-nexus-query) and [WFCD/warframe-updates](https://github.com/WFCD/warframe-updates) when their npm packages are separately installed.
+
+```js
+const Warframe = require('@nekosuneprojects/warframe-api');
+const warframeData = Warframe();
+
+const warframes = await warframeData.wfcd.items.warframes();
+const dropTables = await warframeData.wfcd.drops.all();
+const relics = await warframeData.wfcd.relics.all();
+const patchlogs = await warframeData.wfcd.patchlogs.all();
+```
+
+These are additional optional datasets; original Warframe JSON and live WarframeStat.us methods remain available. Data downloads occur on demand with caching. Normal pushes and JSON updates do not trigger npm publishing; the package is still version 1.0.0 and requires manual release.
+
 ## Install individual trackers
 
 Each branch is published under its own scoped name, such as:
