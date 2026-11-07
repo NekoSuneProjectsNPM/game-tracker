@@ -1,16 +1,14 @@
 'use strict';
-
 const provider = require('./provider');
+const dataSource = require('./data-source');
+const { createDataStore } = require('./data-store');
 const { createClient, TrackerError } = require('./client');
 
-/**
- * Game-specific public API. No baseUrl or custom endpoint option.
- * Implement provider.routes.playerStats in each game branch and add
- * any further game-specific methods here.
- */
-function createTracker({ apiKey, timeoutMs, fetchImpl } = {}) {
+function createTracker({ apiKey, timeoutMs, fetchImpl, cacheDir } = {}) {
   const request = createClient(provider, { apiKey, timeoutMs, fetchImpl });
+  const data = createDataStore({ ...dataSource, fetchImpl, cacheDir });
   return Object.freeze({
+    data,
     async getPlayerStats(playerId, options) {
       if (typeof playerId !== 'string' || !playerId.trim()) throw new TypeError('playerId must be a non-empty string');
       if (typeof provider.routes.playerStats !== 'function') {
@@ -20,5 +18,4 @@ function createTracker({ apiKey, timeoutMs, fetchImpl } = {}) {
     },
   });
 }
-
 module.exports = { createTracker, TrackerError };
