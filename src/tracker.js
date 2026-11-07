@@ -4,6 +4,7 @@ const {createWarframeClient,parameter,optionsQuery}=require('./warframe-client')
 const {createDataStore}=require('./data-store');
 const {createCatalog}=require('./catalog');
 const {createWarframeCodes}=require('./warframe-codes');
+const {createWFCD,createMarketQuery,createUpdateMonitor}=require('./wfcd');
 const {TrackerError}=require('./client-error');
 
 const itemTypes=new Set(['warframes','weapons','items','mods']);
@@ -39,6 +40,7 @@ function createWarframeTracker({platform='pc',language='en',timeoutMs=15000,cach
     return catalog.search(query, options);
   }
   const codes=createWarframeCodes({cacheDir,githubToken,fetchImpl});
+  const wfcd=createWFCD({cacheDir,githubToken,fetchImpl});
   const worldstate=(field,options={})=>{
     if(typeof field!=='string' || !/^[a-zA-Z][a-zA-Z0-9]*$/.test(field)) throw new TypeError('Invalid worldstate field');
     return request(selected+'/'+field,optionsQuery(options,['filter']));
@@ -96,6 +98,9 @@ function createWarframeTracker({platform='pc',language='en',timeoutMs=15000,cach
     api:fullApi,
     data,
     codes,
+    wfcd,
+    market:createMarketQuery,
+    createUpdateMonitor,
     code:codes.get,
     About:()=>data.get('meta.json'),
     search,
