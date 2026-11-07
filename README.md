@@ -1,8 +1,8 @@
-# NekoSune Game Tracker — Direct API module template
+# NekoSune Game Tracker — Local JSON / Direct API / Hybrid module template
 
 > **TEMPLATE ONLY.** This branch does not implement an actual game API. No invented API endpoints or API requirements are claimed.
 
-Each tracker package integrates a **known, verified game API directly**. Consumers never need to know its URL and cannot override it from public configuration. If a provider requires an API key, consumers pass it with `apiKey`.
+Each tracker can use **bundled local JSON, GitHub-synced cached JSON, a verified direct API, or both**. No custom API URL is exposed to package consumers. API keys are required only for providers that need them. Local data works offline.
 
 ## Expected consumer experience (illustrative APEX package)
 
@@ -56,12 +56,74 @@ const warThunderTracker = WarThunder(); // Only if the chosen provider needs no 
 
 These are **illustrative imports only**; no unimplemented package is claimed as published. If a game-specific tracker needs a different method name, document the real method in its own README. Separate variables and objects avoid name collisions; CommonJS modules are already independently scoped. Use per-game environment variable names where multiple trackers are installed.
 
+## Local JSON data and GitHub synchronization
+
+Game metadata, characters, game codes, weapons, maps and other JSON records can all be organised in files. A tracker branch chooses its *own* data source in `src/data-source.js`. The template ships a harmless `data/example.json` file; no game-specific source is enabled by default.
+
+### Example: Warframe data from gaming-infos
+
+Set `src/data-source.js` inside the **Warframe tracker branch**:
+
+```js
+'use strict';
+const path = require('node:path');
+module.exports = {
+  gameId: 'warframe',
+  bundledDir: path.join(__dirname, '..', 'data'),
+  github: {
+    owner: 'NekoSuneProjectsNPM',
+    repo: 'gaming-infos',
+    branch: 'main',
+    directory: 'data/warframe'
+  }
+};
+```
+
+Game consumers then use game-specific variables:
+
+```js
+const Warframe = require('@nekosuneprojects/warframe-api');
+const warframeTracker = Warframe(); // No API key when only reading public JSON
+
+const cached = await warframeTracker.data.get('meta.json');
+const files = await warframeTracker.data.list();
+console.log(cached, files);
+
+// Explicit network refresh; compares remote SHA to cached manifest.
+const summary = await warframeTracker.data.sync();
+console.log(summary); // { updated, unchanged, checked, cacheDir }
+
+// Read downloaded character JSON later, even without the internet.
+const ash = await warframeTracker.data.get('characters/ash.json');
+```
+
+*This is an illustrative package usage, not a claim that `warframe-api` has been published.*
+
+### Update and caching behaviour
+
+- `data.get('relative/file.json')` reads **cached files first**, otherwise bundled `data/` files.
+- `data.list()` recursively lists JSON files from the cache and bundled data.
+- `data.sync()` explicitly checks the configured GitHub repository tree and compares each JSON file's Git blob SHA with a persistent cache manifest.
+- Unchanged cached files are skipped; new or changed files are downloaded, checksum-verified, validated as JSON, and atomically saved under `~/.cache/nekosune-game-tracker/<gameId>/` by default.
+- `cacheDir` can be set in the initial game tracker config for writable storage (for example in Docker). There is **no** custom remote API URL option.
+- Failed downloads do not replace an existing cached file. `get()` can still use previously stored data offline.
+- Sync does not automatically delete locally cached files removed from GitHub; this prevents unintended data loss. Future pruning should be explicit and opt-in.
+- Sync is **on demand** by design. It does not perform background polling or start network calls on package import. Applications may schedule their own refreshes if desired.
+- The source must be a readable public GitHub repository for unauthenticated syncing in the current template. GitHub rate limits apply.
+- Large trees may be truncated by GitHub; the synchronizer refuses incomplete trees instead of mistaking missing files for deletions. Each JSON file has a 5 MiB size limit in this starter.
+
+### Game codes and editable JSON
+
+Store codes in `data/codes.json` or `data/codes/<code>.json` and expose game-specific accessor methods when the relevant branch is implemented. Codes and expiration details must be based on verified sources; the template does not fabricate redemption codes.
+
+To update files using GPT, use [the reusable JSON-maintenance prompt](docs/AI-JSON-PROMPT.md). Review the generated JSON, commit it to the correct game's GitHub data folder, then call `gameTracker.data.sync()` locally. Updating data files on GitHub **does not publish a new npm version**.
+
 ## Build an individual game module
 
 1. Branch from `TEMPLATE` (e.g. `apex-api`). Change `package.json` name to `@nekosuneprojects/apex-api`, description and keywords.
-2. Wait for verified official/authorised third-party provider docs, credentials, response examples and any requirements supplied for that game.
-3. Set the **fixed internal** API base URL and authentication style in `src/provider.js`; define real routes. No URL goes in consumer-facing config.
-4. Implement proper game-specific methods under `src/tracker.js` (player stats, ranked stats, etc. as actually supported), re-export via `index.js`.
+2. Choose local-only, direct API, or hybrid. Configure a verified GitHub JSON source under `src/data-source.js` if needed. Only request API documentation/credentials for API-based features.
+3. For API-based features, set the **fixed internal** API base URL and authentication style in `src/provider.js`; define real routes. Pure JSON trackers do not need an API URL.
+4. Implement the game's supported methods in `src/tracker.js` using `data.get`, `data.list`, optional `data.sync`, and/or API requests. Keep distinct game-specific methods and instance names.
 5. Only require `apiKey` when the provider actually needs one. Support public/no-key APIs with `GAME()`. Never hard-code credentials.
 6. Replace this README with that individual tracker's installation, supported methods, auth, configuration, examples, rate limits and known limitations. Always use game-specific JavaScript identifiers (`fortniteTracker`, `apexTracker`) and per-game key names.
 7. Update tests with mocked valid responses, run `npm test`, `npm run check`, `npm pack --dry-run`.
@@ -80,9 +142,9 @@ Only that manually created published GitHub Release triggers the npmjs.org and G
 - `main` = central package directory; `TEMPLATE` = starter; both excluded from automatic release.
 - Every other tracker branch matches its own npm package name: `@nekosuneprojects/<branch>`.
 - CommonJS: `main: "index.js"`, `type: "commonjs"`. The default export is the game tracker factory, callable as `APEX({ apiKey })` and assignable to `apexTracker` or another game-specific instance identifier.
-- API URLs/endpoints stay internal and must be sourced from verified documentation.
+- API URLs/endpoints stay internal and must be sourced from verified documentation. GitHub data repositories are configured internally per game branch; these are not game API URLs.
 - Never expose a `baseUrl` or `apiUrl` user option unless the project owner explicitly requests that feature for a particular tracker.
-- Package versioning is handled by `.github/workflows/publish.yml`; actual registry publication is handled by the two `release: published` workflows.
+- Package versions are manually controlled in `package.json`; `.github/workflows/publish.yml` manually releases the selected tracker version, while `release: published` workflows publish it to registries. JSON GitHub updates do not change npm versions.
 - Use Node.js 18+ and npm for normal development.
 
 MIT © NekoSuneVR · https://github.com/NekoSuneProjectsNPM/game-tracker

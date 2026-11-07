@@ -1,7 +1,7 @@
 {
   "name": "@nekosuneprojects/replace-me",
   "version": "2.5.0",
-  "description": "Template for independent direct API game statistics trackers; customise verified provider integration per branch.",
+  "description": "Reusable game tracker starter for offline JSON, GitHub JSON sync, direct APIs, and hybrid game data.",
   "main": "index.js",
   "type": "commonjs",
   "repository": {
@@ -15,10 +15,12 @@
   "keywords": [
     "game",
     "tracker",
+    "json",
+    "offline",
+    "github-sync",
     "direct-api",
-    "statistics",
-    "nekosuneprojects",
-    "template"
+    "hybrid",
+    "nekosuneprojects"
   ],
   "author": "NekoSuneVR",
   "license": "MIT",
@@ -28,6 +30,7 @@
   "files": [
     "index.js",
     "src/",
+    "data/",
     "README.md",
     "LICENSE"
   ],
