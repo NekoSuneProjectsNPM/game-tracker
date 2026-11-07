@@ -4,11 +4,11 @@ Local-first **Neverness to Everness (NTE)** game, characters and redeem codes SD
 
 ## Bundled data
 
-- 21 character records (`data/characters/*.json`) and game metadata (`data/meta.json`) copied directly from the `JsonData` branch.
-- Historical redeem-code archive `data/codes/neverness-to-everness.json` with **11 Active, 25 Expired, 0 Unknown** original source labels.
+- 24 character records (`data/characters/*.json`) and game metadata (`data/meta.json`) copied directly from the `JsonData` branch.
+- Historical redeem-code archive `data/codes/neverness-to-everness.json` with **3 reported Active, 17 Expired, 16 Unknown** original source labels.
 - Independently sourced and dated community reports in `data/codes/reported-codes.json`.
 
-**Source-status warnings:** The historical archive includes scraped invalid code strings such as `Copy` and `000`. The archived `codes.active()` is not a list of verified working codes; use `codes.candidates()` to filter obvious malformed entries and `codes.reported()` to see separately collected recent reports. No code has been redeemed by the SDK; `codes.verifiedActive()` returns `[]`.
+**Source-status warnings:** The 7 November audit removed invalid scraper strings including `Copy` and `000`. The archived `codes.active()` is not a list of verified working codes; use `codes.candidates()` to filter obvious malformed entries and `codes.reported()` to see separately collected recent reports. No code has been redeemed by the SDK; `codes.verifiedActive()` returns `[]`.
 
 November 2026 trackers disagree: [GachaFeed](https://gachafeed.moe/nte/codes/) lists `NTENIGHT1021`, `BLACKBIRDHERE`, `COMEBACK`, `NTEGIFT`, while [Prydwen](https://www.prydwen.gg/neverness-to-everness/codes) says none active and considers `NTEGIFT` expired. [SenseOS](https://senseos.gg/guides/neverness-to-everness/redeem-codes/) lists `EXENORESPONSE`, `INVALIDNUMBER` and `HIOLDFRIEND` expired after November 1. Reported expiry timestamps have unknown precise timezones and must not be treated as official promises.
 
@@ -59,3 +59,11 @@ npm pack --dry-run
 ```
 
 This branch uses `.github/workflows/test-nte.yml` for validation. No npm or GitHub Packages release is triggered by commits to `nte-api`; publish later via main's manual workflow by selecting `tracker_branch=nte-api`.
+
+## Current data audit — 7 November 2026
+
+- Added **Linko** (S-rank Anima, released September 9), **Blackbird** (S-rank Psyche, released September 30) and **Akane Rin** (S-rank Lakshana, released October 21), bringing the local character roster to **24**. Sources: [Official Linko notice](https://nte.perfectworld.com/en/article/news/gamenews/20260908/263947.html), [Official 1.4 patch notes](https://nte.perfectworld.com/en/article/news/gamenews/20260929/264409.html).
+- **Elyms and Exe** are announced for Version 1.5 (starting November 11); they are not included as already-playable characters.
+- Deleted six invalid scrape fragments, and inserted new code records for `NTENIGHT1021`, `BLACKBIRDHERE`, `961251AXACTTZDNY`, `EXENORESPONSE`, `HIOLDFRIEND`, and `INVALIDNUMBER`.
+- Moved disputed codes into Unknown, including `NTEGIFT`, `DREAMWALK0603`, `TOMATO100` and `RACENOLIMIT`. Cross-referenced [GachaFeed](https://gachafeed.moe/nte/codes/), [Mobalytics](https://mobalytics.gg/neverness-to-everness/redemption-codes), [Game Guide](https://www.game.guide/neverness-to-everness-codes), and [Prydwen](https://www.prydwen.gg/neverness-to-everness/codes).
+- Audited archive counts: **3 Active (reported, not account-verified), 17 Expired and 16 Unknown (36 total)**. Any `expiresAt` whose exact time is not reported should be understood as an approximate boundary. No actual redemption has been tested.
