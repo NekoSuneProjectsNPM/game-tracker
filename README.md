@@ -179,3 +179,15 @@ If one registry succeeds and another fails, its package version may already be p
 - Use Node.js 18+ and npm for normal development.
 
 MIT © NekoSuneVR · https://github.com/NekoSuneProjectsNPM/game-tracker
+
+## Registry authentication and retrying a failed manual publish
+
+The manual action has **registry** (both/npmjs/github) and **npm_auth** (token/trusted) selections. It runs on GitHub-hosted Ubuntu runners and uses the exact selected tracker's `package.json` version.
+
+- **npmjs.org package:** `@nekosuneprojects/<tracker-branch>` (unchanged).
+- **GitHub Packages package:** `@nekosuneprojectsnpm/<tracker-branch>` (temporarily renamed only in the GitHub Packages publish job, matching repository organisation `NekoSuneProjectsNPM`). The committed package metadata keeps its npmjs name.
+- **npm_auth = token:** Configure `NPM_TOKEN` in GitHub Actions secrets with a granular npm publishing token permitted to bypass interactive 2FA for CI. A standard token that returns `EOTP` cannot complete unattended GitHub Actions publishing; replace it or choose trusted publishing. Do not share the token.
+- **npm_auth = trusted:** Configure npmjs [Trusted publishing](https://docs.npmjs.com/trusted-publishers/) for GitHub organisation/user `NekoSuneProjectsNPM`, repository `game-tracker`, workflow filename `publish.yml`, allowing direct `npm publish`. This uses OIDC (`id-token: write`) and Node.js 24 on GitHub-hosted runners; `NPM_TOKEN` is ignored in this mode. For an unpublished package, first publication may require a properly permissioned npm token before package settings permit Trusted Publisher configuration.
+
+A failed job does not mean the package was published: check the registry package listing. If only one registry succeeded, re-run with **registry = npmjs** or **registry = github** to avoid re-publishing an existing immutable version. The workflow does not automatically bump any version and does not publish on pushes.
+
