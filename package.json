@@ -1,13 +1,12 @@
 {
   "name": "@nekosuneprojects/replace-me",
   "version": "2.5.0",
-  "description": "Reusable modular game statistics tracker template for official and supported third-party APIs.",
+  "description": "Template for independent direct API game statistics trackers; customise verified provider integration per branch.",
   "main": "index.js",
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git",
-    "directory": ""
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git"
   },
   "bugs": {
     "url": "https://github.com/NekoSuneProjectsNPM/game-tracker/issues"
@@ -16,8 +15,8 @@
   "keywords": [
     "game",
     "tracker",
+    "direct-api",
     "statistics",
-    "api",
     "nekosuneprojects",
     "template"
   ],

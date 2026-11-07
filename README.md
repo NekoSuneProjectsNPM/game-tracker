@@ -1,40 +1,62 @@
-# @nekosuneprojects/replace-me — Game Tracker Template
+# NekoSune Game Tracker — Direct API module template
 
-> **Template only; not an actual game API implementation.** Rename the package and implement your own game's official or authorised third-party API integration before publishing.
+> **TEMPLATE ONLY.** This branch does not implement an actual game API. No invented API endpoints or API requirements are claimed.
 
-## Create a tracker branch
+Each tracker package integrates a **known, verified game API directly**. Consumers never need to know its URL and cannot override it from public configuration. If a provider requires an API key, consumers pass it with `apiKey`.
 
-1. Create a new branch **from TEMPLATE**, named for example `fortnite-api`.
-2. Change `package.json` name to `@nekosuneprojects/fortnite-api`, update the description, keywords and the initial version if appropriate.
-3. Add game-specific request methods to `src/`, export them from `index.js` and write tests.
-4. Replace this README with the tracker-specific instructions, supported endpoints, environment variables, API key requirements, sample responses and limitations.
-5. Run `npm test`, `npm run check`, `npm pack --dry-run` locally.
-6. Configure the repository's `NPM_TOKEN` Actions secret with publish access to the `@nekosuneprojects` scope. GitHub Actions will publish an eligible tracker branch on push after tests pass.
+## Expected consumer experience (illustrative APEX package)
 
-### Example use of the generic transport
+Once a real `apex-api` tracker exists and its methods are implemented:
 
 ```js
-const { createTracker } = require('@nekosuneprojects/your-tracker-name');
-const tracker = createTracker({
-  baseUrl: 'https://api.example.com/v1/',
-  apiKey: process.env.GAME_API_KEY,
+const APEX = require('@nekosuneprojects/apex-api');
+
+const tracker = APEX({
+  apiKey: process.env.GAME_API_KEY
 });
-tracker.request('players/example').then(console.log).catch(console.error);
+
+const stats = await tracker.getPlayerStats('example-player');
+console.log(stats);
 ```
 
-This endpoint is illustrative only; it does **not** claim any particular game has this API.
+The Apex package, provider URL, API-key requirement and supported methods above are **examples only**, not claims of an existing working integration.
 
-## Branch and publishing model
+### Loading environment variables
 
-- `main` = central README, discovery and setup; never published as a tracker.
-- `TEMPLATE` = starter code; never published.
-- Every other tracker branch is independent: package name, code, tests, README and versions.
-- Pushes publish after tests and validation when `NPM_TOKEN` is configured. On each successful workflow, a package version is selected as the next patch version (starting at 2.5.0, never below the currently published npm version), committed back to the tracker branch, and released as `<branch>-v<version>`.
-- Do not modify package versions simultaneously with release jobs. Major/minor versions can be chosen by changing package.json before the next publish.
-- Published packages are always separate; pushing one branch does not build or publish all branches.
+Node.js 20.6+ supports `node --env-file=.env app.js`. Or use `dotenv` in your consuming app (not required by this template):
 
-## Security
+```js
+require('dotenv').config();
+const APEX = require('@nekosuneprojects/apex-api');
+const tracker = APEX({ apiKey: process.env.GAME_API_KEY });
+```
 
-Never commit credentials or `.env` files. Never expose private profile data without authorisation. Respect publisher rate limits and terms.
+Do not commit `.env` or credentials. When a game API requires **no key**, initialise it simply:
 
-MIT © NekoSuneVR
+```js
+const GAME = require('@nekosuneprojects/game-api');
+const tracker = GAME();
+```
+
+## Build an individual game module
+
+1. Branch from `TEMPLATE` (e.g. `apex-api`). Change `package.json` name to `@nekosuneprojects/apex-api`, description and keywords.
+2. Wait for verified official/authorised third-party provider docs, credentials, response examples and any requirements supplied for that game.
+3. Set the **fixed internal** API base URL and authentication style in `src/provider.js`; define real routes. No URL goes in consumer-facing config.
+4. Implement proper game-specific methods under `src/tracker.js` (player stats, ranked stats, etc. as actually supported), re-export via `index.js`.
+5. Only require `apiKey` when the provider actually needs one. Support public/no-key APIs with `GAME()`. Never hard-code credentials.
+6. Replace this README with that individual tracker's installation, supported methods, auth, configuration, examples, rate limits and known limitations.
+7. Update tests with mocked valid responses, run `npm test`, `npm run check`, `npm pack --dry-run`.
+8. Publish through the branch-specific GitHub Actions workflow after configuring the repository's `NPM_TOKEN` secret.
+
+## Project conventions
+
+- `main` = central package directory; `TEMPLATE` = starter; both excluded from automatic release.
+- Every other tracker branch matches its own npm package name: `@nekosuneprojects/<branch>`.
+- CommonJS: `main: "index.js"`, `type: "commonjs"`. The default export is the game tracker factory, callable as `APEX({ apiKey })`.
+- API URLs/endpoints stay internal and must be sourced from verified documentation.
+- Never expose a `baseUrl` or `apiUrl` user option unless the project owner explicitly requests that feature for a particular tracker.
+- Package versioning and branch-specific npm publishing remain handled by `.github/workflows/publish.yml`.
+- Use Node.js 18+ and npm for normal development.
+
+MIT © NekoSuneVR · https://github.com/NekoSuneProjectsNPM/game-tracker

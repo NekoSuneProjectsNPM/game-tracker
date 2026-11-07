@@ -1,45 +1,24 @@
 'use strict';
 
-/** HTTP transport only. Add game-specific methods in your own branch. */
-class TrackerError extends Error {
-  constructor(message, { status, cause } = {}) {
-    super(message, { cause });
-    this.name = 'TrackerError';
-    if (status !== undefined) this.status = status;
-  }
+const provider = require('./provider');
+const { createClient, TrackerError } = require('./client');
+
+/**
+ * Game-specific public API. No baseUrl or custom endpoint option.
+ * Implement provider.routes.playerStats in each game branch and add
+ * any further game-specific methods here.
+ */
+function createTracker({ apiKey, timeoutMs, fetchImpl } = {}) {
+  const request = createClient(provider, { apiKey, timeoutMs, fetchImpl });
+  return Object.freeze({
+    async getPlayerStats(playerId, options) {
+      if (typeof playerId !== 'string' || !playerId.trim()) throw new TypeError('playerId must be a non-empty string');
+      if (typeof provider.routes.playerStats !== 'function') {
+        throw new TrackerError('getPlayerStats is not implemented for this provider. Define it in src/provider.js.');
+      }
+      return request(provider.routes.playerStats(playerId), options);
+    },
+  });
 }
 
-function createTracker({ baseUrl, apiKey, headers = {}, timeoutMs = 10000, fetchImpl = globalThis.fetch } = {}) {
-  if (!baseUrl || !/^https?:\/\//i.test(baseUrl)) throw new TypeError('baseUrl must be a valid HTTP(S) URL');
-  if (typeof fetchImpl !== 'function') throw new TypeError('A fetch implementation is required');
-  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) throw new TypeError('timeoutMs must be positive');
-  const root = new URL(baseUrl);
-  if (root.username || root.password) throw new TypeError('Do not include credentials in baseUrl');
-  return {
-    async request(path, { method = 'GET', query, body, signal } = {}) {
-      if (typeof path !== 'string' || !path || path.startsWith('//') || /^[a-z][a-z\d+.-]*:/i.test(path)) {
-        throw new TypeError('path must be a relative API path');
-      }
-      const url = new URL(path.replace(/^\//, ''), root.href.replace(/\/?$/, '/'));
-      if (url.origin !== root.origin) throw new TrackerError('Cross-origin requests are blocked');
-      if (query) for (const [key, val] of Object.entries(query)) if (val !== undefined && val !== null) url.searchParams.set(key, String(val));
-      const requestHeaders = { Accept: 'application/json', ...headers };
-      if (apiKey) requestHeaders.Authorization = `Bearer ${apiKey}`;
-      if (body !== undefined) requestHeaders['Content-Type'] = 'application/json';
-      try {
-        const response = await fetchImpl(url, {
-          method, headers: requestHeaders,
-          ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
-          signal: AbortSignal.any ? AbortSignal.any([AbortSignal.timeout(timeoutMs), ...(signal ? [signal] : [])]) : signal,
-        });
-        if (!response.ok) throw new TrackerError(`API returned HTTP ${response.status}`, { status: response.status });
-        if (response.status === 204) return null;
-        return await response.json();
-      } catch (cause) {
-        if (cause instanceof TrackerError) throw cause;
-        throw new TrackerError('Tracker request failed', { cause });
-      }
-    },
-  };
-}
 module.exports = { createTracker, TrackerError };
