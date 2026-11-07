@@ -1,6 +1,6 @@
 # @nekosuneprojects/vrchat-api
 
-**Local-first VRChat JSON catalog for Node.js 18+**, built in the same modular style as Warframe API. Initial source version **1.0.0**. The package is not yet published.
+**Local-first VRChat JSON catalog for Node.js 18+**, built in the same modular style as Warframe API. Source version **1.0.1**. The earlier **1.0.0** package version is already published; publishing 1.0.1 requires a new release.
 
 ## Data first: `JsonData/games/vrchat`
 
@@ -11,7 +11,7 @@ These are community-curated snapshots, **not live official VRChat account inform
 ## Install after the first npm release
 
 ```bash
-npm install @nekosuneprojects/vrchat-api@1.0.0
+npm install @nekosuneprojects/vrchat-api@1.0.1
 ```
 
 ## API

@@ -1,6 +1,6 @@
 {
   "name": "@nekosuneprojects/vrchat-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Local-first VRChat players, groups and worlds JSON, with optional verified GitHub synchronization.",
   "main": "index.js",
   "type": "commonjs",
