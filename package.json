@@ -1,0 +1,41 @@
+{
+  "name": "@nekosuneprojects/honkaistarrail-api",
+  "version": "1.0.0",
+  "description": "Local-first Honkai: Star Rail game and character JSON, redeem-code archive, and optional Enka.Network HSR public UID profiles.",
+  "main": "index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node scripts/validate-package.js",
+    "test": "node --test",
+    "prepack": "npm run check && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekoSuneProjectsNPM/game-tracker.git"
+  },
+  "author": "NekoSuneVR",
+  "license": "MIT",
+  "keywords": [
+    "honkai-star-rail",
+    "honkaistarrail",
+    "hsr",
+    "redeem-codes",
+    "characters",
+    "enka-network",
+    "local-json"
+  ],
+  "files": [
+    "index.js",
+    "src/",
+    "data/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
