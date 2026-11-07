@@ -260,6 +260,16 @@ patchMonitor.on('update', update => console.log(update));
 - WFCD datasets are optional on-demand downloads; market and update monitor require separate installation of their upstream packages.
 - No npm dependency on `gaming-infos`; all bundled JSON comes from the **JsonData branch in this repository**.
 
+### Manual publishing: no RELEASE_TOKEN required
+
+The **Manually publish tracker version** action runs only when started with **Run workflow**. Select a tracker branch (never `main`, `TEMPLATE`, or `JsonData`) and choose `both`, `npmjs`, or `github`. All jobs use that branch's **exact committed `package.json` version**, with no automatic version bump.
+
+The publishing jobs now run **directly inside the manual workflow**. It uses the built-in `GITHUB_TOKEN` to publish GitHub Packages and create the GitHub Release, so no `RELEASE_TOKEN` secret is required. npmjs publishing still requires repository secret `NPM_TOKEN` with correct permissions and any npm 2FA/trusted publishing configuration. Self-hosted runner labels `[self-hosted, Linux, docker, buildx]` must be available. The GitHub package namespace must have suitable rights for the package scope.
+
+The separate older `release: published` workflows remain available for releases explicitly created outside this manual workflow. Releases created here with `GITHUB_TOKEN` will **not retrigger them**, preventing duplicate uploads.
+
+If one registry succeeds and another fails, its package version may already be published. Choose only the failed registry on a subsequent manual run rather than trying to republish the same version to both.
+
 ## Development, validation and release
 
 ```bash

@@ -4,79 +4,188 @@ on:
   workflow_dispatch:
     inputs:
       tracker_branch:
-        description: "Tracker branch (not main or TEMPLATE)"
+        description: "Tracker branch to publish (not main, TEMPLATE or JsonData)"
         required: true
         type: string
+      registry:
+        description: "Publish to npmjs, GitHub Packages, or both"
+        required: true
+        type: choice
+        default: both
+        options:
+          - both
+          - npmjs
+          - github
 
 permissions:
-  contents: read
+  contents: write
+  packages: write
 
 concurrency:
   group: manual-tracker-${{ inputs.tracker_branch }}
   cancel-in-progress: false
 
 jobs:
-  release:
+  validate:
     runs-on: ubuntu-latest
+    outputs:
+      release_tag: ${{ steps.metadata.outputs.release_tag }}
+      version: ${{ steps.metadata.outputs.version }}
+      package_name: ${{ steps.metadata.outputs.package_name }}
+      source_sha: ${{ steps.metadata.outputs.source_sha }}
     steps:
-      - name: Validate branch selection
+      - name: Validate tracker branch selection
         env:
           TRACKER_BRANCH: ${{ inputs.tracker_branch }}
+        shell: bash
         run: |
           node - <<'NODE'
-          const b=process.env.TRACKER_BRANCH;
-          if (!/^[a-z0-9][a-z0-9._-]*$/.test(b) || ['main','TEMPLATE'].includes(b))
-            throw Error('Invalid tracker branch: main and TEMPLATE cannot be released');
+          const branch = process.env.TRACKER_BRANCH;
+          if (!/^[a-z0-9][a-z0-9._-]*$/.test(branch) ||
+              ['main','TEMPLATE','JsonData'].includes(branch)) {
+            throw Error('Only real tracker branches may be published');
+          }
           NODE
-      - name: Checkout selected tracker
+      - name: Checkout selected tracker branch
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.tracker_branch }}
-          fetch-depth: 0
           persist-credentials: false
+          fetch-depth: 0
       - name: Setup Node.js 24
         uses: actions/setup-node@v4
         with:
           node-version: '24'
           registry-url: https://registry.npmjs.org/
-      - name: Verify package version and lockfile
+      - name: Validate exact package.json name and version
+        id: metadata
         env:
           TRACKER_BRANCH: ${{ inputs.tracker_branch }}
+        shell: bash
         run: |
           node - <<'NODE'
-          const fs=require('node:fs');
-          const p=JSON.parse(fs.readFileSync('package.json','utf8'));
-          const l=JSON.parse(fs.readFileSync('package-lock.json','utf8'));
-          if(p.name!=='@nekosuneprojects/'+process.env.TRACKER_BRANCH)
-            throw Error('Package name must match selected branch');
-          if(!/^\d+\.\d+\.\d+$/.test(p.version))
-            throw Error('Version must be stable x.y.z');
-          if(l.name!==p.name || l.version!==p.version || l.packages?.['']?.name!==p.name || l.packages?.['']?.version!==p.version)
-            throw Error('package-lock.json does not match package.json. Update and commit both manually');
-          fs.appendFileSync(process.env.GITHUB_ENV,'RELEASE_TAG='+process.env.TRACKER_BRANCH+'-v'+p.version+'\nPKG='+p.name+'\nVERSION='+p.version+'\n');
+          const fs = require('node:fs');
+          const p = JSON.parse(fs.readFileSync('package.json','utf8'));
+          const lock = JSON.parse(fs.readFileSync('package-lock.json','utf8'));
+          const branch = process.env.TRACKER_BRANCH;
+          if (p.name !== '@nekosuneprojects/' + branch) throw Error('Package name must match selected branch');
+          if (!/^\d+\.\d+\.\d+$/.test(p.version)) throw Error('Use a stable x.y.z version in package.json');
+          if (lock.name !== p.name || lock.version !== p.version ||
+              lock.packages?.['']?.name !== p.name || lock.packages?.['']?.version !== p.version) {
+            throw Error('package-lock.json must match package.json. Update both manually.');
+          }
+          const output = [
+            'release_tag=' + branch + '-v' + p.version,
+            'version=' + p.version,
+            'package_name=' + p.name,
+            'source_sha=' + process.env.GITHUB_SHA
+          ];
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, output.join('\n') + '\n');
           NODE
-      - name: Validate package
+          # The workflow itself is launched from main, but we publish the selected
+          # tracker commit, not GITHUB_SHA (the main branch workflow commit).
+          echo "source_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Validate package before publication
         run: |
           npm ci
           npm run check
           npm test
           npm pack --dry-run
-      - name: Check release credentials
+      - name: Check for an existing release tag
         env:
-          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.metadata.outputs.release_tag }}
+        shell: bash
         run: |
-          test -n "$RELEASE_TOKEN" || { echo "::error::Set RELEASE_TOKEN with Contents write permission"; exit 1; }
-      - name: Publish GitHub Release (triggers both registries)
-        env:
-          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-          TRACKER_BRANCH: ${{ inputs.tracker_branch }}
-        run: |
-          set -euo pipefail
           if gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${RELEASE_TAG}" >/dev/null 2>&1; then
-            echo "::error::Release tag already exists. Manually bump package.json and lockfile version."
+            echo "::error::Tag ${RELEASE_TAG} already exists. Change package.json and lockfile version manually."
             exit 1
           fi
-          SOURCE_SHA="$(git rev-parse HEAD)"
-          git fetch origin "refs/heads/${TRACKER_BRANCH}:refs/remotes/origin/${TRACKER_BRANCH}" --quiet
-          test "$SOURCE_SHA" = "$(git rev-parse "refs/remotes/origin/${TRACKER_BRANCH}")" || { echo "::error::Tracker branch changed. Run again."; exit 1; }
-          gh release create "$RELEASE_TAG" --target "$SOURCE_SHA" --title "${TRACKER_BRANCH} v${VERSION}" --notes "Manual release of ${PKG}@${VERSION}; version read exactly from package.json." --latest=false
+
+  npmjs:
+    if: inputs.registry == 'both' || inputs.registry == 'npmjs'
+    needs: validate
+    runs-on: [self-hosted, Linux, docker, buildx]
+    steps:
+      - name: Checkout exact validated tracker commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.validate.outputs.source_sha }}
+          persist-credentials: false
+      - name: Setup npmjs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org/
+      - name: Install and test
+        run: |
+          npm ci
+          npm run check
+          npm test
+      - name: Validate publishing credentials
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          test -n "$NODE_AUTH_TOKEN" || { echo "::error::Configure NPM_TOKEN (npmjs publishing), not RELEASE_TOKEN."; exit 1; }
+      - name: Publish exact package.json version to npmjs
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --registry=https://registry.npmjs.org/
+
+  github-packages:
+    if: inputs.registry == 'both' || inputs.registry == 'github'
+    needs: validate
+    runs-on: [self-hosted, Linux, docker, buildx]
+    steps:
+      - name: Checkout exact validated tracker commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.validate.outputs.source_sha }}
+          persist-credentials: false
+      - name: Setup GitHub Packages
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@nekosuneprojects'
+      - name: Install and test
+        run: |
+          npm ci
+          npm run check
+          npm test
+      - name: Publish exact package.json version to GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const p=JSON.parse(fs.readFileSync('package.json','utf8'));
+          p.publishConfig={...p.publishConfig,registry:'https://npm.pkg.github.com/'};
+          fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n');
+          NODE
+          npm publish --registry=https://npm.pkg.github.com/
+
+  release:
+    if: |
+      always() &&
+      needs.validate.result == 'success' &&
+      (needs.npmjs.result == 'success' || needs.npmjs.result == 'skipped') &&
+      (needs.github-packages.result == 'success' || needs.github-packages.result == 'skipped') &&
+      (needs.npmjs.result == 'success' || needs.github-packages.result == 'success')
+    needs: [validate, npmjs, github-packages]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub release for the published tracker version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ needs.validate.outputs.release_tag }}
+          PACKAGE_NAME: ${{ needs.validate.outputs.package_name }}
+          VERSION: ${{ needs.validate.outputs.version }}
+          SOURCE_SHA: ${{ needs.validate.outputs.source_sha }}
+        shell: bash
+        run: |
+          gh release create "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
+            --target "$SOURCE_SHA" --title "${PACKAGE_NAME} v${VERSION}" \
+            --notes "Manually published ${PACKAGE_NAME}@${VERSION}. Version comes from package.json." \
+            --latest=false
