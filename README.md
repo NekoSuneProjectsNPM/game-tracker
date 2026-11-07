@@ -21,6 +21,13 @@ New trackers will be listed here **after their branches and packages exist**. A 
 | Tracker | Source branch | npm installation | Status |
 | --- | --- | --- | --- |
 | Starter (not publishable) | [TEMPLATE](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/TEMPLATE) | N/A | Ready to adapt |
+| Warframe API | [warframe-api](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/warframe-api) | `npm install @nekosuneprojects/warframe-api` | Source and tests added; **not yet published** |
+
+## Warframe tracker — first integrated module
+
+The [warframe-api branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/warframe-api) implements the public [WarframeStat.us API](https://docs.warframestat.us/) for worldstate, missions, cycles, profiles, items, Warframes, weapons, mods, drops, rivens, static data, and available feeds. It also **bundles all 127 Warframe JSON files** currently found in `JsonData/games/warframe` as offline data, including `meta.json` and character profiles. Call `warframeData.About()`, `warframeData.search('Ash')`, `warframeData.character('ash')`, `warframeData.api.alerts()` and other methods described in the package README.
+
+This package uses CommonJS with `name: "@nekosuneprojects/warframe-api"` and manually controlled `version: "2.5.0"`. It is **not published** until you explicitly run the manual release workflow. The remote `JsonData` branch and `codes/` data were not changed as part of the module creation.
 
 ## Install individual trackers
 
