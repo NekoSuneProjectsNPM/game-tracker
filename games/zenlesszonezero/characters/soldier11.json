@@ -1,0 +1,17 @@
+{
+  "name": "Soldier 11",
+  "slug": "soldier11",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Fire",
+  "specialty": "Attack",
+  "faction": "Obol Squad",
+  "version": "1.0",
+  "releaseDate": "2024-07-04",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

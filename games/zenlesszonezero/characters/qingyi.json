@@ -1,0 +1,17 @@
+{
+  "name": "Qingyi",
+  "slug": "qingyi",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Electric",
+  "specialty": "Stun",
+  "faction": "Criminal Investigation Special Response Team",
+  "version": "1.1",
+  "releaseDate": "2024-08-14",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

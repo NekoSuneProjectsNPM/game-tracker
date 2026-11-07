@@ -1,0 +1,17 @@
+{
+  "name": "Caesar King",
+  "slug": "caesarking",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Physical",
+  "specialty": "Defense",
+  "faction": "Sons of Calydon",
+  "version": "1.2",
+  "releaseDate": "2024-09-25",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

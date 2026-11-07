@@ -1,0 +1,17 @@
+{
+  "name": "Starlight - Billy Kid",
+  "slug": "starlightbillykid",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Physical",
+  "specialty": "Rupture",
+  "faction": "Cunning Hares",
+  "version": "2.8",
+  "releaseDate": "2026-05-27",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

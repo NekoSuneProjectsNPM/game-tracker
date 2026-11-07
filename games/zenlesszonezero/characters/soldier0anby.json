@@ -1,0 +1,17 @@
+{
+  "name": "Soldier 0 - Anby",
+  "slug": "soldier0anby",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Electric",
+  "specialty": "Attack",
+  "faction": "Defense Force - Silver Squad",
+  "version": "1.6",
+  "releaseDate": "2025-03-12",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

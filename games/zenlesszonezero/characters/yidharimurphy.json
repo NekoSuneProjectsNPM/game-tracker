@@ -1,0 +1,17 @@
+{
+  "name": "Yidhari Murphy",
+  "slug": "yidharimurphy",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Ice",
+  "specialty": "Rupture",
+  "faction": "Spook Shack",
+  "version": "2.3",
+  "releaseDate": "2025-11-05",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Aria",
+  "slug": "aria",
+  "rank": "S-Rank",
+  "rarity": "S",
+  "attribute": "Ether",
+  "specialty": "Anomaly",
+  "faction": "Angels of Delusion",
+  "version": "2.6",
+  "releaseDate": "2026-03-04",
+  "status": "released",
+  "source": {
+    "provider": "Timesaver ZZZ character roster checked 2026-10-30; official characters site cross-reference",
+    "url": "https://timesaver.gg/blog/zzz-characters-list",
+    "verifiedAgainst": "https://zenless.hoyoverse.com/en-us/main"
+  }
+}
