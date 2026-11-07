@@ -7,12 +7,12 @@
 The [`JsonData` branch](https://github.com/NekoSuneProjectsNPM/game-tracker/tree/JsonData) is the source of all bundled records.
 
 - `games/arknightsendfield/meta.json` — game information
-- `games/arknightsendfield/characters/*.json` — **32 Operator profiles** with original source attributes, class, element, weapon, rarity, faction and available biography fields
-- `codes/games/arknights-endfield.json` — original code archive of **15 Active**, **11 Expired**, **0 Unknown** records
+- `games/arknightsendfield/characters/*.json` — **34 Operator profiles** with original source attributes, class, element, weapon, rarity, faction and available biography fields
+- `codes/games/arknights-endfield.json` — audited code archive of **4 reported Active**, **4 Expired**, **0 Unknown** records
 
-**Important:** The code archive was last synced in August 2026 and contains invalid scraped reward labels (including `Oroberyl`, `Sticker`, `T-Creds`, `x100`). `ENDFIELDRENEW` has a recorded expiry of 30 August 2026 despite appearing in the Active group. The original `codes.active()` is **historical source data, not verified current availability**.
+**Important:** The November 7, 2026 audit removed 18 invalid scraped reward names/quantity fragments and moved expired codes to the right group. `codes.active()` exposes **4 reported codes**, but does not guarantee that an account can redeem them. `codes.candidates({now})` removes codes once their recorded expiry passes, and `codes.verifiedActive()` intentionally returns `[]` without an account-level redemption test.
 
-Use `codes.candidates()` for potential code strings that are not simple reward fragments and whose recorded expiry has not passed; this produces **two unverified candidates as of 7 November 2026** (`AKENDFIELDSUB` and `ZAU2SYXHWX5L4ZH`). `codes.verifiedActive()` deliberately returns `[]` because no account redemption test was performed. No API keys or account logins are required.
+The available sources report `ENDFIELDSTEAM` as valid through 25 November 2026 at 15:59 UTC. `ENDFIELDGIFT`, `ENDFIELD4PC` (PC-only), and `ZAU2SYXHWX5L4ZH` are reported active by several recent trackers. Expired codes are `AKENDFIELDSUB`, `ENDFIELDRENEW`, `ALLFIELD` and `RETURNOFALL`. Sources: [GamesRadar](https://www.gamesradar.com/games/rpg/arknights-endfield-codes/), [Game Guide](https://www.game.guide/arknights-endfield-codes), [Gaming Route](https://gamingroute.com/arknights-endfield-codes/).
 
 ## Install (after publishing)
 
@@ -66,3 +66,7 @@ npm pack --dry-run
 ```
 
 The branch's CI runs Node 24 on push and on pull requests targeting the branch. Use the shared main-branch manual release workflow and select `tracker_branch=arknightsendfield-api` when you are ready to publish; do not release until its CI succeeds. Nothing is published by adding the source branch.
+
+## Operator roster audit (7 November 2026)
+
+Added **Si** (six-star Cryo Supporter, Great Sword, Version 1.6) and **Argent Flow** (six-star Electric Guard, Sword, Version 1.6) to both the `JsonData` source branch and this bundled npm snapshot. Sources: [Endfield Talos Wiki — Si](https://endfield.wiki.gg/wiki/Si), [Argent Flow 1.6 profile](https://www.enfieldbuild.com/characters/argent-flow), [Icy Veins operator roster](https://www.icy-veins.com/arknights-endfield/operators). The SDK now contains 34 Operator records.

@@ -1,0 +1,17 @@
+{
+  "name": "Si",
+  "description": "Six-star Cryo Supporter wielding a Great Sword; introduced in Version 1.6.",
+  "rarity": "6",
+  "class": "Supporter",
+  "element": "Cryo",
+  "weapon": "Great Sword",
+  "faction": "Hongshan Academy of Sciences",
+  "releaseDate": "2026-10-15",
+  "version": "1.6",
+  "slug": "si",
+  "source": {
+    "provider": "Endfield Talos Wiki",
+    "url": "https://endfield.wiki.gg/wiki/Si"
+  },
+  "url": "https://endfield.wiki.gg/wiki/Si"
+}

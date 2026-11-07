@@ -3,7 +3,6 @@ const path=require('node:path');
 const {createDataStore}=require('./data-store');
 const FILE='arknights-endfield.json';
 const GROUPS=Object.freeze({active:'Active',expired:'Expired',unknown:'Unknown'});
-const NON_CODES=new Set(['oroberyl','s','sticker','t-creds','x1','x10','x100','x150','x2','x20','x5000','x71600','protodisk','protoprism','x1500','x30','x5','x500','x6000']);
 const canonical=value=>String(value??'').trim().toLowerCase();
 function createCodes({cacheDir,githubToken,fetchImpl}={}){
  const data=createDataStore({gameId:'arknightsendfield-codes',cacheDir,githubToken,fetchImpl,bundledDir:path.join(__dirname,'..','data','codes'),github:{owner:'NekoSuneProjectsNPM',repo:'game-tracker',branch:'JsonData',directory:'codes/games'},syncFiles:[FILE]});
@@ -38,8 +37,8 @@ function createCodes({cacheDir,githubToken,fetchImpl}={}){
   const time=now instanceof Date?now.valueOf():now;
   if(!Number.isFinite(time))throw new TypeError('now must be a valid timestamp');
   const d=await snapshot(opts);
-  return filter(d.Active.filter(row=>!NON_CODES.has(canonical(row.code))&&(!row.expiry?.expiresAt||Date.parse(row.expiry.expiresAt)>time)),opts)
-    .map(row=>({...row,verificationStatus:'unverified-snapshot'}));
+  return filter(d.Active.filter(row=>(!row.expiry?.expiresAt||Date.parse(row.expiry.expiresAt)>time)),opts)
+    .map(row=>({...row,verificationStatus:row.verificationStatus||'reported-active-unverified'}));
  }
  async function verifiedActive(){return [];}
  return Object.freeze({snapshot,all,active:opts=>group('active',opts),expired:opts=>group('expired',opts),unknown:opts=>group('unknown',opts),get,search,candidates,verifiedActive,data,sync:opts=>data.sync(opts)});
