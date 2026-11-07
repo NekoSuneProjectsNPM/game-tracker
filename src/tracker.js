@@ -22,6 +22,22 @@ function createWarframeTracker({platform='pc',language='en',timeoutMs=15000,cach
     cacheDir, githubToken, fetchImpl
   });
   const catalog=createCatalog(data);
+  // Local-first: only query GitHub if a requested character is absent.
+  // Existing bundled and cached characters work without any network call.
+  async function character(name, options = {}) {
+    try { return await catalog.character(name); }
+    catch (err) {
+      if (err.code !== 'NOT_FOUND') throw err;
+      if (options.refresh === false) throw err;
+      await data.sync({ signal: options.signal });
+      return catalog.character(name);
+    }
+  }
+  // Set refresh:true to discover new records that didn't exist in local JSON.
+  async function search(query, options = {}) {
+    if (options.refresh === true) await data.sync({ signal: options.signal });
+    return catalog.search(query, options);
+  }
   const codes=createWarframeCodes({cacheDir,githubToken,fetchImpl});
   const worldstate=(field,options={})=>{
     if(typeof field!=='string' || !/^[a-zA-Z][a-zA-Z0-9]*$/.test(field)) throw new TypeError('Invalid worldstate field');
@@ -82,8 +98,8 @@ function createWarframeTracker({platform='pc',language='en',timeoutMs=15000,cach
     codes,
     code:codes.get,
     About:()=>data.get('meta.json'),
-    search:catalog.search,
-    character:catalog.character,
+    search,
+    character,
     record:catalog.get,
     item:catalog.item,
     map:catalog.map,
