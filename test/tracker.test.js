@@ -43,7 +43,7 @@ test('request validation and status errors', async () => {
   assert.throws(()=>Warframe({platform:'invalid'}),RangeError);
   const warframeData=Warframe({fetchImpl:async()=>({ok:false,status:404})});
   await assert.rejects(warframeData.api.profile('Missing User'),{name:'TrackerError',status:404});
-  await assert.rejects(warframeData.api.warframe(''),TypeError);
-  await assert.rejects(warframeData.api.list('mystery'),RangeError);
-  await assert.rejects(warframeData.api.worldstateField('https://evil.example'),TypeError);
+  assert.throws(()=>warframeData.api.warframe(''),TypeError);
+  assert.throws(()=>warframeData.api.list('mystery'),RangeError);
+  assert.throws(()=>warframeData.api.worldstateField('https://evil.example'),TypeError);
 });
