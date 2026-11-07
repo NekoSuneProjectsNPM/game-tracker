@@ -35,18 +35,33 @@ npm install @nekosuneprojects/fortnite-api
 Use CommonJS:
 
 ```js
-const tracker = require('@nekosuneprojects/fortnite-api');
-// See that branch's README for actual exports and configuration.
+const Fortnite = require('@nekosuneprojects/fortnite-api');
+const fortniteTracker = Fortnite({ apiKey: process.env.FORTNITE_API_KEY });
+// Example only: check the Fortnite branch for actual auth requirements and methods.
 ```
 
 You may install as many different tracker modules as needed into one Node.js application. Every module operates independently; no central API keys or shared runtime are assumed.
+
+### Using several trackers without naming conflicts
+
+```js
+const Fortnite = require('@nekosuneprojects/fortnite-api');
+const APEX = require('@nekosuneprojects/apex-api');
+const WarThunder = require('@nekosuneprojects/war-thunder-api');
+
+const fortniteTracker = Fortnite({ apiKey: process.env.FORTNITE_API_KEY });
+const apexTracker = APEX({ apiKey: process.env.APEX_API_KEY });
+const warThunderTracker = WarThunder(); // Example only, if no key is required
+```
+
+These package names and authentication requirements are **illustrative**; verify existence and setup in each tracker's branch README. Each tracker exposes its own game-supported methods. Use distinct, game-specific variables instead of a shared `tracker` or `stats` name, and keep credentials separate per provider.
 
 ## Create and publish a new tracker
 
 1. Create a branch **from `TEMPLATE`** (not `main`) using a lowercase name like `fortnite-api`.
 2. Rename the package in `package.json` to `@nekosuneprojects/fortnite-api`. Keep the package suffix identical to the branch name.
 3. Implement game-specific integration under `src/`; export your API from `index.js`.
-4. Document actual supported endpoints, installation, configuration, API key requirements, usage, limitations and source attribution in that branch's `README.md`.
+4. Document actual supported endpoints, installation, configuration, API key requirements, usage, limitations and source attribution in that branch's `README.md`. Use game-specific module and instance names (such as `Fortnite` / `fortniteTracker`), never a generic `tracker` example.
 5. Add tests and run `npm test`, `npm run check` and `npm pack --dry-run`.
 6. Configure a GitHub Actions secret named `NPM_TOKEN` with npm publish permissions for the `@nekosuneprojects` organisation. The npm scope and package permissions must already be set up on npmjs.com.
 7. Push to the tracker branch. The inherited publishing workflow checks tests and pack contents, then publishes **only that branch's package** to npm, bumps patch version when necessary, and creates a branch-prefixed GitHub release.
